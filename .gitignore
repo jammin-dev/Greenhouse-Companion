@@ -1,4 +1,4 @@
 __pycache__/
-venvMacBookAir/
-venvMini/
-.venv/
+instance/
+.env
+.DS_Store

@@ -60,3 +60,12 @@ class UserList(Resource):
         db.session.add(new_user)
         db.session.commit()
         return new_user, 201
+
+class PromoteUser(Resource):
+    @marshal_with(resource_fields)
+    def put(self, user_id):
+        abort_if_doesnt_exist(UserModel, user_id)
+        user = UserModel.query.filter_by(id=user_id).first()
+        user.admin = True
+        db.session.commit()
+        return user, 201
