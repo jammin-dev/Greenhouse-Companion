@@ -11,18 +11,18 @@ from views.vegetable_infos_view import VegetableInfos, VegetableInfosList
 from views.sensors_view import Sensor, SensorList, SensorsLast
 from views.automation_view import AutomationList
 from flask_cors import CORS
+import os
 
 app = Flask(__name__)
 api = Api(app)
 
-
-GREENHOUSE_MYSQL_USER = 'greenhouse_dev'
-GREENHOUSE_MYSQL_PWD = 'AVNS_I6mOdk372jRm8stpS0d'
-GREENHOUSE_MYSQL_HOST = 'db-mysql-ams3-26566-do-user-14634177-0.b.db.ondigitalocean.com'
-GREENHOUSE_MYSQL_DB = 'greenhouse_db'
-GREENHOUSE_MYSQL_PORT = 25060
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://{}:{}@{}:{}/{}'.format(GREENHOUSE_MYSQL_USER, GREENHOUSE_MYSQL_PWD, GREENHOUSE_MYSQL_HOST, GREENHOUSE_MYSQL_PORT, GREENHOUSE_MYSQL_DB)
+db_user = os.environ['GREENHOUSE_MYSQL_USER']
+db_password = os.environ['GREENHOUSE_MYSQL_PWD']
+db_host = os.environ['GREENHOUSE_MYSQL_HOST']
+db_port = os.environ['GREENHOUSE_MYSQL_PORT']
+db_name = os.environ['GREENHOUSE_MYSQL_DB']
+db_uri = f"mysql+mysqlconnector://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 
 db.init_app(app)
 CORS(app)
