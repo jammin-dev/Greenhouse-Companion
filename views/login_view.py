@@ -16,6 +16,6 @@ class Login(Resource):
         if not user:
             return make_response('Could not verify2', 401, {'WWW-Authenticate' : 'Basic realm="Login required!"'})
         if check_password_hash(user.password, auth.password):
-            token = jwt.encode({'id' : user.id, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, current_app.config['SECRET_KEY'])
+            token = jwt.encode({'id' : user.id, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(hours=12)}, current_app.config['SECRET_KEY'])
             return jsonify({'token': token})
         return make_response('Could not verify3', 401, {'WWW-Authenticate' : 'Basic realm="Login required!"'})

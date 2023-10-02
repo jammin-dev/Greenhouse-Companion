@@ -1,9 +1,10 @@
-from flask import jsonify
+from flask import jsonify, g
 from flask_restful import Resource, fields, marshal_with, reqparse
 from models.vegetable_manager_model import VegetableManagerModel
 from models import db
 from utils import abort_if_doesnt_exist
 from datetime import datetime
+from auth import token_required
 
 resource_fields = {
     'id': fields.String,
@@ -18,20 +19,21 @@ resource_fields = {
     'harvest_quantity': fields.Float,
     'remove_date': fields.String,
     'created_at': fields.String,
-    'updated_at': fields.String
+    'updated_at': fields.String,
+    'user_id': fields.String
 }
 
 parser_update = reqparse.RequestParser()
 parser_update.add_argument('name', type=str)
 
-
 class VegetableManager(Resource):
     @marshal_with(resource_fields)
+    @token_required
     def get(self, vegetable_id):
         abort_if_doesnt_exist(VegetableManagerModel, vegetable_id)
         vegetable = VegetableManagerModel.query.filter_by(id=vegetable_id).first()
         return vegetable
-
+    @token_required
     def delete(self, vegetable_id):
         abort_if_doesnt_exist(VegetableManagerModel, vegetable_id)
         vegetable = VegetableManagerModel.query.filter_by(id=vegetable_id).first()
@@ -40,6 +42,7 @@ class VegetableManager(Resource):
         return ''
 
     @marshal_with(resource_fields)
+    @token_required
     def put(self, vegetable_id):
         abort_if_doesnt_exist(VegetableManagerModel, vegetable_id)
         vegetable = VegetableManagerModel.query.filter_by(id=vegetable_id).first()
@@ -89,12 +92,17 @@ class VegetableManager(Resource):
 
 class VegetableManagerList(Resource):
     @marshal_with(resource_fields)
+    @token_required
     def get(self):
-        vegetables = VegetableManagerModel.query.all()
+        current_user = getattr(g, 'current_user', None)
+        vegetables = VegetableManagerModel.query.filter_by(user_id=current_user.id).all()
         return vegetables
 
     @marshal_with(resource_fields)
+    @token_required
     def post(self):
+        current_user = getattr(g, 'current_user', None)
+
         parser_create = reqparse.RequestParser()
 
         # Define a list of argument names and their types
@@ -122,6 +130,7 @@ class VegetableManagerList(Resource):
             )
 
         args = parser_create.parse_args()
+        args['user_id'] = current_user.id
 
         # Parse date fields from strings to datetime.date objects
         date_fields = ['sowing_date', 'planting_date', 'harvest_date', 'remove_date']

@@ -14,3 +14,4 @@ class VegetableManagerModel(BaseModel, db.Model):
     notes = db.Column(db.String(1024))
 
     area_id = db.Column(db.String(30), db.ForeignKey('area_model.id'), nullable=False)
+    user_id = db.Column(db.String(30), db.ForeignKey('user_model.id'), nullable=False)

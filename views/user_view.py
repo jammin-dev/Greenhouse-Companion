@@ -12,7 +12,9 @@ resource_fields = {
     'password': fields.String,
     'admin': fields.Boolean,
     'created_at': fields.DateTime,
-    'updated_at': fields.DateTime
+    'updated_at': fields.DateTime,
+    'areas': fields.List(fields.String),
+    'vegetables': fields.List(fields.String)
 }
 
 
@@ -45,8 +47,7 @@ class User(Resource):
 class UserList(Resource):
     @marshal_with(resource_fields)
     @token_required
-    def get(self, current_user):
-        print(current_user)
+    def get(self):
         users = UserModel.query.all()
         return users
 

@@ -8,4 +8,5 @@ class UserModel(BaseModel, db.Model):
     password = db.Column(db.String(80))
     admin = db.Column(db.Boolean)
 
-    areas = db.relationship('AreaModel', backref='user', lazy=True)
+    areas = db.relationship('AreaModel', backref='user', lazy=False)
+    vegetables = db.relationship('VegetableManagerModel', backref='user', lazy=False)
