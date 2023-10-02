@@ -3,7 +3,8 @@ from flask_restful import Resource, fields, marshal_with, reqparse
 from models.user_model import UserModel
 from models import db
 from werkzeug.security import generate_password_hash, check_password_hash
-from utils import abort_if_doesnt_exist
+from utils import abort_if_doesnt_exist, abort_if_exists
+from auth import token_required
 
 resource_fields = {
     'id': fields.String,
@@ -11,8 +12,11 @@ resource_fields = {
     'password': fields.String,
     'admin': fields.Boolean,
     'created_at': fields.DateTime,
-    'updated_at': fields.DateTime
+    'updated_at': fields.DateTime,
+    'areas': fields.List(fields.String),
+    'vegetables': fields.List(fields.String)
 }
+
 
 class User(Resource):
     @marshal_with(resource_fields)
@@ -40,9 +44,9 @@ class User(Resource):
         db.session.commit()
         return user, 201
 
-
 class UserList(Resource):
     @marshal_with(resource_fields)
+    @token_required
     def get(self):
         users = UserModel.query.all()
         return users
@@ -53,6 +57,7 @@ class UserList(Resource):
         parser_create.add_argument('name', type=str, help="Name is required", required=True)
         parser_create.add_argument('password', help="Password is required", type=str)
         args = parser_create.parse_args()
+        abort_if_exists(UserModel, 'name', args['name'])
         hashed_password = generate_password_hash(
             args['password'], method='sha256')
         new_user = UserModel(
@@ -60,3 +65,12 @@ class UserList(Resource):
         db.session.add(new_user)
         db.session.commit()
         return new_user, 201
+
+class PromoteUser(Resource):
+    @marshal_with(resource_fields)
+    def put(self, user_id):
+        abort_if_doesnt_exist(UserModel, user_id)
+        user = UserModel.query.filter_by(id=user_id).first()
+        user.admin = True
+        db.session.commit()
+        return user, 201
