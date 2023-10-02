@@ -79,7 +79,6 @@ class SensorList(Resource):
             )
 
         args = parser_create.parse_args()
-
         new_sensor = SensorsModel(**args)
         db.session.add(new_sensor)
         db.session.commit()
@@ -87,6 +86,7 @@ class SensorList(Resource):
         # Comparing the values to the values of automation tables
         # to send response to the esp32
         response = {}
+        
         all_selection = AutomationModel.query.all()
         sorted_sensors = sorted(all_selection, key=lambda all_selection: all_selection.created_at, reverse=True)
         if sorted_sensors:
@@ -94,15 +94,19 @@ class SensorList(Resource):
 
         if new_sensor.air_temperature > last_selection.air_temperature_selection or \
         new_sensor.air_humidity > last_selection.air_humidity_selection:
-            response["extractorState"] = True
+            extractor_plugged_timer = f"smart_plug_{last_selection.extractor_plug}_timer"
+            extractor_plugged_state = f"smart_plug_{last_selection.extractor_plug}_state"
+            setattr(last_selection, extractor_plugged_state, True)
+            setattr(last_selection, extractor_plugged_timer, 5000)
+            # response[f"smart_plug_{last_selection.extractor_plug}_state"]=60
 
         # Define a dictionary to map attribute names to response keys
         attribute_to_key = {
-        'water_pump_left_state': 'water_pump_left_timer',
-        'water_pump_middle_state': 'water_pump_middle_timer',
-        'water_pump_right_state': 'water_pump_right_timer',
+        'smart_plug_1_state': 'smart_plug_1_timer',
+        'smart_plug_2_state': 'smart_plug_2_timer',
+        'smart_plug_3_state': 'smart_plug_3_timer',
+        'smart_plug_4_state': 'smart_plug_4_timer',
          }
-
         # Loop through the attributes and check if they are True
         for attribute, response_key in attribute_to_key.items():
             if getattr(last_selection, attribute):
@@ -111,6 +115,7 @@ class SensorList(Resource):
         
         db.session.add(last_selection)
         db.session.commit()
+        print(response)
         return jsonify(response)
 
 class SensorsLast(Resource):

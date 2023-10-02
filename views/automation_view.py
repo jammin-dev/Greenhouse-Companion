@@ -8,12 +8,15 @@ resource_fields = {
     'id': fields.String,
     'air_humidity_selection': fields.Integer,
     'air_temperature_selection': fields.Integer,
-    'water_pump_left_state': fields.Boolean,
-    'water_pump_left_timer': fields.Integer,
-    'water_pump_middle_state': fields.Boolean,
-    'water_pump_middle_timer': fields.Integer,
-    'water_pump_right_state': fields.Boolean,
-    'water_pump_right_timer': fields.Integer
+    'extractor_plug': fields.Integer,
+    'smart_plug_1_state': fields.Boolean,
+    'smart_plug_1_timer': fields.Integer,
+    'smart_plug_2_state': fields.Boolean,
+    'smart_plug_2_timer': fields.Integer,
+    'smart_plug_3_state': fields.Boolean,
+    'smart_plug_3_timer': fields.Integer,
+    'smart_plug_4_state': fields.Boolean,
+    'smart_plug_4_timer': fields.Integer
 }
 
 class AutomationList(Resource):
@@ -30,12 +33,15 @@ class AutomationList(Resource):
         argument_list = [
             ('air_humidity_selection', int, None, False),
             ('air_temperature_selection', int, None, False),
-            ('water_pump_left_state', bool, None, False),
-            ('water_pump_left_timer', int, None, False),
-            ('water_pump_middle_state', bool, None, False),
-            ('water_pump_middle_timer', int, None, False),
-            ('water_pump_right_state', bool, None, False),
-            ('water_pump_right_timer', int, None, False)
+            ('extractor_plug', int, None, False),
+            ('smart_plug_1_state', bool, None, False),
+            ('smart_plug_1_timer', int, None, False),
+            ('smart_plug_2_state', bool, None, False),
+            ('smart_plug_2_timer', int, None, False),
+            ('smart_plug_3_state', bool, None, False),
+            ('smart_plug_3_timer', int, None, False),
+            ('smart_plug_4_state', int, None, False),
+            ('smart_plug_4_timer', int, None, False)
         ]
 
         # Iterate through the argument list and add arguments to the parser
