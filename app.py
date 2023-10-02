@@ -21,6 +21,8 @@ app = Flask(__name__)
 api = Api(app)
 CORS(app)
 
+app.config['SECRET_KEY'] = '***REMOVED***'
+
 database = os.environ.get('DATABASE')
 
 if database == 'mysql':
@@ -41,7 +43,7 @@ db.init_app(app)
 
 api.add_resource(Home, '/')
 
-# api.add_resource(Login, '/login')
+api.add_resource(Login, '/login')
 
 api.add_resource(User, '/users/<string:user_id>')
 api.add_resource(UserList, '/users')

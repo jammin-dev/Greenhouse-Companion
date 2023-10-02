@@ -1,8 +1,10 @@
 from flask import jsonify
 from flask_restful import Resource, fields, marshal_with, reqparse
 from models.area_model import AreaModel
+from models.user_model import UserModel
 from models import db
 from utils import abort_if_doesnt_exist
+from auth import token_required
 
 resource_fields = {
     'id': fields.String,
@@ -55,12 +57,37 @@ class Area(Resource):
 
 class AreaList(Resource):
     @marshal_with(resource_fields)
-    def get(self):
+    @token_required
+    def get(self, current_user):
+        
+        attributes = [attr for attr in dir(current_user) if not callable(getattr(current_user, attr)) and not attr.startswith("__")]
+        # Print the list of attributes
+        # Access the values of specific attributes
+        decorators_value = current_user.decorators
+        endpoint_value = current_user.endpoint
+        init_every_request_value = current_user.init_every_request
+        method_decorators_value = current_user.method_decorators
+        methods_value = current_user.methods
+        provide_automatic_options_value = current_user.provide_automatic_options
+        representations_value = current_user.representations
+
+        # Print the values of the attributes
+        print("decorators:", decorators_value)
+        print("endpoint:", endpoint_value)
+        print("init_every_request:", init_every_request_value)
+        print("method_decorators:", method_decorators_value)
+        print("methods:", methods_value)
+        print("provide_automatic_options:", provide_automatic_options_value)
+        print("representations:", representations_value)
+        
+        print(attributes)
         areas = AreaModel.query.all()
         return areas
 
+
     @marshal_with(resource_fields)
-    def post(self):
+    @token_required
+    def post(self, current_user):
         parser_create = reqparse.RequestParser()
         argument_list = [
             ('name', str, "Name is required", True),
@@ -77,7 +104,7 @@ class AreaList(Resource):
             )
 
         args = parser_create.parse_args()
-        
+        args['user_id'] = current_user.id
         new_area = AreaModel(**args)
         db.session.add(new_area)
         db.session.commit()
