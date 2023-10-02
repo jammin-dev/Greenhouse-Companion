@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 class UserModel(BaseModel, db.Model):
     name = db.Column(db.String(80), unique=True, nullable=False)
-    password = db.Column(db.String(80))
+    password = db.Column(db.String(120))
     admin = db.Column(db.Boolean)
 
     areas = db.relationship('AreaModel', backref='user', lazy=False)

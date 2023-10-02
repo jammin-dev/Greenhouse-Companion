@@ -13,5 +13,5 @@ class VegetableManagerModel(BaseModel, db.Model):
     remove_date = db.Column(db.Date)
     notes = db.Column(db.String(1024))
 
-    area_id = db.Column(db.String(30), db.ForeignKey('area_model.id'), nullable=False)
-    user_id = db.Column(db.String(30), db.ForeignKey('user_model.id'), nullable=False)
+    area_id = db.Column(db.String(60), db.ForeignKey('area_model.id'), nullable=False)
+    user_id = db.Column(db.String(60), db.ForeignKey('user_model.id'), nullable=False)
