@@ -4,7 +4,6 @@ from models.area_model import AreaModel
 from models.user_model import UserModel
 from models import db
 from utils import abort_if_doesnt_exist
-from auth import token_required
 
 resource_fields = {
     'id': fields.String,
@@ -17,12 +16,11 @@ resource_fields = {
 class Area(Resource):
 
     @marshal_with(resource_fields)
-    @token_required
     def get(self, area_id):
         abort_if_doesnt_exist(AreaModel, area_id)
         area = AreaModel.query.filter_by(id=area_id).first()
         return area
-    @token_required
+
     def delete(self, area_id):
         abort_if_doesnt_exist(AreaModel, area_id)
         area = AreaModel.query.filter_by(id=area_id).first()
@@ -31,7 +29,6 @@ class Area(Resource):
         return ''
 
     @marshal_with(resource_fields)
-    @token_required
     def put(self, area_id):
         abort_if_doesnt_exist(AreaModel, area_id)
         area = AreaModel.query.filter_by(id=area_id).first()
@@ -61,18 +58,13 @@ class Area(Resource):
 
 class AreaList(Resource):
     @marshal_with(resource_fields)
-    @token_required
     def get(self):
-        current_user = getattr(g, 'current_user', None)
-        areas = AreaModel.query.filter_by(user_id=current_user.id).all()
+        areas = AreaModel.query.all()
         return areas
 
 
     @marshal_with(resource_fields)
-    @token_required
     def post(self):
-        current_user = getattr(g, 'current_user', None)
-
         parser_create = reqparse.RequestParser()
         argument_list = [
             ('name', str, "Name is required", True),
@@ -89,7 +81,6 @@ class AreaList(Resource):
             )
 
         args = parser_create.parse_args()
-        args['user_id'] = current_user.id
         new_area =AreaModel(**args)
 
         db.session.add(new_area)
