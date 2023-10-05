@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/global.css" />
+  <link rel="stylesheet" href="styles/aside.css" />
+  <link rel="stylesheet" href="styles/dashboard.css" />
+  <link rel="stylesheet" href="styles/vegetable101.css" />
+  <link rel="stylesheet" href="styles/charts.css" />
+  <link rel="stylesheet" href="styles/production.css" />
+  <link rel="stylesheet" href="styles/birds.css" />
+  <link rel="stylesheet" href="styles/utils.css" />
+  <title>Greenhouse Companion</title>
+</head>
+
+<body>
+
+  <!--------------------------------------------------------------------------------------
+  --------------------------------------- Loader -----------------------------------------
+  --------------------------------------------------------------------------------------->
+  <!-- <div id="loading-animation">
+    <div class="loading-container">
+      <p><span>"</span>The greatest fine art of the future will be the making of a comfortable living from a small piece
+        of
+        land.<span>"</span>(Abraham Lincoln)
+      </p>
+      <div id="loading"></div>
+    </div>
+  </div> -->
+
+  <!--------------------------------------------------------------------------------------
+  --------------------------------------- Birds -----------------------------------------
+  --------------------------------------------------------------------------------------->
+
+  <div class="bird-container bird-container-one">
+    <div class="bird bird-one"></div>
+  </div>
+  <div class="bird-container bird-container-two">
+    <div class="bird bird-two"></div>
+  </div>
+  <div class="bird-container bird-container-three">
+    <div class="bird bird-three"></div>
+  </div>
+  <div class="bird-container bird-container-four">
+    <div class="bird bird-four"></div>
+  </div>
+
+
+
+
+  <div class="common_container">
+
+    <!--------------------------------------------------------------------------------------
+    --------------------------------------- Aside -----------------------------------------
+    --------------------------------------------------------------------------------------->
+    <aside>
+      <ul>
+        <li id="dashboard_page" class="icon-aside icon_dashboard"></li>
+        <li id="chart_page" class="icon-aside icon_chart"></li>
+        <li id="production_page" class="icon-aside icon_production"></li>
+        <li id="vegetable101_page" class="icon-aside icon_vegetable101"></li>
+      </ul>
+    </aside>
+
+    <!--------------------------------------------------------------------------------------
+    --------------------------------------- Main -----------------------------------------
+    --------------------------------------------------------------------------------------->
+    <main>
+
+      <!--------------------------------------------------------------------------------------
+      --------------------------------------- Main -----------------------------------------
+      --------------------------------------------------------------------------------------->
+      <header>
+        <h1>Greenhouse Companion v1</h1>
+        <p class="date">Monday, 25th of September</p>
+      </header>
+
+      <!--------------------------------------------------------------------------------------
+      ------------------------------------- Dashboard ----------------------------------------
+      --------------------------------------------------------------------------------------->
+      <div id="container_dashboard">
+
+        <!--------------------------------------------------------------------------------------
+        ---------------------------------- Plant Manager Module --------------------------------
+        --------------------------------------------------------------------------------------->
+        <div class="module plantManagerModule">
+          <h2>Plant Manager</h2>
+          <br>
+
+          <!---------------icon container -------------->
+          <div class="plant_manager_icon_container">
+            <div class="icons_container">
+              <div class="dont_move">
+                <div class="icon_garden icon_plant_manager" id="plant-icon"></div>
+                <p>Planter</p>
+            </div>
+            </div>
+            <div class="icons_container">
+              <div class="dont_move">
+                <div class="icon_garden icon_sow_manager" id="sow-icon"></div>
+                <p>Semer</p>
+              </div>
+            </div>
+            <div class="icons_container">
+              <div class="dont_move">
+                <div class="icon_garden icon_harvest_manager" id="harvest-icon"></div>
+                <p>Récolter</p>
+              </div>
+            </div>
+            <div class="icons_container">
+              <div class="dont_move">
+                <div class="icon_garden icon_create_manager" id="create-icon"></div>
+                <p>Ajouter</p>
+              </div>
+            </div>
+            <div class="icons_container">
+              <div class="dont_move">
+                <div class="icon_garden icon_update_manager" id="update-icon"></div>
+                <p>Modifier</p>
+              </div>
+            </div>
+            <div class="icons_container">
+              <div class="dont_move">
+                <div class="icon_garden icon_delete_manager" id="delete-icon"></div>
+                <p>Supprimer</p>
+              </div>
+            </div>
+          </div>
+
+          <!--------- Form fields for plant action ------------->
+           <form class="hidden form plant-form">
+            <div class="form_line1">
+              <label for="gender">Name:</label>
+              <select id="nameplant" name="nameplant">
+                <option value="tomato">Tomato</option>
+                <option value="carrot">Carrot</option>
+                <option value="radish">Radish</option>
+              </select>
+              <div class="form_quantity">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity">
+              </div>
+              <div class="form_garden_area">
+                <label for="garden_area">Garden Area:</label>
+                <select id="garden_area" name="garden_area">
+                  <option value="left">Left</option>
+                  <option value="middle">Middle</option>
+                  <option value="right">Right</option>
+                  <option value="back">Back</option>
+                </select>
+              </div>
+              <button type="submit">Add Vegetable</button>
+            </div>
+            <button class="return-button">retour</button>
+          </form>
+          <div id="form-container"></div>
+        </div>
+        <!--------- Form fields for sow action ---------------->
+          <!-- <form class="hidden form">
+            <div class="form_line1">
+              <label for="gender">Name:</label>
+              <select id="name" name="name">
+                <option value="tomato">Tomato</option>
+                <option value="carrot">Carrot</option>
+                <option value="radish">Radish</option>
+              </select>
+              <div class="form_quantity">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity">
+              </div>
+              <div class="form_garden_area">
+                <label for="garden_area">Garden Area:</label>
+                <select id="garden_area" name="garden_area">
+                  <option value="left">Left</option>
+                  <option value="middle">Middle</option>
+                  <option value="right">Right</option>
+                  <option value="back">Back</option>
+                </select>
+              </div>
+              <button type="submit">Add Vegetable</button>
+            </div>
+            <button class="return-button">retour</button>
+          </form>
+        </div> -->
+        <!--------------------------------------------------------------------------------------
+        ----------------------------------- Air Sensor Module ----------------------------------
+        --------------------------------------------------------------------------------------->
+        <div class="module airSensorModule">
+          <h2>Air Sensors</h2>
+          <div class="signal_statut"></div>
+
+          <div class="sensor_icon_container">
+            <div class="icon_container">
+              <div class="icon icon_temperature"></div>
+              <p>17°</p>
+            </div>
+            <div class="icon_container">
+              <div class="icon icon_humidity"></div>
+              <p>65%</p>
+            </div>
+            <div class="icon_container">
+              <div class="icon icon_sunlight"></div>
+              <p>8/10</p>
+            </div>
+          </div>
+        </div>
+
+        <!--------------------------------------------------------------------------------------
+        -------------------------------- Recommandations Module --------------------------------
+        --------------------------------------------------------------------------------------->
+        <div class="module recommandationModule">
+          <h2>Recommandation</h2>
+          <div class="recommandation_icons_container">
+            <div class="recommandation_icon recommandation_icon1">
+              <p>Carrot</p>
+            </div>
+            <div class="recommandation_icon recommandation_icon2">
+              <p>Tomato</p>
+            </div>
+            <div class="recommandation_icon recommandation_icon3">
+              <p>Pumpkin</p>
+            </div>
+            <div class="recommandation_icon recommandation_icon4">
+              <p>Peas</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!--------------------------------------------------------------------------------------
+        ----------------------------------- Watering Module ------------------------------------
+        --------------------------------------------------------------------------------------->
+        <div class="module wateringModule">
+          <h2>Watering</h2>
+          <div class="signal_statut"></div>
+          <div class="watering_container">
+            <label class="toggle">
+              <input class="toggle-checkbox" type="checkbox">
+              <div class="toggle-switch"></div>
+              <span class="toggle-label">Left</span>
+            </label>
+            <label class="toggle">
+              <input class="toggle-checkbox" type="checkbox">
+              <div class="toggle-switch"></div>
+              <span class="toggle-label">Middle</span>
+            </label>
+            <label class="toggle">
+              <input class="toggle-checkbox" type="checkbox">
+              <div class="toggle-switch"></div>
+              <span class="toggle-label">Right</span>
+            </label>
+          </div>
+        </div>
+
+        <!--------------------------------------------------------------------------------------
+        ------------------------------------- ToDo Module --------------------------------------
+        --------------------------------------------------------------------------------------->
+        <div class="module toDoModule">
+          <h2>To-Do List</h2>
+          <div class="to_do_add">+</div>
+          <div class="container_to_do_list">
+            <div>
+              <input type="checkbox" id="scales" name="scales" checked />
+              <label for="scales">Fertilize bell-peppers</label>
+            </div>
+            <div>
+              <input type="checkbox" id="scales" name="scales" checked />
+              <label for="scales">Remove weeds</label>
+            </div>
+            <div>
+              <input type="checkbox" id="scales" name="scales" checked />
+              <label for="scales">Harvest tomatoes</label>
+            </div>
+            <div>
+              <input type="checkbox" id="scales" name="scales" checked />
+              <label for="scales">Sow spinach</label>
+            </div>
+          </div>
+        </div>
+
+        <!--------------------------------------------------------------------------------------
+        ----------------------------------- Forecast Module ------------------------------------
+        --------------------------------------------------------------------------------------->
+        <div class="module box6">
+          <h2>Forecast</h2>
+          <div class="forecast_icon">
+            <img class="icon_forecast" src="./styles/assets/icon-rain.png" alt="dahsboard logo" />
+            <img class="icon_forecast" src="./styles/assets/icon-sun.png" alt="dahsboard logo" />
+            <img class="icon_forecast" src="./styles/assets/icon-sun.png" alt="dahsboard logo" />
+            <img class="icon_forecast" src="./styles/assets/icon-sun_rain.png" alt="dahsboard logo" />
+          </div>
+        </div>
+
+      </div>
+
+      <!--------------------------------------------------------------------------------------
+      --------------------------------------- Charts -----------------------------------------
+      --------------------------------------------------------------------------------------->
+      <div id="container_charts">
+        <div class="box_charts"></div>
+      </div>
+
+
+      <!--------------------------------------------------------------------------------------
+      ------------------------------------- Production ---------------------------------------
+      --------------------------------------------------------------------------------------->
+      <div id="container_production">
+        <div class="box_charts"></div>
+      </div>
+
+
+      <!--------------------------------------------------------------------------------------
+      ----------------------------------- Vegetable 101 --------------------------------------
+      --------------------------------------------------------------------------------------->
+      <div id="container_vegetable101">
+        <div id="container_allVegetables">
+          <h2>Vegetable 101</h2>
+        </div>
+        <div id="container_vegetableInfos"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="./scripts/script_formulaire.js"></script>
+  <script src="./scripts/change_page.js"></script>
+  <script src="./scripts/vegetable101.js"></script>
+  <script src="./scripts/script.js"></script>
+  <script src="scripts/form_sow.js"></script>
+
+</body>
+
+</html>

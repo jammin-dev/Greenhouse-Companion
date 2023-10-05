@@ -1,0 +1,89 @@
+/* ---------------------------------------------------------------
+---- Container that hold on the left, all vegetables and on the 
+right the detail of the vegetable choosen -----------------------
+--------------------------------------------------------------- */
+#container_vegetable101 {
+    display: none;
+    width: 100%;
+    gap: 15px;
+    justify-content: center;
+    grid-template-columns: repeat(2, 562px);
+    grid-auto-rows: 660px;
+    position: relative;
+}
+
+
+/* ---------------------------------------------------------------
+---- Container that hold all vegetables from vegetable_infos -----
+--------------------------------------------------------------- */
+#container_allVegetables {
+    position: relative;
+    grid-column: span 1;
+    grid-row: span 1;
+    border-radius:  100px 0 0px 100px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(250, 250, 250, 0.8);
+    padding: 60px;
+    font-weight: 700;
+    font-size: 15px;
+    overflow-y: auto;
+}
+#container_allVegetables::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+
+.allVegetables__subtitle{ 
+    opacity: 0.5;
+    overflow: visible;
+}
+.allVegetables__container{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    gap: 20px;
+    padding: 10px;
+    height: 150px;
+    overflow: visible;
+}
+.allVegetables__item{
+    padding: 5px;
+    width: 75px;
+    height: 75px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 10px;
+    background-size: 50px 50px ;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-color: rgba(250, 250, 250, 0.9);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+
+/* ---------------------------------------------------------------
+----- Container that hold the detail of selected vegetable -------
+--------------------------------------------------------------- */
+#container_vegetableInfos{
+    position: relative;
+    grid-column: span 1;
+    grid-row: span 1;
+    border-radius:   0 100px 100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    background-color: rgba(250, 250, 250, 0.8);
+    padding: 15px;
+    font-weight: 700;
+    font-size: 20px;
+    padding-top: 30px;
+    overflow-y: auto;
+}
+
+
