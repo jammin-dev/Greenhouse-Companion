@@ -7,9 +7,9 @@ import jwt
 import datetime
 
 class Login(Resource):
+    methods = ['POST']
     def post(self):
         auth = request.authorization
-        print(auth)
         if not auth or not auth.username or not auth.password:
             return make_response('Could not verify1', 401, {'WWW-Authenticate' : 'Basic realm="Login required!"'})
         user = UserModel.query.filter_by(name=auth.username).first()
