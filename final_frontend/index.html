@@ -89,7 +89,7 @@
           <h2>Plant Manager</h2>
           <br>
 
-          <!---------------icon container -------------->
+          <!----------------------icon container ------------------------------>
           <div class="plant_manager_icon_container">
             <div class="icons_container">
               <div class="dont_move">
@@ -128,63 +128,10 @@
               </div>
             </div>
           </div>
-
-          <!--------- Form fields for plant action ------------->
-           <form class="hidden form plant-form">
-            <div class="form_line1">
-              <label for="gender">Name:</label>
-              <select id="nameplant" name="nameplant">
-                <option value="tomato">Tomato</option>
-                <option value="carrot">Carrot</option>
-                <option value="radish">Radish</option>
-              </select>
-              <div class="form_quantity">
-                <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity">
-              </div>
-              <div class="form_garden_area">
-                <label for="garden_area">Garden Area:</label>
-                <select id="garden_area" name="garden_area">
-                  <option value="left">Left</option>
-                  <option value="middle">Middle</option>
-                  <option value="right">Right</option>
-                  <option value="back">Back</option>
-                </select>
-              </div>
-              <button type="submit">Add Vegetable</button>
-            </div>
-            <button class="return-button">retour</button>
-          </form>
-          <!---------Form fields for sow action---------------->
-          <div id="form-container"></div>
+          <!---------------------- Form fields -------------------------------->
+          <div id="form-plant"></div>
+          <div id="form-sow"></div>
         </div>
-
-          <!-- <form class="hidden form">
-            <div class="form_line1">
-              <label for="gender">Name:</label>
-              <select id="name" name="name">
-                <option value="tomato">Tomato</option>
-                <option value="carrot">Carrot</option>
-                <option value="radish">Radish</option>
-              </select>
-              <div class="form_quantity">
-                <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity">
-              </div>
-              <div class="form_garden_area">
-                <label for="garden_area">Garden Area:</label>
-                <select id="garden_area" name="garden_area">
-                  <option value="left">Left</option>
-                  <option value="middle">Middle</option>
-                  <option value="right">Right</option>
-                  <option value="back">Back</option>
-                </select>
-              </div>
-              <button type="submit">Add Vegetable</button>
-            </div>
-            <button class="return-button">retour</button>
-          </form>
-        </div> -->
         <!--------------------------------------------------------------------------------------
         ----------------------------------- Air Sensor Module ----------------------------------
         --------------------------------------------------------------------------------------->
@@ -328,6 +275,7 @@
   <script src="./scripts/Dashboard/script_formulaire.js"></script>
   <script src="./scripts/change_page.js"></script>
   <script src="./scripts/vegetable101.js"></script>
+  <script src="./scripts/Dashboard/form_plant.js"></script>
   <script src="scripts/Dashboard/form_sow.js"></script>
 
 </body>

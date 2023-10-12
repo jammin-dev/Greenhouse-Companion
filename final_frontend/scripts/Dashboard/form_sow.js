@@ -1,6 +1,6 @@
-// Function to create and render the form
+// Function to create and render the sow form
 function renderSowForm() {
-  const formContainer = document.getElementById('form-container');
+  const formContainer = document.getElementById('form-sow');
 
   // Create the form element
   const form = document.createElement('form');
@@ -9,23 +9,23 @@ function renderSowForm() {
   // Add form fields and elements
   form.innerHTML = `
     <div class="form_line1">
-      <label for="name">Name:</label>
-      <select id="name" name="name">
+      <label for="name_sow">Name:</label>
+      <select id="name_sow" name="name_sow">
       </select>
       <div class="form_quantity">
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity_sow" name="quantity" value="1">
+        <label for="quantity_sow">Quantity:</label>
+        <input type="number" id="quantity_sow" name="quantity_sow" value="1">
       </div>
       <div class="form_garden_area">
-        <label for="garden_area">Garden Area:</label>
-        <select id="garden_area_bis" name="garden_area">
+        <label for="garden_area_sow">Garden Area:</label>
+        <select id="garden_area_sow" name="garden_area_sow">
         </select>
       </div>
       <div class="form_sowing_date">
         <label for="sowing_date">Sowing Date:</label>
         <input type="date" id="sowing_date" name="sowing_date" value="${getCurrentDate()}">
       </div>
-      <button id="add-vegetable-button" type="submit">Add Vegetable</button>
+      <button id="add-vegetable-button-sow" type="submit">Add Vegetable</button>
     </div>
     <button class="return-button">retour</button>
   `;
@@ -37,24 +37,23 @@ function renderSowForm() {
 // Call the renderForm function to render the form
 renderSowForm();
 
-
-// Get the "Add Vegetable" button by its ID
-const addButton = document.querySelector('#add-vegetable-button');
+  // Get the "Add Vegetable" button by its ID
+const addButtonSow = document.querySelector('#add-vegetable-button-sow');
 
 // Add a click event listener to the button
-addButton.addEventListener('click', function (event) {
+addButtonSow.addEventListener('click', function (event) {
   event.preventDefault(); // Prevent the default form submission
 
 // Retrieve the quantity value within the event handler
 const quantity = document.querySelector('#quantity_sow').value;
-const selectedNameOption = document.querySelector('#name option:checked');
+const selectedNameOption = document.querySelector('#name_sow option:checked');
 const selectedName = selectedNameOption ? selectedNameOption.textContent : '';
 
 // Rest of your code to construct formData
 const formData = {
   'name': selectedName,
   'quantity': quantity,
-  'area_id': document.querySelector('#garden_area_bis').value,
+  'area_id': document.querySelector('#garden_area_sow').value,
   'sowed': true,
   'planted': false,
   'sowing_date': getCurrentDate(),
@@ -62,7 +61,7 @@ const formData = {
 
   console.log('Form data:', formData);
   // Send a POST request to your server
-  sendPostRequest(formData);
+  sendPostRequestSow(formData);
 });
 
   // Function to get the current date in YYYY-MM-DD format
@@ -75,7 +74,7 @@ const formData = {
   }
 
 // Function to send a POST request
-function sendPostRequest(formData) {
+function sendPostRequestSow(formData) {
   // Define your server URL
   const serverUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
 
@@ -97,7 +96,7 @@ function sendPostRequest(formData) {
       // console.log('Response from server:', data);
 
       // Optionally, you can clear the form or perform other actions
-      clearForm();
+      clearFormSow();
     })
     .catch((error) => {
       console.error('Error sending POST request:', error);
@@ -106,10 +105,10 @@ function sendPostRequest(formData) {
 }
 
 // Function to clear the form after submission
-function clearForm() {
-  document.querySelector('#name').value = '';
+function clearFormSow() {
+  document.querySelector('#name_sow').value = '';
   document.querySelector('#quantity_sow').value = '0';
-  document.querySelector('#garden_area_bis').value = '';
+  document.querySelector('#garden_area_sow').value = '';
 }
 
 // Function to fetch garden area data from the API
@@ -121,7 +120,7 @@ function fetchGardenAreas() {
     .then((response) => response.json())
     .then((data) => {
       // Get the select element for garden areas
-      const gardenAreaSelect = document.querySelector('#garden_area_bis');
+      const gardenAreaSelect = document.querySelector('#garden_area_sow');
 
       // Loop through the garden area data and create options
       data.forEach((gardenArea) => {
@@ -148,7 +147,7 @@ function fetchVegetableNames() {
     .then((response) => response.json())
     .then((data) => {
       // Get the select element for vegetable names
-      const nameSelect = document.querySelector('#name');
+      const nameSelect = document.querySelector('#name_sow');
 
       // Loop through the vegetable names data and create options
       data.forEach((vegetable) => {

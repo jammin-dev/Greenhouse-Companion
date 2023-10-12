@@ -1,6 +1,6 @@
-// Function to create and render the form
-function renderSowForm() {
-  const formContainer = document.getElementById('form-container');
+// Function to create and render the sow form
+function renderPlantForm() {
+  const formContainer = document.getElementById('form-plant');
 
   // Create the form element
   const form = document.createElement('form');
@@ -9,23 +9,23 @@ function renderSowForm() {
   // Add form fields and elements
   form.innerHTML = `
     <div class="form_line1">
-      <label for="name">Name:</label>
-      <select id="name" name="name">
+      <label for="name_plant">Name:</label>
+      <select id="name_plant" name="name_plant">
       </select>
       <div class="form_quantity">
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity_sow" name="quantity" value="1">
+        <label for="quantity_plant">Quantity:</label>
+        <input type="number" id="quantity_plant" name="quantity_plant" value="1">
       </div>
       <div class="form_garden_area">
-        <label for="garden_area">Garden Area:</label>
-        <select id="garden_area_bis" name="garden_area">
+        <label for="garden_area_plant">Garden Area:</label>
+        <select id="garden_area_plant" name="garden_area_plant">
         </select>
       </div>
-      <div class="form_sowing_date">
-        <label for="sowing_date">Sowing Date:</label>
-        <input type="date" id="sowing_date" name="sowing_date" value="${getCurrentDate()}">
+      <div class="form_planting_date">
+        <label for="planting_date">Planting Date:</label>
+        <input type="date" id="planting_date" name="planting_date" value="${getCurrentDate()}">
       </div>
-      <button id="add-vegetable-button" type="submit">Add Vegetable</button>
+      <button id="add-vegetable-button-plant" type="submit">Add Vegetable</button>
     </div>
     <button class="return-button">retour</button>
   `;
@@ -35,33 +35,33 @@ function renderSowForm() {
 }
 
 // Call the renderForm function to render the form
-renderSowForm();
+renderPlantForm();
 
-
-// Get the "Add Vegetable" button by its ID
-const addButton = document.querySelector('#add-vegetable-button');
+  // Get the "Add Vegetable" button by its ID
+const addButtonPlant = document.querySelector('#add-vegetable-button-plant');
 
 // Add a click event listener to the button
-addButton.addEventListener('click', function (event) {
+addButtonPlant.addEventListener('click', function (event) {
   event.preventDefault(); // Prevent the default form submission
 
 // Retrieve the quantity value within the event handler
-const quantity = document.querySelector('#quantity_sow').value;
+const quantity = document.querySelector('#quantity_plant').value;
+const selectedNameOption = document.querySelector('#name_plant option:checked');
+const selectedName = selectedNameOption ? selectedNameOption.textContent : '';
 
 // Rest of your code to construct formData
 const formData = {
-  'name': document.querySelector('#name').value,
+  'name': selectedName,
   'quantity': quantity,
-  'area_id': document.querySelector('#garden_area_bis').value,
-  'sowed': true,
-  'planted': false,
-  'sowing_date': getCurrentDate(),
-  'notes': '',
+  'area_id': document.querySelector('#garden_area_plant').value,
+  'sowed': false,
+  'planted': true,
+  'planting_date': getCurrentDate(),
 };
 
   console.log('Form data:', formData);
   // Send a POST request to your server
-  sendPostRequest(formData);
+  sendPostRequestPlant(formData);
 });
 
   // Function to get the current date in YYYY-MM-DD format
@@ -74,9 +74,9 @@ const formData = {
   }
 
 // Function to send a POST request
-function sendPostRequest(formData) {
+function sendPostRequestPlant(formData) {
   // Define your server URL
-  const serverUrl = 'https://squid-app-2psbp.ondigitalocean.app/vegetable_manager';
+  const serverUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
 
   // Define the request options
   const requestOptions = {
@@ -96,7 +96,7 @@ function sendPostRequest(formData) {
       // console.log('Response from server:', data);
 
       // Optionally, you can clear the form or perform other actions
-      clearForm();
+      clearFormPlant();
     })
     .catch((error) => {
       console.error('Error sending POST request:', error);
@@ -105,22 +105,22 @@ function sendPostRequest(formData) {
 }
 
 // Function to clear the form after submission
-function clearForm() {
-  document.querySelector('#name').value = '';
-  document.querySelector('#quantity_sow').value = '0';
-  document.querySelector('#garden_area_bis').value = '';
+function clearFormPlant() {
+  document.querySelector('#name_plant').value = '';
+  document.querySelector('#quantity_plant').value = '0';
+  document.querySelector('#garden_area_plant').value = '';
 }
 
 // Function to fetch garden area data from the API
 function fetchGardenAreas() {
 
-  const apiUrl = 'https://squid-app-2psbp.ondigitalocean.app/areas';
+  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/areas';
 
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
       // Get the select element for garden areas
-      const gardenAreaSelect = document.querySelector('#garden_area_bis');
+      const gardenAreaSelect = document.querySelector('#garden_area_plant');
 
       // Loop through the garden area data and create options
       data.forEach((gardenArea) => {
@@ -141,13 +141,13 @@ fetchGardenAreas();
 // Function to fetch vegetable names from the API
 function fetchVegetableNames() {
   // Replace with the URL of your API endpoint that provides vegetable names
-  const apiUrl = 'https://squid-app-2psbp.ondigitalocean.app/vegetable_infos';
+  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_infos';
 
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
       // Get the select element for vegetable names
-      const nameSelect = document.querySelector('#name');
+      const nameSelect = document.querySelector('#name_plant');
 
       // Loop through the vegetable names data and create options
       data.forEach((vegetable) => {

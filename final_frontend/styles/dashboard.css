@@ -36,7 +36,7 @@ align-items: center;
 padding-top: 60px;
 }
 form {
-width: 300px;
+width: 320px;
 margin: 0 auto;
 display: flex;
 flex-direction: column;
@@ -67,37 +67,8 @@ background-color: rgba(250, 250, 250, 0.8);
 display: flex;
 flex-direction: column;
 gap: 10px;
-
-}
-.form_line2 {
-display: flex;
-justify-content: space-between;
-gap: 40px; 
-}
-.form_line2 select{
-width: 110px;
-}
-.form_line2 input{
-width: 110px;
 }
 
-
-.form_line3 {
-display: flex;
-justify-content: space-around;
-}
-.form_sowed{
-display: flex;  
-gap: 10px;
-justify-content: space-around; 
-align-items: center;
-}
-.form_planted{
-display: flex;  
-gap: 10px;
-justify-content: space-around; 
-align-items: center;
-}
 .form_quantity, .form_garden_area{
 display: flex;
 flex-direction: column;
@@ -112,18 +83,6 @@ font-size: medium;
 border-radius: 1px;
 }
 
-.form_name {
-display: flex;
-flex-direction: column;
-gap: 15px;
-width: 50%;
-}
-
-.form_name input {
-width: 100%;
-height: 30px;
-font-size: medium;
-}
 
 .form_sowing_date input{
 width: 40%;
@@ -131,6 +90,13 @@ height: 25px;
 font-size: medium;
 border-radius: 1px;
 }
+
+.form_planting_date input{
+  width: 40%;
+  height: 25px;
+  font-size: medium;
+  border-radius: 1px;
+  }
 
 button {
 margin-top: 15px;
