@@ -9,6 +9,10 @@ function renderPlantForm() {
   // Add form fields and elements
   form.innerHTML = `
     <div class="form_line1">
+      <div class="sow-checkbox">
+        <input type="checkbox" id="show-sowed-vegetables" name="show-sowed-vegetables">
+        <label for="show-sowed-vegetables">Show Sowed Vegetable</label>
+      </div>
       <label for="name_plant">Name:</label>
       <select id="name_plant" name="name_plant">
       </select>
@@ -163,3 +167,50 @@ function fetchVegetableNames() {
 }
 
 fetchVegetableNames();
+
+// Add an event listener to the checkbox
+const showSowedVegetablesCheckbox = document.querySelector('#show-sowed-vegetables');
+showSowedVegetablesCheckbox.addEventListener('change', function () {
+  const nameSelect = document.querySelector('#name_plant');
+
+  // Clear the existing options in the select element
+  nameSelect.innerHTML = '';
+
+  // Define the base URL for fetching vegetables
+  const baseUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
+
+  // Check if the checkbox is checked
+  if (showSowedVegetablesCheckbox.checked) {
+    // Fetch sowed vegetables when the checkbox is checked
+    fetch(baseUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        const sowedVegetables = data.filter((vegetable) => vegetable.sowed === true);
+
+        sowedVegetables.forEach((vegetable) => {
+          const option = document.createElement('option');
+          option.value = vegetable.id;
+          option.textContent = vegetable.name;
+          nameSelect.appendChild(option);
+        });
+      })
+      .catch((error) => {
+        console.error('Error fetching sowed vegetables:', error);
+      });
+  } else {
+    // Fetch all vegetables when the checkbox is unchecked
+    fetch('https://walrus-app-jbfmz.ondigitalocean.app/vegetable_infos')
+      .then((response) => response.json())
+      .then((data) => {
+        data.forEach((vegetable) => {
+          const option = document.createElement('option');
+          option.value = vegetable.id;
+          option.textContent = vegetable.name;
+          nameSelect.appendChild(option);
+        });
+      })
+      .catch((error) => {
+        console.error('Error fetching all vegetables:', error);
+      });
+  }
+});

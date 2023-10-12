@@ -63,10 +63,30 @@ height: 100px;
 background-color: rgba(250, 250, 250, 0.8);
 }
 
+.form_line0 {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.form_planting_choice {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
 .form_line1 {
 display: flex;
 flex-direction: column;
 gap: 10px;
+}
+
+.sow-checkbox label{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #35a73a;
+}
+label {
+font-size: 19px;
 }
 
 .form_quantity, .form_garden_area{
