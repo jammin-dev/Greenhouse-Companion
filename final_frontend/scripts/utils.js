@@ -21,13 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
 const plantManagerTitle = document.getElementById('plant_manager_title');
 const plantManagerModule = document.querySelector('.plantManagerModule');
 
-if (window.innerWidth <= 767) {
+if (window.innerWidth <= 950) {
   plantManagerTitle.addEventListener('click', () => {
     plantManagerModule.classList.toggle('module-expanded');
   });
 }
 
-if (window.innerWidth <= 1400 && window.innerWidth >= 767) {
+if (window.innerWidth <= 1400 && window.innerWidth >= 950) {
   plantManagerTitle.addEventListener('click', () => {
     plantManagerModule.classList.toggle('module-expanded');
   });
