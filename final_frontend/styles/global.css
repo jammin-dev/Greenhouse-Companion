@@ -1,50 +1,97 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style: none;
-    color: black;
-    overflow: hidden;
-    font-family: Roboto;
-    font-weight: 300;  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  color: black;
+  overflow: hidden;
+  font-family: Roboto;
+  font-weight: 300;
+}
+@media only screen and (max-width: 950px) {
+  * {
+    overflow-y: scroll;
+  }
+}
+@media only screen and (min-width: 950px) and (max-width: 1400px) {
+  * {
+    overflow-y: scroll;
+  }
 }
 body {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    background-image: url(./assets/background-anim4.jpg);
-    /* background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%); */
-    /* background-image: linear-gradient(to right, #DECBA4, #3E5151); */
-    /* background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d); */
-    /* background-image: linear-gradient(to right, #434343 0%, black 100%); */
-    /* background-image: linear-gradient(to right, #00b09b, #96c93d); */
-    background-size: cover;
-    background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(./assets/background-anim4.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media only screen and (max-width: 950px) {
+  body {
+    height: auto;
+    width: 100%;
+    overflow-x: hidden;
+    margin-bottom: 30px;
+    background-color: rgb(47, 79, 79);
+    background-image: none;
+  }
+}
+@media only screen and (min-width: 950px) and (max-width: 1400px) {
+  body {
+    height: auto;
+    width: 100%;
+    overflow-x: hidden;
+    margin-bottom: 30px;
+    background-color: rgb(119, 136, 153);
+    background-image: none;
+  }
 }
 .common_container {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+@media only screen and (max-width: 950px) {
+  .common_container {
+    flex-direction: column;
+  }
+}
+@media only screen and (min-width: 950px) and (max-width: 1400px) {
+  .common_container {
+    flex-direction: column;
+  }
 }
 main {
-    width: 1200px;
-    height: 800px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-header {
   width: 1200px;
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+@media only screen and (max-width: 950px) {
+  main {
+    width: auto;
+    height: auto;
+  }
+}
+@media only screen and (min-width: 950px) and (max-width: 1400px) {
+  main {
+    width: auto;
+    height: auto;
+  }
+}
+
+header {
+  width: 100%;
   position: absolute;
   top: 30px;
   left: 0px;
@@ -53,23 +100,31 @@ header {
   justify-content: center;
   gap: 290px;
 }
+@media only screen and (max-width: 950px) {
+  header {
+    display: none;
+  }
+}
+@media only screen and (min-width: 950px) and (max-width: 1400px) {
+  header {
+    display: none;
+  }
+}
 h1 {
   color: black;
   font-size: 27px;
   font-weight: 200;
 }
-h2{
+h2 {
   position: absolute;
   top: 25px;
   left: 50%; /* Center horizontally */
   transform: translate(-50%, -50%);
   font-size: 25px;
-  opacity: 0.3  ;
+  opacity: 0.3;
   color: black;
   font-weight: 100;
 }
-
-
 
 /* ---------------------Plant manager module--------------------- */
 .hidden {
@@ -139,7 +194,7 @@ h2{
   margin-top: 25px;
 }
 
-.icons_container{
+.icons_container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -152,10 +207,10 @@ h2{
 
 .icon_garden {
   width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    margin-top: 10px;
-    background-repeat: no-repeat;
-    background-size: 40px;
-    background-position: center;
+  height: 40px;
+  border-radius: 10px;
+  margin-top: 10px;
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-position: center;
 }
