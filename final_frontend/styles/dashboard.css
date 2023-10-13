@@ -15,6 +15,9 @@
 @media only screen and (min-width: 950px) and (max-width: 1400px) {
   #container_dashboard {
     grid-template-columns: repeat(2, 480px);
+    gap: 15px;
+    padding: 0;
+    justify-content: center;
   }
 }
 .signal_statut {
@@ -46,10 +49,7 @@
 }
 @media only screen and (min-width: 950px) and (max-width: 1400px) {
   .module {
-    border-radius: 30px 30px 30px 30px;
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
+    border-radius: 0px 0px 0px 0px;
   }
 }
 
@@ -65,19 +65,16 @@
 @media only screen and (max-width: 950px) {
   .plantManagerModule {
     border-radius: 30px 30px 30px 30px;
+    grid-row: span 1;
     width: 95%;
     margin-left: auto;
     margin-right: auto;
-    grid-row: span 1;
   }
 }
 @media only screen and (min-width: 950px) and (max-width: 1400px) {
   .plantManagerModule {
-    border-radius: 30px 30px 30px 30px;
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
-    grid-row: span 2;
+    border-radius: 100px 0 0px 0px;
+    grid-row: span 1;
   }
 }
 
@@ -234,10 +231,7 @@ button:hover {
 }
 @media only screen and (max-width: 1400px) {
   .airSensorModule {
-    border-radius: 30px 30px 30px 30px;
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
+    border-radius: 0px 100px 0px 0px;
   }
 }
 .sensor_icon_container {
@@ -288,12 +282,9 @@ button:hover {
     margin-right: auto;
   }
 }
-@media only screen and (max-width: 1400px) {
+@media only screen and (min-width: 950px) and (max-width: 1400px) {
   .box6 {
-    border-radius: 30px 30px 30px 30px;
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
+    border-radius: 0px 0px 100px 0px;
   }
 }
 .forecast_icon {
@@ -324,12 +315,10 @@ button:hover {
     margin-right: auto;
   }
 }
-@media only screen and (max-width: 1400px) {
+@media only screen and (min-width: 950px) and (max-width: 1400px) {
   .toDoModule {
-    border-radius: 30px 30px 30px 30px;
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
+    border-radius: 0px 0px 0px 100px;
+    grid-row: span 1;
   }
 }
 .to_do_add {
@@ -363,12 +352,9 @@ button:hover {
     margin-right: auto;
   }
 }
-@media only screen and (max-width: 1400px) {
+@media only screen and (min-width: 950px) and (max-width: 1400px) {
   .recommandationModule {
-    border-radius: 30px 30px 30px 30px;
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
+    border-radius: 0px 0px 0px 0px;
   }
 }
 .recommandation_icons_container {

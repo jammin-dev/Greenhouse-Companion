@@ -20,15 +20,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const plantManagerTitle = document.getElementById('plant_manager_title');
 const plantManagerModule = document.querySelector('.plantManagerModule');
+const itemPlantManagerModule = document.querySelector('.icon_garden');
 
 if (window.innerWidth <= 950) {
   plantManagerTitle.addEventListener('click', () => {
+    plantManagerModule.classList.toggle('module-expanded');
+  });
+  itemPlantManagerModule.addEventListener('click', () => {
     plantManagerModule.classList.toggle('module-expanded');
   });
 }
 
 if (window.innerWidth <= 1400 && window.innerWidth >= 950) {
   plantManagerTitle.addEventListener('click', () => {
+    plantManagerModule.classList.toggle('module-expanded');
+  });
+  itemPlantManagerModule.addEventListener('click', () => {
     plantManagerModule.classList.toggle('module-expanded');
   });
 }
