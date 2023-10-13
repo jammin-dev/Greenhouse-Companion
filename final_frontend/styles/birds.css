@@ -30,6 +30,11 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
+@media only screen and (max-width: 1400px) {
+  .bird-container {
+    display: none;
+  }
+}
 
 .bird-container-one {
   animation-duration: 15s;
