@@ -11,12 +11,7 @@
   font-family: Roboto;
   font-weight: 300;
 }
-@media only screen and (max-width: 950px) {
-  * {
-    overflow-y: scroll;
-  }
-}
-@media only screen and (min-width: 950px) and (max-width: 1400px) {
+@media only screen and (max-width: 1400px) {
   * {
     overflow-y: scroll;
   }
@@ -42,15 +37,16 @@ body {
 }
 @media only screen and (min-width: 950px) and (max-width: 1400px) {
   body {
+    width: 100vw;
     height: auto;
-    width: 100%;
     overflow-x: hidden;
+    margin-top: 20px;
     margin-bottom: 30px;
     background-color: rgb(119, 136, 153);
     background-image: none;
-    margin-top: 20px;
   }
 }
+
 .common_container {
   height: 100%;
   display: flex;
@@ -68,8 +64,10 @@ body {
 @media only screen and (min-width: 950px) and (max-width: 1400px) {
   .common_container {
     flex-direction: column;
+    width: 100%;
   }
 }
+
 main {
   width: 1200px;
   height: 800px;
@@ -86,7 +84,7 @@ main {
 }
 @media only screen and (min-width: 950px) and (max-width: 1400px) {
   main {
-    width: auto;
+    width: 100%;
     height: auto;
   }
 }
@@ -111,107 +109,23 @@ header {
     display: none;
   }
 }
+
 h1 {
-  color: black;
   font-size: 27px;
   font-weight: 200;
 }
 h2 {
-  position: absolute;
-  top: 25px;
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%);
   font-size: 25px;
   opacity: 0.3;
-  color: black;
   font-weight: 100;
 }
 
-/* ---------------------Plant manager module--------------------- */
-.hidden {
-  display: none;
-}
-
-.icon_plant_manager {
-  cursor: pointer;
-  background-image: url(./assets/plant_manager/planter.png);
-  /* Add styles for your icons here */
-}
-
-.icon_delete_manager {
-  cursor: pointer;
-  background-image: url(./assets/plant_manager/supprimer.png);
-  /* Add styles for your icons here */
-}
-
-.icon_sow_manager {
-  cursor: pointer;
-  background-image: url(./assets/plant_manager/semis.png);
-  /* Add styles for your icons here */
-}
-
-.icon_update_manager {
-  cursor: pointer;
-  background-image: url(./assets/plant_manager/modifier.png);
-  /* Add styles for your icons here */
-}
-
-.icon_create_manager {
-  cursor: pointer;
-  background-image: url(./assets/plant_manager/créer.png);
-  /* Add styles for your icons here */
-}
-
-.icon_harvest_manager {
-  cursor: pointer;
-  background-image: url(./assets/plant_manager/récolter.png);
-  /* Add styles for your icons here */
-}
-
-.return-button {
-  display: none;
-  margin-top: 15px;
-  padding: 10px 20px;
-  background-color: rgb(248, 91, 91);
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 300;
-  font-size: 15px;
-  /* Add styling for the button */
-}
-
-.return-button:hover {
-  background-color: red;
-}
-
-.plant_manager_icon_container {
-  display: flex;
-  gap: 50px;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 25px;
-  margin-top: 25px;
-}
-
-.icons_container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.icons_container p {
-  font-size: 18px;
-}
-
-.icon_garden {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  margin-top: 10px;
-  background-repeat: no-repeat;
-  background-size: 40px;
-  background-position: center;
+.signal_statut {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 10px;
+  height: 10px;
+  background-color: #67d46d;
+  border-radius: 50%;
 }

@@ -1,0 +1,42 @@
+/* ----------------------- Forecast Module ----------------------- */
+.dashbord__module--forecast {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+@media only screen and (max-width: 1400px) {
+  .dashbord__module--forecast {
+    border-radius: 5px 5px 100px 5px;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .dashbord__module--forecast {
+    border-radius: 30px 30px 30px 30px;
+  }
+}
+.dashbord__module__content--forecast {
+  margin-top: 25px;
+  width: 100%;
+  justify-content: space-around;
+}
+.forecast-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+}
+.forecast-container__icon {
+  width: 60px;
+  height: 60px;
+}
+.forecast-container__rain {
+  width: 50px;
+  text-align: right;
+  overflow: visible;
+  background-image: url(../assets/icon-rain.png);
+  background-repeat: no-repeat;
+  background-size: 17px;
+}
+.forecast-container__day {
+  font-weight: 500;
+}
