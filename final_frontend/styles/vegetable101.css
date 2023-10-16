@@ -12,7 +12,6 @@ right the detail of the vegetable choosen -----------------------
     position: relative;
 }
 
-
 /* ---------------------------------------------------------------
 ---- Container that hold all vegetables from vegetable_infos -----
 --------------------------------------------------------------- */
@@ -22,7 +21,8 @@ right the detail of the vegetable choosen -----------------------
     grid-row: span 1;
     border-radius:  100px 0 0px 100px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     background-color: rgba(250, 250, 250, 0.8);
     padding: 60px;
     font-weight: 700;
@@ -33,8 +33,6 @@ right the detail of the vegetable choosen -----------------------
     width: 0;
     height: 0;
   }
-
-
 .allVegetables__subtitle{ 
     opacity: 0.5;
     overflow: visible;
@@ -66,27 +64,69 @@ right the detail of the vegetable choosen -----------------------
 .allVegetables__item:hover{
     background-color: rgba(231, 225, 225, 0.9);
 }
-
-
-
 /* ---------------------------------------------------------------
 ----- Container that hold the detail of selected vegetable -------
 --------------------------------------------------------------- */
-#container_vegetableInfos{
+.vegetable-characteristic{
     position: relative;
     grid-column: span 1;
     grid-row: span 1;
-    border-radius:   0 100px 100px 0;
+    overflow-y: scroll;
+    border-radius: 0 100px 100px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 60px;
     background-color: rgba(250, 250, 250, 0.8);
-    padding: 15px;
+    padding: 30px;
     font-weight: 700;
     font-size: 20px;
-    padding-top: 30px;
-    overflow-y: auto;
 }
-
-
+.vegetable-characteristic__header img{
+    width: 250px;
+    height: 250px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+    border-radius: 10px;
+    background-color: rgba(250, 250, 250, 0.9);
+    margin: 5px;
+}
+.vegetable-characteristic__header{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+}
+.vegetable-characteristic__header__text-content{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    font-size: 10px;
+}
+.vegetable-characteristic__quick-infos {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    overflow: visible;
+}
+.vegetable-characteristic__quick-infos__item {
+    padding: 5px;
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 13px;
+    background-size: 80px 80px ;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-color: rgba(250, 250, 250, 0.9);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.vegetable-characteristic__tips{
+    margin-top: 20px;
+}

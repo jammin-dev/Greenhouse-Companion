@@ -1,3 +1,38 @@
+// document.addEventListener('DOMContentLoaded', async () => {
+//   try {
+//     const apiUrl =
+//       'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_infos';
+//     const response = await fetch(apiUrl);
+
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! Status: ${response.status}`);
+//     }
+
+//     const data = await response.json();
+//     const main = document.getElementById('container_allVegetables');
+//     const families = [...new Set(data.map((item) => item.family))].sort();
+
+//     for (const familyName of families) {
+//       const subtitle = createSubtitleElement(familyName);
+//       const container = createContainerElement();
+
+//       main.appendChild(subtitle);
+//       main.appendChild(container);
+
+//       const sortedVegetables = data
+//         .filter((vegetable) => vegetable.family === familyName)
+//         .sort((a, b) => a.name.localeCompare(b.name));
+
+//       sortedVegetables.forEach((vegetable) => {
+//         const item = createItemElement(vegetable);
+//         container.appendChild(item);
+//       });
+//     }
+//   } catch (error) {
+//     console.error('Error fetching data:', error);
+//   }
+// });
+
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     const apiUrl =
@@ -9,25 +44,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const data = await response.json();
-    const main = document.getElementById('container_allVegetables');
-    const families = [...new Set(data.map((item) => item.family))].sort();
+    const sortedData = data.sort((a, b) => a.name.localeCompare(b.name));
+    const container = document.getElementById('container_allVegetables');
 
-    for (const familyName of families) {
-      const subtitle = createSubtitleElement(familyName);
-      const container = createContainerElement();
-
-      main.appendChild(subtitle);
-      main.appendChild(container);
-
-      const sortedVegetables = data
-        .filter((vegetable) => vegetable.family === familyName)
-        .sort((a, b) => a.name.localeCompare(b.name));
-
-      sortedVegetables.forEach((vegetable) => {
-        const item = createItemElement(vegetable);
-        container.appendChild(item);
-      });
-    }
+    sortedData.forEach((element) => {
+      const item = createItemElement(element);
+      container.appendChild(item);
+    });
   } catch (error) {
     console.error('Error fetching data:', error);
   }
