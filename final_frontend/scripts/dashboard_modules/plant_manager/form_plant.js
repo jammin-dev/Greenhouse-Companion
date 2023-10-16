@@ -9,7 +9,7 @@ function renderPlantForm() {
   // Add form fields and elements
   form.innerHTML = `
     <div class="form_line1">
-      <div class="sow-checkbox">
+      <div class="sow-checkbox"><br>
         <input type="checkbox" id="show-sowed-vegetables" name="show-sowed-vegetables">
         <label for="show-sowed-vegetables">Show Sowed Vegetable</label>
       </div>
