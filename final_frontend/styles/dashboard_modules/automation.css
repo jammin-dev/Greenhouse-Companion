@@ -5,7 +5,7 @@
 }
 @media only screen and (max-width: 1400px) {
   .dashbord__module--automation {
-    border-radius: 5px 5px 100px 5px;
+    border-radius: 5px 5px 5px 5px;
   }
 }
 @media only screen and (max-width: 950px) {

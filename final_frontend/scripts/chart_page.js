@@ -15,18 +15,20 @@ function handleForm(data) {
   const form = document.getElementById('chartSubmit');
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const startDate = document.getElementById('startDate').value;
-    const endDate = document.getElementById('endDate').value;
-    const newData = data.filter((item) => {
-      const itemDate = new Date(item.created_at).getTime();
-      const startTimestamp = new Date(startDate).getTime();
-      const endTimestamp = new Date(endDate).getTime();
-      return itemDate >= startTimestamp && itemDate <= endTimestamp;
+    let startDate = document.getElementById('startDate').value;
+    let endDate = document.getElementById('endDate').value;
+    startDate = parseInt(startDate.replace(/-/g, ''));
+    endDate = parseInt(endDate.replace(/-/g, ''));
+    newData = data.filter((item) => {
+      let itemDate = item.created_at;
+      itemDate = parseInt(itemDate.replace(/-/g, ''));
+      if (itemDate >= startDate && itemDate <= endDate) {
+        return item;
+      }
     });
     displayChart(newData);
   });
 }
-
 async function fetchData(apiUrl) {
   try {
     const response = await fetch(apiUrl);
