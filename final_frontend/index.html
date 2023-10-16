@@ -66,7 +66,7 @@
         <h1>Greenhouse Companion</h1>
         <p id="date"></p>
       </header>
-      <div class="dashboard">
+      <div class="dashboard" id="container_dashboard">
         <div class="dashbord__module dashbord__module--plant-manager">
           <h2 class="dashbord__module__title" id="plant_manager_title">Plant Manager</h2>
           <div class="dashbord__module__content dashbord__module__content--plant-manager">
@@ -113,6 +113,8 @@
           <!---------------------- Form fields -------------------------------->
           <div id="form-plant"></div>
           <div id="form-sow"></div>
+          <div id="form-harvest"></div>
+          <div id="form-add-garden-area"></div>
         </div>
 
         <div class="dashbord__module dashbord__module--air-sensors">
@@ -231,39 +233,72 @@
           </div>
         </div>
       </div>
-  </div>
 
-  <div id="container_charts">
-    <div id="box_charts">
-      <h2>Charts</h2>
-      <form action="" id="chartSubmit">
-        <label for="startDate">Start Date:</label>
-        <input type="date" id="startDate" name="startDate">
-        <label for="endDate">End Date:</label>
-        <input type="date" id="endDate" name="endDate">
-        <input type="submit" value="Submit" class="btn btn-primary">
-      </form>
-      <canvas id="chart"></canvas>
 
-    </div>
-  </div>
+      <div id="container_charts">
+        <div id="box_charts">
+          <h2>Charts</h2>
+          <form action="" id="chartSubmit">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate">
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate">
+            <input type="submit" value="Submit" class="btn btn-primary">
+          </form>
+          <canvas id="chart"></canvas>
 
-  <div id="container_production">
-    <div class="box_charts"></div>
-  </div>
+        </div>
+      </div>
 
-  <div id="container_vegetable101">
-    <div id="container_allVegetables">
-      <h2>Vegetable 101</h2>
-    </div>
-    <div id="container_vegetableInfos"></div>
-  </div>
+      <div id="container_production">
+        <div class="box_charts"></div>
+      </div>
 
-  </main>
+      <div id="container_vegetable101">
+        <div id="container_allVegetables">
+          <h2>Vegetables</h2>
+
+        </div>
+        <div id="container_vegetableInfos" class="vegetable-characteristic">
+          <h2>Characteristics</h2>
+          <div class="vegetable-characteristic__header">
+            <img src="./styles/assets/vegetables_pictures/spinach.jpg" alt="">
+            <div class="vegetable-characteristic__header__text-content">
+              <h3>Spinach</h3>
+              <h3>Family: Amaranthaceae</h3>
+              <h3>Category: Greens </h3>
+              <p>Bok choy is a type of Chinese cabbage. Its Chinese name, "pak choi," translates to "white cabbage,"
+                probably because of its blanched centers, but there are green varieties too. The stalks are crisp and
+                the leaves are smooth and tender with a flavor somewhere between cabbage and chard. Plants form an
+                upright head, with outward flaring leaves, and its white or green stalks look like smooth, non-stringy
+                celery. The stalk can shoot up to twice the size of the plant. Flower stalks grow from the center of the
+                plant and have the yellow, 4-petal cross typical of the cruciferous family.</p>
+            </div>
+          </div>
+
+          <div class="vegetable-characteristic__quick-infos">
+            <div class="vegetable-characteristic__quick-infos__item">A</div>
+            <div class="vegetable-characteristic__quick-infos__item">A</div>
+            <div class="vegetable-characteristic__quick-infos__item">A</div>
+            <div class="vegetable-characteristic__quick-infos__item">A</div>
+          </div>
+          <div class="vegetable-characteristic__tips">
+            <div class="vegetable-characteristic__tips__item">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Eaque sit voluptatum nemo voluptatibus minima ex cumque voluptate distinctio adipisci provident.</div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
   </div>
 
   <script src="./scripts/dashboard_modules/plant_manager/form_plant.js"></script>
   <script src="./scripts/dashboard_modules/plant_manager/form_sow.js"></script>
+  <script src="./scripts/dashboard_modules/plant_manager/form_harvest.js"></script>
+  <script src="./scripts/dashboard_modules/plant_manager/form_add.js"></script>
+
   <script src="./scripts//dashboard_modules/plant_manager/script_formulaire.js"></script>
   <script src="./scripts//dashboard_modules/plant_manager/script_formulaire.js"></script>
 
