@@ -26,8 +26,14 @@ function renderSowForm() {
         <input type="date" id="sowing_date" name="sowing_date" value="${getCurrentDate()}">
       </div>
       <button id="add-vegetable-button-sow" type="submit">Add Vegetable</button>
+      <button class="return-button">retour</button>
     </div>
-    <button class="return-button">retour</button>
+    <div id="custom-popup1" class="popup1">
+      <div class="popup-content1">
+        <span id="popup-message1">Congratulations, vegetable sowed !</span>
+        <button id="popup-ok-button1">OK</button>
+      </div>
+    </div>
   `;
 
   // Append the form to the container
@@ -92,7 +98,7 @@ function sendPostRequestSow(formData) {
     .then((data) => {
       console.log('data:', data)
       // Handle the response from the server here (e.g., show a success message)
-      
+      showSuccessMessage1();
       // console.log('Response from server:', data);
 
       // Optionally, you can clear the form or perform other actions
@@ -163,3 +169,18 @@ function fetchVegetableNames() {
 }
 
 fetchVegetableNames();
+
+function showSuccessMessage1() {
+  const popup = document.getElementById('custom-popup1');
+  const message = document.getElementById('popup-message1');
+  const okButton = document.getElementById('popup-ok-button1');
+
+  message.textContent = 'Congratulations, vegetable sowed !';
+
+  popup.style.display = 'flex';
+
+  okButton.addEventListener('click', () => {
+    popup.style.display = 'none';
+    // Optionally, you can navigate or perform other actions here.
+  });
+}

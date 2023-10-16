@@ -30,8 +30,14 @@ function renderPlantForm() {
         <input type="date" id="planting_date" name="planting_date" value="${getCurrentDate()}">
       </div>
       <button id="add-vegetable-button-plant" type="submit">Add Vegetable</button>
+      <button class="return-button">retour</button>
     </div>
-    <button class="return-button">retour</button>
+    <div id="custom-popup" class="popup">
+      <div class="popup-content">
+        <span id="popup-message">Congratulations, vegetable planted !</span>
+        <button id="popup-ok-button">OK</button>
+      </div>
+    </div>
   `;
 
   // Append the form to the container
@@ -96,9 +102,7 @@ function sendPostRequestPlant(formData) {
     .then((data) => {
       console.log('data:', data)
       // Handle the response from the server here (e.g., show a success message)
-      
-      // console.log('Response from server:', data);
-
+      showSuccessMessage();
       // Optionally, you can clear the form or perform other actions
       clearFormPlant();
     })
@@ -214,3 +218,19 @@ showSowedVegetablesCheckbox.addEventListener('change', function () {
       });
   }
 });
+
+function showSuccessMessage() {
+  const popup = document.getElementById('custom-popup');
+  const message = document.getElementById('popup-message');
+  const okButton = document.getElementById('popup-ok-button');
+
+  message.textContent = 'Congratulations, vegetable planted !';
+
+  popup.style.display = 'flex';
+
+  okButton.addEventListener('click', () => {
+    popup.style.display = 'none';
+    // Optionally, you can navigate or perform other actions here.
+  });
+}
+
