@@ -13,20 +13,20 @@ function renderPlantForm() {
         <input type="checkbox" id="show-sowed-vegetables" name="show-sowed-vegetables">
         <label for="show-sowed-vegetables">Check to see sowed Vegetables</label>
       </div>
-      <label for="name_plant">Name:</label>
+      <label for="name_plant">Name :</label>
       <select id="name_plant" name="name_plant">
       </select>
       <div class="form_quantity">
-        <label for="quantity_plant">Quantity:</label>
+        <label for="quantity_plant">Quantity :</label>
         <input type="number" id="quantity_plant" name="quantity_plant" value="1">
       </div>
       <div class="form_garden_area">
-        <label for="garden_area_plant">Garden Area:</label>
+        <label for="garden_area_plant">Garden Area :</label>
         <select id="garden_area_plant" name="garden_area_plant">
         </select>
       </div>
       <div class="form_planting_date">
-        <label for="planting_date">Planting Date:</label>
+        <label for="planting_date">Planting Date :</label>
         <input type="date" id="planting_date" name="planting_date" value="${getCurrentDate()}">
       </div>
       <button id="add-vegetable-button-plant" type="submit">Add Vegetable</button>

@@ -15,21 +15,21 @@ function renderGardenAreaForm() {
       </div>
 
       <div id="add-garden-area-form">
-        <label for="garden_area_name">Garden Area Name:</label><br>
+        <label for="garden_area_name">Garden Area Name :</label><br><br>
         <input class="garden-area-input" type="text" id="garden_area_name" name="garden_area_name"><br>
-        <label for="garden_area_surface">Surface:</label><br>
-        <input class="garden-area-input" type="number" id="garden_area_surface" name="garden_area_surface" step="0.1"><br>
+        <label for="garden_area_surface">Surface :</label><br><br>
+        <input class="garden-area-input" type="number" id="garden_area_surface" name="garden_area_surface" step="0.1">
       </div>
       
-      <div id="update-garden-area-form" >
-        <label for="update_garden_area">Select Garden Area:</label><br>
+      <div id="update-garden-area-form">
+        <label for="update_garden_area">Select Garden Area :</label><br><br>
         <select id="update_garden_area" name="update_garden_area">
           <!-- Populate this select with existing garden areas -->
         </select><br><br>
-        <label for="update_garden_area_name">New Name:</label><br>
+        <label for="update_garden_area_name">New Name :</label><br><br>
         <input class="garden-area-input" type="text" id="update_garden_area_name" name="update_garden_area_name"><br>
-        <label for="update_garden_area_surface">New Surface:</label><br>
-        <input class="garden-area-input" type="number" id="update_garden_area_surface" name="update_garden_area_surface" step="0.1"><br>
+        <label for="update_garden_area_surface">New Surface :</label><br><br>
+        <input class="garden-area-input" type="number" id="update_garden_area_surface" name="update_garden_area_surface" step="0.1">
       </div>
 
       <button id="add-garden-area-button" type="submit">Add garden area</button>

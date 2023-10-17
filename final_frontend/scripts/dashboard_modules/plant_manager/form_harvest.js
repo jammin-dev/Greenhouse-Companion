@@ -9,16 +9,16 @@ function renderHarvestForm() {
   // Add form fields and elements
   form.innerHTML = `
     <div class="form_line1">
-      <label for="name_harvest">Name:</label>
+      <label for="name_harvest">Name :</label>
       <select id="name_harvest" name="name_harvest">
       </select>
       <div class="form_quantity">
-        <label for="quantity_harvest">Quantity:</label>
+        <label for="quantity_harvest">Quantity :</label>
         <input type="number" id="quantity_harvest" name="quantity_harvest" value="1">
       </div>
       
       <div class="form_harvest_date">
-        <label for="harvest_date">Harvesting Date:</label>
+        <label for="harvest_date">Harvesting Date :</label>
         <input type="date" id="harvest_date" name="harvest_date" value="${getCurrentDate()}">
       </div>
       <button id="add-vegetable-button-harvest" type="submit">Harvest Vegetable</button>

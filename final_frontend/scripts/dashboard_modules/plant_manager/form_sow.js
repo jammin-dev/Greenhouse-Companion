@@ -9,20 +9,20 @@ function renderSowForm() {
   // Add form fields and elements
   form.innerHTML = `
     <div class="form_line1">
-      <label for="name_sow">Name:</label>
+      <label for="name_sow">Name :</label>
       <select id="name_sow" name="name_sow">
       </select>
       <div class="form_quantity">
-        <label for="quantity_sow">Quantity:</label>
+        <label for="quantity_sow">Quantity :</label>
         <input type="number" id="quantity_sow" name="quantity_sow" value="1">
       </div>
       <div class="form_garden_area">
-        <label for="garden_area_sow">Garden Area:</label>
+        <label for="garden_area_sow">Garden Area :</label>
         <select id="garden_area_sow" name="garden_area_sow">
         </select>
       </div>
       <div class="form_sowing_date">
-        <label for="sowing_date">Sowing Date:</label>
+        <label for="sowing_date">Sowing Date :</label>
         <input type="date" id="sowing_date" name="sowing_date" value="${getCurrentDate()}">
       </div>
       <button id="add-vegetable-button-sow" type="submit">Add Vegetable</button>
