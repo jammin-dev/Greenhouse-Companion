@@ -11,7 +11,7 @@ function renderGardenAreaForm() {
     <div class="form_line1">
       <div class="garden_area-checkbox"><br>
         <input type="checkbox" id="add_or_update_garden_area" name="add_or_update_garden_area">
-        <label for="add_or_update_garden_area">Add or Update Garden Area:</label><br><br>
+        <label for="add_or_update_garden_area">Check to update a garden area</label><br><br>
       </div>
 
       <div id="add-garden-area-form">
@@ -21,7 +21,7 @@ function renderGardenAreaForm() {
         <input class="garden-area-input" type="number" id="garden_area_surface" name="garden_area_surface" step="0.1"><br>
       </div>
       
-      <div id="update-garden-area-form" class="form">
+      <div id="update-garden-area-form" >
         <label for="update_garden_area">Select Garden Area:</label><br>
         <select id="update_garden_area" name="update_garden_area">
           <!-- Populate this select with existing garden areas -->
@@ -67,14 +67,18 @@ function renderGardenAreaForm() {
 
   // Add an event listener to the checkbox
   addOrUpdateGardenAreaCheckbox.addEventListener('change', function () {
+    const labelForAddOrUpdate = document.querySelector('label[for="add_or_update_garden_area"]');
+
     if (addOrUpdateGardenAreaCheckbox.checked) {
       // Checked, show the "Update Garden Area" form and hide the "Add Garden Area" form
       updateGardenAreaForm.style.display = 'block';
       addGardenAreaForm.style.display = 'none';
+      labelForAddOrUpdate.textContent = 'Uncheck to add a new garden area';
     } else {
       // Unchecked, show the "Add Garden Area" form and hide the "Update Garden Area" form
       updateGardenAreaForm.style.display = 'none';
       addGardenAreaForm.style.display = 'block';
+      labelForAddOrUpdate.textContent = 'Check to update a garden area';
     }
 
     // Update the button label based on the checkbox state
@@ -186,10 +190,10 @@ function sendPostRequestAddGardenArea(formData) {
     .then((response) => response.json())
     .then((data) => {
       // Handle the response from the server here (e.g., show a success message)
-      showSuccessMessageGardenArea();
+      showSuccessMessageGardenArea(data);
 
       // Optionally, you can clear the form or perform other actions
-      clearFormGardenArea();
+      // clearFormGardenArea();
     })
     .catch((error) => {
       console.error('Error sending POST request:', error);
@@ -219,10 +223,10 @@ function sendPutRequestUpdateGardenArea(selectedGardenArea, formData) {
     .then((response) => response.json())
     .then((data) => {
       // Handle the response from the server here (e.g., show a success message)
-      showSuccessMessageGardenAreaUpdate();
+      showSuccessMessageGardenAreaUpdate(data);
 
       // Optionally, you can clear the form or perform other actions
-      clearFormGardenAreaUpdate();
+      // clearFormGardenAreaUpdate();
     })
     .catch((error) => {
       console.error('Error sending PUT request:', error);
@@ -230,12 +234,24 @@ function sendPutRequestUpdateGardenArea(selectedGardenArea, formData) {
     });
 }
 
-function showSuccessMessageGardenArea() {
+function showSuccessMessageGardenArea(data) {
   const popup = document.getElementById('custom-popup3');
   const messageElementbis = document.getElementById('popup-message3');
   const okButton = document.getElementById('popup-ok-button3');
 
-  messageElementbis.textContent = 'Congratulations, new garden area added !';
+  if (!isNaN(data.surface)) {
+    // Success: Vegetable was created
+    messageElementbis.textContent = `Congratulations, new garden area '${data.name}' added!`;
+  } else {
+    // Error: Quantity needs to be a number
+    messageElementbis.textContent = 'Error ! Surface needs to be a number.';
+    okButton.style.backgroundColor = 'red';
+  }
+
+  if (data.surface <= 0) {
+    messageElementbis.textContent = 'Error ! Surface needs to be a positive number.';
+    okButton.style.backgroundColor = 'red';
+  }
 
   popup.style.display = 'flex';
 
@@ -245,12 +261,24 @@ function showSuccessMessageGardenArea() {
 }
 
 // Function to show a success message popup for updating a garden area
-function showSuccessMessageGardenAreaUpdate() {
+function showSuccessMessageGardenAreaUpdate(data) {
   const popup = document.getElementById('custom-popup4');
   const messageElement = document.getElementById('popup-message4');
   const okButton = document.getElementById('popup-ok-button4');
 
-  messageElement.textContent = 'Congratulations, garden area updated !';
+  if (!isNaN(data.surface)) {
+    // Success: Vegetable was created
+    messageElement.textContent = `Congratulations, garden area '${data.name}' updated!`;
+  } else {
+    // Error: Quantity needs to be a number
+    messageElement.textContent = 'Error ! Surface needs to be a number.';
+    okButton.style.backgroundColor = 'red';
+  }
+
+  if (data.surface <= 0) {
+    messageElement.textContent = 'Error ! Surface needs to be a positive number.';
+    okButton.style.backgroundColor = 'red';
+  }
 
   popup.style.display = 'flex';
 

@@ -92,7 +92,7 @@ function sendPostRequestHarvest(formData) {
     .then((data) => {
       console.log('data:', data);
       // Handle the response from the server here (e.g., show a success message)
-      showSuccessMessage2();
+      showSuccessMessage2(data);
       // Optionally, you can clear the form or perform other actions
       clearFormHarvest();
     })
@@ -108,33 +108,6 @@ function clearFormHarvest() {
   document.querySelector('#quantity_harvest').value = '0';
   // document.querySelector('#garden_area_harvest').value = '';
 }
-
-// Function to fetch garden area data from the API
-function fetchGardenAreas() {
-
-  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/areas';
-
-  fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      // Get the select element for garden areas
-      const gardenAreaSelect = document.querySelector('#garden_area_harvest');
-
-      // Loop through the garden area data and create options
-      data.forEach((gardenArea) => {
-        const option = document.createElement('option');
-        option.value = gardenArea.id; // Set the value to the garden area ID
-        option.textContent = gardenArea.name; // Set the text content to the garden area name
-        gardenAreaSelect.appendChild(option);
-      });
-    })
-    .catch((error) => {
-      console.error('Error fetching garden area data:', error);
-    });
-}
-
-// Call the fetchGardenAreas function to populate the selection
-fetchGardenAreas();
 
 // Function to fetch vegetable names for harvest from the API
 function fetchVegetableNamesForHarvest() {
@@ -185,12 +158,24 @@ function fetchVegetableNamesForHarvest() {
 
 fetchVegetableNamesForHarvest();
 
-function showSuccessMessage2() {
+function showSuccessMessage2(data) {
   const popup = document.getElementById('custom-popup2');
   const message = document.getElementById('popup-message2');
   const okButton = document.getElementById('popup-ok-button2');
 
-  message.textContent = 'Congratulations, vegetable harvested !';
+  if (!isNaN(data.quantity)) {
+    // Success: Vegetable was created
+    message.textContent = `Congratulations, ${data.name} harvested!`;
+  } else {
+    // Error: Quantity needs to be a number
+    message.textContent = 'Error ! Quantity needs to be a number.';
+    okButton.style.backgroundColor = 'red';
+  }
+
+  if (data.quantity < 1) {
+    message.textContent = 'Error ! Quantity needs to be a positive number.';
+    okButton.style.backgroundColor = 'red';
+  }
 
   popup.style.display = 'flex';
 

@@ -98,7 +98,7 @@ function sendPostRequestSow(formData) {
     .then((data) => {
       console.log('data:', data)
       // Handle the response from the server here (e.g., show a success message)
-      showSuccessMessage1();
+      showSuccessMessage1(data);
       // console.log('Response from server:', data);
 
       // Optionally, you can clear the form or perform other actions
@@ -170,12 +170,24 @@ function fetchVegetableNames() {
 
 fetchVegetableNames();
 
-function showSuccessMessage1() {
+function showSuccessMessage1(data) {
   const popup = document.getElementById('custom-popup1');
   const message = document.getElementById('popup-message1');
   const okButton = document.getElementById('popup-ok-button1');
 
-  message.textContent = 'Congratulations, vegetable sowed !';
+  if (!isNaN(data.quantity)) {
+    // Success: Vegetable was created
+    message.textContent = `Congratulations, ${data.name} sowed!`;
+  } else {
+    // Error: Quantity needs to be a number
+    message.textContent = 'Error ! Quantity needs to be a number.';
+    okButton.style.backgroundColor = 'red';
+  }
+
+  if (data.quantity < 1) {
+    message.textContent = 'Error ! Quantity needs to be a positive number.';
+    okButton.style.backgroundColor = 'red';
+  }
 
   popup.style.display = 'flex';
 

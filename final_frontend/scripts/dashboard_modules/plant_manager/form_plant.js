@@ -11,7 +11,7 @@ function renderPlantForm() {
     <div class="form_line1">
       <div class="sow-checkbox"><br>
         <input type="checkbox" id="show-sowed-vegetables" name="show-sowed-vegetables">
-        <label for="show-sowed-vegetables">Show Sowed Vegetable</label>
+        <label for="show-sowed-vegetables">Check to see sowed Vegetables</label>
       </div>
       <label for="name_plant">Name:</label>
       <select id="name_plant" name="name_plant">
@@ -58,20 +58,51 @@ addButtonPlant.addEventListener('click', function (event) {
 const quantity = document.querySelector('#quantity_plant').value;
 const selectedNameOption = document.querySelector('#name_plant option:checked');
 const selectedName = selectedNameOption ? selectedNameOption.textContent : '';
+const isSowed = selectedNameOption ? selectedNameOption.dataset.sowed === 'true' : false;
+
+  // Define your server URL
+  const baseUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
+  const serverUrl = isSowed ? `${baseUrl}/${selectedNameOption.value}` : baseUrl;
 
 // Rest of your code to construct formData
 const formData = {
   'name': selectedName,
   'quantity': quantity,
   'area_id': document.querySelector('#garden_area_plant').value,
-  'sowed': false,
+  'sowed': isSowed,
   'planted': true,
   'planting_date': getCurrentDate(),
 };
 
   console.log('Form data:', formData);
   // Send a POST request to your server
-  sendPostRequestPlant(formData);
+
+  // Determine the request method (POST for new vegetable, PUT for already sowed)
+  const requestMethod = isSowed ? 'PUT' : 'POST';
+
+  // Define the request options
+  const requestOptions = {
+    method: requestMethod,
+    headers: {
+      'Content-Type': 'application/json', // Set the content type as JSON
+    },
+    body: JSON.stringify(formData), // Convert the form data to JSON
+  };
+
+  // Send the request to the server
+  fetch(serverUrl, requestOptions)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('data:', data);
+      // Handle the response from the server here (e.g., show a success message)
+      showSuccessMessage(data);
+      // Optionally, you can clear the form or perform other actions
+      clearFormPlant();
+    })
+    .catch((error) => {
+      console.error('Error sending request:', error);
+      // Handle errors here (e.g., show an error message)
+    });
 });
 
   // Function to get the current date in YYYY-MM-DD format
@@ -82,35 +113,6 @@ const formData = {
     const day = String(today.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
   }
-
-// Function to send a POST request
-function sendPostRequestPlant(formData) {
-  // Define your server URL
-  const serverUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
-
-  // Define the request options
-  const requestOptions = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json', // Set the content type as JSON
-    },
-    body: JSON.stringify(formData), // Convert the form data to JSON
-  };
-  // Send the POST request
-  fetch(serverUrl, requestOptions)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('data:', data)
-      // Handle the response from the server here (e.g., show a success message)
-      showSuccessMessage();
-      // Optionally, you can clear the form or perform other actions
-      clearFormPlant();
-    })
-    .catch((error) => {
-      console.error('Error sending POST request:', error);
-      // Handle errors here (e.g., show an error message)
-    });
-}
 
 // Function to clear the form after submission
 function clearFormPlant() {
@@ -162,6 +164,7 @@ function fetchVegetableNames() {
         const option = document.createElement('option');
         option.value = vegetable.id; // Set the value to the vegetable ID
         option.textContent = vegetable.name; // Set the text content to the vegetable name
+
         nameSelect.appendChild(option);
       });
     })
@@ -174,7 +177,18 @@ fetchVegetableNames();
 
 // Add an event listener to the checkbox
 const showSowedVegetablesCheckbox = document.querySelector('#show-sowed-vegetables');
+// Get the associated label element
+const labelForShowSowedVegetables = document.querySelector('label[for="show-sowed-vegetables"]');
 showSowedVegetablesCheckbox.addEventListener('change', function () {
+  
+  if (showSowedVegetablesCheckbox.checked) {
+    // Checked, set the label text to "Show Sowed Vegetable"
+    labelForShowSowedVegetables.textContent = 'Uncheck to plant a new Vegetable';
+  } else {
+    // Unchecked, set the label text to "Show Planted Vegetable"
+    labelForShowSowedVegetables.textContent = 'Check to see sowed Vegetables';
+  }
+
   const nameSelect = document.querySelector('#name_plant');
 
   // Clear the existing options in the select element
@@ -189,12 +203,13 @@ showSowedVegetablesCheckbox.addEventListener('change', function () {
     fetch(baseUrl)
       .then((response) => response.json())
       .then((data) => {
-        const sowedVegetables = data.filter((vegetable) => vegetable.sowed === true);
+        const sowedVegetables = data.filter((vegetable) => vegetable.sowed === true && vegetable.planted === false);
 
         sowedVegetables.forEach((vegetable) => {
           const option = document.createElement('option');
           option.value = vegetable.id;
           option.textContent = vegetable.name;
+          option.dataset.sowed = vegetable.sowed;
           nameSelect.appendChild(option);
         });
       })
@@ -219,12 +234,24 @@ showSowedVegetablesCheckbox.addEventListener('change', function () {
   }
 });
 
-function showSuccessMessage() {
+function showSuccessMessage(data) {
   const popup = document.getElementById('custom-popup');
   const message = document.getElementById('popup-message');
   const okButton = document.getElementById('popup-ok-button');
 
-  message.textContent = 'Congratulations, vegetable planted !';
+  if (!isNaN(data.quantity)) {
+    // Success: Vegetable was created
+    message.textContent = `Congratulations, ${data.name} planted!`;
+  } else {
+    // Error: Quantity needs to be a number
+    message.textContent = 'Error ! Quantity needs to be a number.';
+    okButton.style.backgroundColor = 'red';
+  }
+
+  if (data.quantity < 1) {
+    message.textContent = 'Error ! Quantity needs to be a positive number.';
+    okButton.style.backgroundColor = 'red';
+  }
 
   popup.style.display = 'flex';
 
