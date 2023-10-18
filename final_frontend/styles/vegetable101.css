@@ -15,37 +15,36 @@ right the detail of the vegetable choosen -----------------------
 /* ---------------------------------------------------------------
 ---- Container that hold all vegetables from vegetable_infos -----
 --------------------------------------------------------------- */
-#container_allVegetables {
-    position: relative;
+.all-vegetables-container {
     grid-column: span 1;
     grid-row: span 1;
     border-radius:  100px 0 0px 100px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(250, 250, 250, 0.8);
+    padding: 0px;
+    font-weight: 700;
+}
+
+.all-vegetables-container__title{
+    padding: 15px;
+}
+.all-vegetables-container__content{
+
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: rgba(250, 250, 250, 0.8);
-    padding: 60px;
-    font-weight: 700;
-    font-size: 15px;
-    overflow-y: auto;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    width: 85%;
 }
-#container_allVegetables::-webkit-scrollbar {
+.all-vegetables-container__content::-webkit-scrollbar {
     width: 0;
     height: 0;
   }
-.allVegetables__subtitle{ 
-    opacity: 0.5;
-    overflow: visible;
-}
-.allVegetables__container{
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 30px;
-    gap: 20px;
-    padding: 10px;
-    height: 150px;
-    overflow: visible;
-}
+
 .allVegetables__item{
     padding: 5px;
     width: 100px;
@@ -64,6 +63,9 @@ right the detail of the vegetable choosen -----------------------
 .allVegetables__item:hover{
     background-color: rgba(231, 225, 225, 0.9);
 }
+
+
+
 /* ---------------------------------------------------------------
 ----- Container that hold the detail of selected vegetable -------
 --------------------------------------------------------------- */
@@ -82,6 +84,14 @@ right the detail of the vegetable choosen -----------------------
     font-weight: 700;
     font-size: 20px;
 }
+.vegetable-characteristic h2 {
+    margin-top: -15px;
+}
+.vegetable-characteristic__header{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+}
 .vegetable-characteristic__header img{
     width: 250px;
     height: 250px;
@@ -90,18 +100,15 @@ right the detail of the vegetable choosen -----------------------
     background-color: rgba(250, 250, 250, 0.9);
     margin: 5px;
 }
-.vegetable-characteristic__header{
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-}
 .vegetable-characteristic__header__text-content{
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 50%;
-    font-size: 10px;
+    font-size: 15px;
+    text-align: justify;
+    gap: 10px;
 }
 .vegetable-characteristic__quick-infos {
     display: flex;
@@ -109,7 +116,7 @@ right the detail of the vegetable choosen -----------------------
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 30px;
     overflow: visible;
 }
 .vegetable-characteristic__quick-infos__item {
@@ -119,14 +126,135 @@ right the detail of the vegetable choosen -----------------------
     border-radius: 10px;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
     font-size: 13px;
     background-size: 80px 80px ;
     background-repeat: no-repeat;
     background-position: top;
     background-color: rgba(250, 250, 250, 0.9);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: 45px;
+    background-position:center;
 }
-.vegetable-characteristic__tips{
-    margin-top: 20px;
+.vegetable-characteristic__quick-infos__item--watering{
+    background-image: url(./assets/watering.png);
+}
+.vegetable-characteristic__quick-infos__item--frost{
+    background-image: url(./assets/frost.png);
+}
+.vegetable-characteristic__quick-infos__item--spacing{
+    background-image: url(./assets/watering.png);
+}
+.vegetable-characteristic__quick-infos__item--watering{
+    background-image: url(./assets/watering.png);
+}
+.vegetable-characteristic__table{
+    margin-top: 30px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: rgba(250, 250, 250, 0.9);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.vegetable-characteristic__table table{
+    width: 100%;
+    font-size: 10px;
+    text-align: center;
+    padding: 5px;
+}
+
+table  {
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0px 0px;
+    
+}
+th {
+
+}
+td {
+  
+}
+td:nth-child(4n) {
+    border-right: 1px solid grey;
+}
+.color-purple{
+    background-color: purple;
+    color: purple;
+}
+.color-orange{
+    background-color: orange;
+    color: orange;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    
+}
+.color-pink{
+    background-color: pink;
+    color: pink;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+}
+.color-first{
+    border-radius: 5px 0px 0px 5px;
+}
+.color-end{
+    border-radius: 0px 5px 5px 0px;
+}
+.today {
+    border-right: 1px red solid;
+    color: white;
+}
+.vegetable-characteristic__legend{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    width: 100%;
+    
+}
+.vegetable-characteristic__legend__item{
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    background-size: 80px 80px ;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-color: rgba(250, 250, 250, 0.9);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin: 20px;
+}
+
+.vegetable-characteristic__legend__item__title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 100%;
+}
+.vegetable-characteristic__legend__item__data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.vegetable-characteristic__legend__item__title--start-inside{
+    background-color: pink;
+}
+.vegetable-characteristic__legend__item__title--transplant{
+    background-color: greenyellow;
+}
+.vegetable-characteristic__legend__item__title--start-outside{
+    background-color: purple;
+}
+
+.vegetable-characteristic__legend__item__data{
+    height: 50%;
+    width: 100%;
 }

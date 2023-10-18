@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const data = await response.json();
     const sortedData = data.sort((a, b) => a.name.localeCompare(b.name));
-    const container = document.getElementById('container_allVegetables');
+    const container = document.getElementById('allVegetablesInfos');
 
     sortedData.forEach((element) => {
       const item = createItemElement(element);
