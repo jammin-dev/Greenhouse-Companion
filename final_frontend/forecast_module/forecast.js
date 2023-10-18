@@ -39,7 +39,7 @@ const BASE_URL = 'https://api.openweathermap.org/data/3.0/onecall?lat=48.8588897
   .then(response => response.json())
   .then(data => {
     // Extract and display the current day's weather for the "Air Sensors" section
-    const currentDay = data.daily[2];
+    const currentDay = data.daily[0];
     const airSensorsContainerElement = document.querySelector('.air-sensors-container__icon--weather');
 
     // Get the URL of the icon image based on the weather description
