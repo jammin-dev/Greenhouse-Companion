@@ -5,7 +5,7 @@ const BASE_URL = 'https://api.openweathermap.org/data/3.0/onecall?lat=48.8588897
   .then(response => response.json())
   .then(data => {
       // Extract and display the weather for the next 4 days
-    const dailyForecasts = data.daily.slice(1, 5); // Get data for the next 4 days (including the current day)
+    const dailyForecasts = data.daily.slice(0, 4); // Get data for the next 4 days (including the current day)
 
     dailyForecasts.forEach((dayData, index) => {
       const forecastContainer = document.createElement('div');
@@ -23,7 +23,7 @@ const BASE_URL = 'https://api.openweathermap.org/data/3.0/onecall?lat=48.8588897
 
       const temperatureElement = document.createElement('p');
       temperatureElement.classList.add('forecast-container__temperature');
-      temperatureElement.textContent = `${(dayData.temp.day - 273.15).toFixed(1)} °C`;
+      temperatureElement.textContent = `${(dayData.temp.day - 273.15).toFixed(1)} °`;
       forecastContainer.appendChild(temperatureElement);
 
       const rainElement = document.createElement('p');
@@ -36,21 +36,18 @@ const BASE_URL = 'https://api.openweathermap.org/data/3.0/onecall?lat=48.8588897
   })
 
   fetch(BASE_URL)
-  .then(response => response.json())
-  .then(data => {
-    // Extract and display the current day's weather for the "Air Sensors" section
-    const currentDay = data.daily[0];
-    const airSensorsContainerElement = document.querySelector('.air-sensors-container__icon--weather');
+.then(response => response.json())
+.then(data => {
+  // Extract and display the current day's weather for the "Air Sensors" section
+  const currentDay = data.daily[0];
+  const currentTemperatureElement = document.getElementById('air-sensors-container__temperature');
 
-    // Get the URL of the icon image based on the weather description
-    const iconURL = getIconURL(currentDay.weather[0].description);
+  currentTemperatureElement.textContent = `${(currentDay.temp.day - 273.15).toFixed(1)} °`;
+})
+.catch(error => console.error(error));
 
-    // Update the background image of the air-sensors-container__icon--weather element
-    airSensorsContainerElement.style.backgroundImage = `url("${iconURL}")`;
-  })
-  .catch(error => console.error(error));
-
-
+// Set up a periodic data fetch and display every 10 minutes
+setInterval(fetchDataAndDisplay, 600000);
 
     // Function to get the day from a timestamp
     function getDayFromTimestamp(timestamp) {
@@ -66,6 +63,10 @@ const BASE_URL = 'https://api.openweathermap.org/data/3.0/onecall?lat=48.8588897
         'light rain': 'icon-sun_rain.png',
         'heavy intensity rain': 'icon-heavy_rain.png',
         'clear sky': 'icon-sun.png',
+        'few clouds': 'icon-few-cloud.png',
+        'scattered clouds': 'icon-few-cloud.png',
+        'overcast clouds': 'icon-few-cloud.png',
+        'broken clouds': 'icon-few-cloud.png',
         // Add more descriptions and their corresponding icons here
       };
 

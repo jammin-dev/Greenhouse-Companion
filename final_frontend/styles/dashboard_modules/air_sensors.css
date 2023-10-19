@@ -42,10 +42,10 @@
 }
 .air-sensors-container__icon--luminosity {
   content: '';
-  background-image: url(../assets/air_sensors/icon_sunlight.png);
+  background-image: url(../assets/air_sensors/luminosity.png);
 }
 
 .air-sensors-container__icon--weather {
   content: '';
-  background-image: url(none);
+  background-image: url(../assets/air_sensors/icon_sunlight.png);
 }

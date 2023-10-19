@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   fetch(apiUrl)
     .then((response) => response.json()) // Parse the JSON response
     .then((data) => {
-      temperature.textContent = data.air_temperature;
+      temperature.textContent = `${data.air_temperature}°`;
       humidity.textContent = data.air_humidity;
       luminosity.textContent = data.luminosity;
     })
