@@ -129,7 +129,6 @@ right the detail of the vegetable choosen -----------------------
     font-size: 13px;
     background-size: 80px 80px ;
     background-repeat: no-repeat;
-    background-position: top;
     background-color: rgba(250, 250, 250, 0.9);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     text-align: center;
@@ -164,19 +163,20 @@ right the detail of the vegetable choosen -----------------------
     padding: 5px;
 }
 
-table  {
+.vegetable-characteristic__table table  {
     table-layout: fixed;
     border-collapse: separate;
     border-spacing: 0px 0px;
     
 }
-th {
+.vegetable-characteristic__table th {
+    padding-bottom: 5px;
 
 }
-td {
+.vegetable-characteristic__table td {
   
 }
-td:nth-child(4n) {
+.vegetable-characteristic__table td:nth-child(4n) {
     border-right: 1px solid grey;
 }
 .color-purple{
@@ -248,7 +248,7 @@ td:nth-child(4n) {
     background-color: pink;
 }
 .vegetable-characteristic__legend__item__title--transplant{
-    background-color: greenyellow;
+    background-color: orange;
 }
 .vegetable-characteristic__legend__item__title--start-outside{
     background-color: purple;
