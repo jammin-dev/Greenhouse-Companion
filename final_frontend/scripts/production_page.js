@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             vegetablesInArea.forEach((vegetable) => {
               const tableRow = document.createElement('tr');
               const sowingDate = new Date(vegetable.sowing_date);
-              console.log(sowingDate);
+              // console.log(sowingDate);
 
               for (let i = 0; i <= 52; i++) {
                 const tableCell = document.createElement('td');

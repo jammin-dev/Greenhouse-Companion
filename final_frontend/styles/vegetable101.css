@@ -170,6 +170,7 @@ right the detail of the vegetable choosen -----------------------
     
 }
 .vegetable-characteristic__table th {
+    padding-bottom: 5px;
 
 }
 .vegetable-characteristic__table td {
@@ -247,7 +248,7 @@ right the detail of the vegetable choosen -----------------------
     background-color: pink;
 }
 .vegetable-characteristic__legend__item__title--transplant{
-    background-color: greenyellow;
+    background-color: orange;
 }
 .vegetable-characteristic__legend__item__title--start-outside{
     background-color: purple;
