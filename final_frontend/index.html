@@ -116,6 +116,11 @@
           <h2 class="dashbord__module__title">Air Sensors</h2>
           <div class="dashbord__module__content dashbord__module__content--air-sensors">
             <div class="air-sensors-container">
+              <div class="air-sensors-container__icon air-sensors-container__icon--weather">
+              </div>
+              <p class="air-sensors-container__value" id="air-sensors-container__temperature"></p>
+            </div>
+            <div class="air-sensors-container">
               <div class="air-sensors-container__icon air-sensors-container__icon--temperature"></div>
               <p class="air-sensors-container__value" id="temperatureSensorValue"></p>
             </div>
@@ -201,35 +206,10 @@
         <div class="dashbord__module dashbord__module--forecast">
           <h2 class="dashbord__module__title">Forecast</h2>
           <div class="dashbord__module__content dashbord__module__content--forecast">
-            <div class="forecast-container">
-              <p class="forecast-container__day" id="">Mon</p>
-              <img class="forecast-container__icon" src="./styles/assets/icon-rain.png" alt="dahsboard logo" />
-              <p class="forecast-container__temperature" id="">18</p>
-              <p class="forecast-container__rain" id="">35%</p>
-            </div>
-            <div class="forecast-container">
-              <p class="forecast-container__day" id="">Tue</p>
-              <img class="forecast-container__icon" src="./styles/assets/icon-sun.png" alt="dahsboard logo" />
-              <p class="forecast-container__temperature" id="">19</p>
-              <p class="forecast-container__rain" id="">35%</p>
-            </div>
-            <div class="forecast-container">
-              <p class="forecast-container__day" id="">Wed</p>
-              <img class="forecast-container__icon" src="./styles/assets/icon-sun.png" alt="dahsboard logo" />
-              <p class="forecast-container__value" id="">19</p>
-              <p class="forecast-container__rain" id="">35%</p>
-            </div>
-            <div class="forecast-container">
-              <p class="forecast-container__day" id="">Thu</p>
-              <img class="forecast-container__icon" src="./styles/assets/icon-sun_rain.png" alt="dahsboard logo" />
-              <p class="forecast-container__temperature" id="">17</p>
-              <p class="forecast-container__rain" id="">35%</p>
-            </div>
+    <!--------- forecast.js to integrate forecast_container --------->
           </div>
         </div>
       </div>
-
-
       <div id="container_charts">
         <div id="box_charts">
           <h2>Charts</h2>
@@ -556,6 +536,8 @@
   <script src="./scripts/dashboard_modules/plant_manager/form_harvest.js"></script>
   <script src="./scripts/dashboard_modules/plant_manager/form_add_and_update.js"></script>
   <script src="./scripts/dashboard_modules/plant_manager/form_delete.js"></script>
+
+  <script src="./forecast_module/forecast.js"></script>
 
   <script src="./scripts//dashboard_modules/plant_manager/script_formulaire.js"></script>
   <script src="./scripts//dashboard_modules/plant_manager/script_formulaire.js"></script>

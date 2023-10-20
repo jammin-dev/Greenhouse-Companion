@@ -15,7 +15,7 @@
 }
 
 .dashbord__module__content--air-sensors {
-  gap: 50px;
+  gap: 30px;
 }
 .air-sensors-container {
   display: flex;
@@ -41,6 +41,11 @@
   background-image: url(../assets/air_sensors/icon_humidity.png);
 }
 .air-sensors-container__icon--luminosity {
+  content: '';
+  background-image: url(../assets/air_sensors/luminosity.png);
+}
+
+.air-sensors-container__icon--weather {
   content: '';
   background-image: url(../assets/air_sensors/icon_sunlight.png);
 }
