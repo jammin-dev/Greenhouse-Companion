@@ -1,34 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const ButtonDashboard = document.getElementById('dashboard_page');
-  const ButtonVegetable101 = document.getElementById('vegetable101_page');
-  const ButtonChart = document.getElementById('chart_page');
-  const ButtonProduction = document.getElementById('production_page');
+  const pages = ['dashboard', 'vegetable101', 'production', 'charts'];
 
-  ButtonDashboard.addEventListener('click', function () {
-    document.getElementById('container_dashboard').style.display = 'grid';
-    document.getElementById('container_vegetable101').style.display = 'none';
-    document.getElementById('container_production').style.display = 'none';
-    document.getElementById('container_charts').style.display = 'none';
-  });
+  for (const page of pages) {
+    const button = document.getElementById(`${page}_page`);
+    const container = document.getElementById(`container_${page}`);
 
-  ButtonVegetable101.addEventListener('click', function () {
-    document.getElementById('container_dashboard').style.display = 'none';
-    document.getElementById('container_vegetable101').style.display = 'grid';
-    document.getElementById('container_production').style.display = 'none';
-    document.getElementById('container_charts').style.display = 'none';
-  });
-
-  ButtonChart.addEventListener('click', function () {
-    document.getElementById('container_dashboard').style.display = 'none';
-    document.getElementById('container_vegetable101').style.display = 'none';
-    document.getElementById('container_production').style.display = 'none';
-    document.getElementById('container_charts').style.display = 'grid';
-  });
-
-  ButtonProduction.addEventListener('click', function () {
-    document.getElementById('container_dashboard').style.display = 'none';
-    document.getElementById('container_vegetable101').style.display = 'none';
-    document.getElementById('container_production').style.display = 'grid';
-    document.getElementById('container_charts').style.display = 'none';
-  });
+    button.addEventListener('click', function () {
+      for (const otherPage of pages) {
+        const otherContainer = document.getElementById(
+          `container_${otherPage}`
+        );
+        otherContainer.style.display = page === otherPage ? 'grid' : 'none';
+      }
+    });
+  }
 });
