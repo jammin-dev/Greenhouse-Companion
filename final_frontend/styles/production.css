@@ -19,7 +19,6 @@
     font-weight: 700;
     padding: 30px;
     padding-bottom: 50px;
-    gap: 30px;
     overflow:scroll;
 }
 .production-container::-webkit-scrollbar {
@@ -32,40 +31,56 @@
 }
 
 .production-container__content{
-    width: 100%;
+    width: 85%;
     display: flex;
     flex-direction: column;
     gap: 10px;
     overflow:visible;
 }
 .production-container__content__subtitle{
-
+margin-top: 30px;
 }
 .table-production{
     width: 100%;
-    table-layout: fixed;
+    table-layout: auto;
     border-collapse: separate;
     border-spacing: 0px 0px;
     padding: 10px;
     border-radius: 20px;
     background-color: rgba(250, 250, 250, 0.9);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
 }
 .table-production th{
     text-align: center;
     font-size: 10px;
     padding: 3px;
+    
 }
 .table-production td{
     text-align: center;
     height: 25px;
+    min-width: 15px;
+    /* border: 1px red solid; */
+    
 }
-.table-production tr {
-    border: 1px gray solid; 
+/* table th:nth-child(1) {
+    width: 50px;
   }
+table th:nth-child(2) {
+    width: 100px;
+  } */
+/* .table-production tr {
+    border: 1px gray solid; 
+  } */
+/* Select every 4th td element starting from the 3rd td */
+table td:nth-child(n+3):nth-child(4n+3) {
+    border-right: 1px solid gray; /* Adjust the border style and color as needed */
+  }
+
   .highlight{
-    margin-top: 2px;
-    margin-bottom: 2px;
+    /* width: 100%; */
+    height: 60%;
   }
 .highlight-grow{
     background-color: cadetblue;
@@ -79,11 +94,13 @@
 .highlight-end{
     border-radius: 0px 10px 10px 0px;
 }
+.highlight-start-end{
+    border-radius: 10px 10px 10px 10px;
+}
 
 .table-production__vegetable-icon{
     background-image: url(./assets/vegetable_icons/Leek.png);
     background-repeat: no-repeat;
-    background-size: 25px;
+    background-size: 21px;
     background-position: center;
-
 }

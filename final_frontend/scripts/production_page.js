@@ -2,7 +2,6 @@ const headerTable = `
 <tr>
 <th colspan="1">&nbsp;</th>
 <th colspan="4">Name</th>
-<th colspan="4">Variety</th>
 <th colspan="4">Quantity</th>
 <th colspan="4">Jan</th>
 <th colspan="4">Feb</th>
@@ -59,12 +58,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
             vegetablesInArea.forEach((vegetable) => {
               const tableRow = document.createElement('tr');
-              const sowingDate = new Date(vegetable.sowing_date);
-              // console.log(sowingDate);
+              let startMonth;
+              let startDay;
+              let startCell;
+              let endMonth;
+              let endDay;
+              let endCell;
+              let harvestCell;
 
-              for (let i = 0; i <= 52; i++) {
+              const currentDate = new Date();
+
+              if (vegetable.harvest_date) {
+                const harvestDate = new Date(vegetable.harvest_date);
+                const harvestMonth = harvestDate.getMonth();
+                const harvestDay = harvestDate.getDate();
+                harvestCell = parseInt(harvestMonth * 4 + harvestDay / 4) + 1;
+              }
+
+              if (vegetable.sowing_date) {
+                const sowingDate = new Date(vegetable.sowing_date);
+                startMonth = sowingDate.getMonth();
+                startDay = sowingDate.getDate();
+              }
+
+              if (vegetable.planting_date) {
+                const plantingDate = new Date(vegetable.planting_date);
+                startMonth = plantingDate.getMonth();
+                startDay = plantingDate.getDate();
+              }
+              startCell = parseInt(startMonth * 4 + startDay / 4) + 1;
+
+              if (vegetable.remove_date) {
+                const removeDate = new Date(vegetable.remove_date);
+                endMonth = removeDate.getMonth();
+                endDay = removeDate.getDate();
+              } else {
+                endMonth = currentDate.getMonth();
+                endDay = currentDate.getDate();
+              }
+              endCell = parseInt(endMonth * 4 + endDay / 4) + 1;
+
+              console.log(`start: ${startCell}`);
+              console.log(`end: ${endCell}`);
+              console.log(`harvest: ${harvestCell}`);
+              for (let i = 0; i <= 51; i++) {
                 const tableCell = document.createElement('td');
-                if ((i > 0 && i < 4) || i === 52) {
+                if ((i > 0 && i < 3) || i === 51) {
                   tableCell.setAttribute('colspan', '4');
                 }
                 if (i === 0) {
@@ -75,11 +114,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (i === 1) {
                   tableCell.textContent = vegetable.name;
                 }
-                if (i === 3) {
+                if (i === 2) {
                   tableCell.textContent = vegetable.quantity;
                 }
                 if (i === 52) {
                   tableCell.textContent = vegetable.harvest_quantity;
+                }
+
+                if (i >= startCell && i <= endCell) {
+                  const timePeriod = document.createElement('div');
+                  timePeriod.classList = 'highlight-grow highlight';
+                  if (i === startCell) {
+                    timePeriod.classList =
+                      'highlight-grow highlight highlight-start';
+                  }
+                  if (i === endCell) {
+                    timePeriod.classList =
+                      'highlight-grow highlight highlight-end';
+                  }
+                  if (startCell == endCell) {
+                    timePeriod.classList =
+                      'highlight-grow highlight highlight-start-end';
+                  }
+                  if (harvestCell !== null) {
+                    if (i >= harvestCell && i <= endCell) {
+                      timePeriod.style.backgroundColor = 'orangered';
+                    }
+                  }
+
+                  tableCell.appendChild(timePeriod);
                 }
 
                 tableRow.appendChild(tableCell);
