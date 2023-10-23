@@ -1,7 +1,8 @@
 /* ----------------------- ToDo Module ----------------------- */
 .dashbord__module--todolist {
-  grid-column: span 1;
-  grid-row: span 2;
+  grid-area: todolist;
+  /* grid-column: span 1;
+  grid-row: span 2; */
   border-radius: 0 0 100px 0;
   display: flex;
   flex-direction: column;
