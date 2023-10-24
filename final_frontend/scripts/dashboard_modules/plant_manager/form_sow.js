@@ -23,7 +23,7 @@ function renderSowForm() {
       </div>
       <div class="form_sowing_date">
         <label for="sowing_date">Sowing Date :</label>
-        <input type="date" id="sowing_date" name="sowing_date" value="${getCurrentDate()}">
+        <input type="date" id="sowing_date" name="sowing_date">
       </div>
       <button id="add-vegetable-button-sow" type="submit">Add Vegetable</button>
       <button class="return-button">retour</button>
@@ -54,6 +54,7 @@ addButtonSow.addEventListener('click', function (event) {
 const quantity = document.querySelector('#quantity_sow').value;
 const selectedNameOption = document.querySelector('#name_sow option:checked');
 const selectedName = selectedNameOption ? selectedNameOption.textContent : '';
+const sowingDate = document.querySelector('#sowing_date').value;
 
 // Rest of your code to construct formData
 const formData = {
@@ -62,7 +63,7 @@ const formData = {
   'area_id': document.querySelector('#garden_area_sow').value,
   'sowed': true,
   'planted': false,
-  'sowing_date': getCurrentDate(),
+  'sowing_date': sowingDate,
 };
 
   console.log('Form data:', formData);
@@ -70,14 +71,14 @@ const formData = {
   sendPostRequestSow(formData);
 });
 
-  // Function to get the current date in YYYY-MM-DD format
-  function getCurrentDate() {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  }
+  // // Function to get the current date in YYYY-MM-DD format
+  // function getCurrentDate() {
+  //   const today = new Date();
+  //   const year = today.getFullYear();
+  //   const month = String(today.getMonth() + 1).padStart(2, '0');
+  //   const day = String(today.getDate()).padStart(2, '0');
+  //   return `${year}-${month}-${day}`;
+  // }
 
 // Function to send a POST request
 function sendPostRequestSow(formData) {

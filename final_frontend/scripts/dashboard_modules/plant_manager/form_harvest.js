@@ -18,8 +18,8 @@ function renderHarvestForm() {
       </div>
       
       <div class="form_harvest_date">
-        <label for="harvest_date">Harvesting Date :</label>
-        <input type="date" id="harvest_date" name="harvest_date" value="${getCurrentDate()}">
+        <label for="harvest_date">Remove Date :</label>
+        <input type="date" id="harvest_date" name="harvest_date">
       </div>
       <button id="add-vegetable-button-harvest" type="submit">Harvest Vegetable</button>
       <button class="return-button">retour</button>
@@ -49,6 +49,7 @@ addButtonHarvest.addEventListener('click', function (event) {
   // Retrieve the quantity value within the event handler
   const quantity = document.querySelector('#quantity_harvest').value;
   const selectedNameOption = document.querySelector('#name_harvest option:checked');
+  const harvestDate = document.querySelector('#harvest_date').value;
   const selectedName = selectedNameOption ? selectedNameOption.textContent.split(' (')[0] : '';
 
   // Retrieve the area_id from the selected option's data attribute
@@ -63,8 +64,8 @@ addButtonHarvest.addEventListener('click', function (event) {
     'area_id': selectedAreaId,
     'sowed': false,
     'planted': false,
-    'harvested': true,
-    'harvest_date': getCurrentDate(),
+    'remove_date': harvestDate,
+    'harvest_date': harvestDate,
   };
 
   console.log('Form data:', formData);
@@ -106,13 +107,12 @@ function sendPostRequestHarvest(formData) {
 function clearFormHarvest() {
   document.querySelector('#name_harvest').value = '';
   document.querySelector('#quantity_harvest').value = '0';
-  // document.querySelector('#garden_area_harvest').value = '';
 }
 
 // Function to fetch vegetable names for harvest from the API
 function fetchVegetableNamesForHarvest() {
   // Replace with the URL of your API endpoint that provides vegetable names for harvest
-  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager'; // Replace with the correct URL
+  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
 
   // Fetch garden area data first
   fetch('https://walrus-app-jbfmz.ondigitalocean.app/areas')

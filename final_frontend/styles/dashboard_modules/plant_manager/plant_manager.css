@@ -47,6 +47,7 @@ select {
 
 label {
   height: 25px;
+  
 }
 textarea {
   height: 100px;
@@ -65,8 +66,7 @@ textarea {
   height: 45px;
 }
 
-.form_quantity,
-.form_garden_area {
+.form_quantity, .form_garden_area {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -90,13 +90,20 @@ textarea {
   border-radius: 5px;
 }
 
-.form_sowing_date input,
-.form_planting_date input,
-.form_harvest_date input {
+
+.form_sowing_date input, .form_harvest_date input {
   width: 40%;
   height: 25px;
   font-size: medium;
   border-radius: 5px;
+}
+
+.form_planting_date input {
+  width: 40%;
+  height: 25px;
+  font-size: medium;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 #update-garden-area-form {
@@ -157,14 +164,12 @@ button.return-button {
   /* Add styling for the button */
 }
 
-#delete-vegetable-button,
-#delete-garden-area-button {
+#delete-vegetable-button, #delete-garden-area-button {
   margin-top: 15px;
   padding: 10px 20px;
   background-color: #ec8551;
   color: #fff;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
   font-weight: 300;
   font-size: 15px;
@@ -172,13 +177,11 @@ button.return-button {
   border-radius: 40px;
 }
 
-#delete-vegetable-button:hover,
-#delete-garden-area-button:hover {
+#delete-vegetable-button:hover, #delete-garden-area-button:hover {
   background-color: #ee6b2d;
 }
 
-#vegetable_to_delete,
-#garden_area_to_delete {
+#vegetable_to_delete, #garden_area_to_delete {
   width: 100%;
   height: 40px;
   padding: 8px;
@@ -243,14 +246,52 @@ button.return-button {
 .dashbord__module__content--plant-manager {
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 30px;
   justify-content: space-around;
   align-items: center;
   font-size: 25px;
-  margin-top: 40px;
+  margin-top: 30px;
   margin-left: 35px;
   margin-right: 35px;
 }
+/* ----------------------Sowing table------------------------- */
+.sowing-table-container {
+  max-height: 150px;
+  overflow-y: scroll;
+}
+
+#sowing-table {
+  display: block;
+  border-collapse: collapse;
+}
+
+#sowing-table tbody {
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+#sowing-table td {
+  padding-left: 20px;
+  padding-right: 28px;
+  text-align: center;
+  white-space: nowrap;
+  border-bottom: solid 1px #d8d6d6;
+}
+
+#sowing-table img {
+  width: 25px;
+  height: 25px;
+}
+
+h6 {
+  text-align: center;
+  margin-bottom: -15px;
+  font-size: 18px;
+  font-weight: 350;
+  color: rgb(95, 95, 84);
+  text-decoration: underline;
+}
+
 @media only screen and (max-width: 950px) {
   .plant_manager_icon_container {
     gap: 10px;
@@ -289,6 +330,7 @@ button.return-button {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  width: 100%;
 }
 
 .large_icons_container {
@@ -332,13 +374,7 @@ button.return-button {
   transform: scale(1.3); /* Increase the size by 20% on hover */
 }
 
-.popup,
-.popup1,
-.popup2,
-.popup3,
-.popup4,
-.popup5,
-.popup6 {
+.popup, .popup1, .popup2, .popup3, .popup4, .popup5, .popup6 {
   display: none;
   position: fixed;
   top: 0;
@@ -351,13 +387,7 @@ button.return-button {
   align-items: center;
 }
 
-.popup-content,
-.popup-content1,
-.popup-content2,
-.popup-content3,
-.popup-content4,
-.popup-content5,
-.popup-content6 {
+.popup-content, .popup-content1, .popup-content2, .popup-content3, .popup-content4, .popup-content5, .popup-content6 {
   background: white;
   padding: 20px;
   text-align: center;
@@ -368,13 +398,7 @@ button.return-button {
   align-items: center;
 }
 
-#popup-ok-button,
-#popup-ok-button1,
-#popup-ok-button2,
-#popup-ok-button3,
-#popup-ok-button4,
-#popup-ok-button5,
-#popup-ok-button6 {
+#popup-ok-button, #popup-ok-button1, #popup-ok-button2, #popup-ok-button3, #popup-ok-button4, #popup-ok-button5, #popup-ok-button6 {
   background: #15d25a;
   color: white;
   border: none;

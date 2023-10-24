@@ -27,7 +27,7 @@ function renderPlantForm() {
       </div>
       <div class="form_planting_date">
         <label for="planting_date">Planting Date :</label>
-        <input type="date" id="planting_date" name="planting_date" value="${getCurrentDate()}">
+        <input type="date" id="planting_date" name="planting_date">
       </div>
       <button id="add-vegetable-button-plant" type="submit">Add Vegetable</button>
       <button class="return-button">retour</button>
@@ -57,6 +57,7 @@ addButtonPlant.addEventListener('click', function (event) {
 // Retrieve the quantity value within the event handler
 const quantity = document.querySelector('#quantity_plant').value;
 const selectedNameOption = document.querySelector('#name_plant option:checked');
+const sowingDate = document.querySelector('#planting_date').value;
 const selectedName = selectedNameOption ? selectedNameOption.textContent : '';
 const isSowed = selectedNameOption ? selectedNameOption.dataset.sowed === 'true' : false;
 
@@ -71,7 +72,7 @@ const formData = {
   'area_id': document.querySelector('#garden_area_plant').value,
   'sowed': isSowed,
   'planted': true,
-  'planting_date': getCurrentDate(),
+  'planting_date': sowingDate,
 };
 
   console.log('Form data:', formData);
@@ -105,15 +106,6 @@ const formData = {
     });
 });
 
-  // Function to get the current date in YYYY-MM-DD format
-  function getCurrentDate() {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  }
-
 // Function to clear the form after submission
 function clearFormPlant() {
   document.querySelector('#name_plant').value = '';
@@ -121,6 +113,7 @@ function clearFormPlant() {
   document.querySelector('#garden_area_plant').value = '';
 }
 
+const areaNameMap = {};
 // Function to fetch garden area data from the API
 function fetchGardenAreas() {
 
@@ -134,6 +127,7 @@ function fetchGardenAreas() {
 
       // Loop through the garden area data and create options
       data.forEach((gardenArea) => {
+        areaNameMap[gardenArea.id] = gardenArea.name;
         const option = document.createElement('option');
         option.value = gardenArea.id; // Set the value to the garden area ID
         option.textContent = gardenArea.name; // Set the text content to the garden area name
@@ -208,7 +202,9 @@ showSowedVegetablesCheckbox.addEventListener('change', function () {
         sowedVegetables.forEach((vegetable) => {
           const option = document.createElement('option');
           option.value = vegetable.id;
-          option.textContent = vegetable.name;
+          const gardenAreaName = areaNameMap[vegetable.area_id];
+          // option.textContent = vegetable.name;
+          option.textContent = `${vegetable.name} (${gardenAreaName})`;
           option.dataset.sowed = vegetable.sowed;
           nameSelect.appendChild(option);
         });

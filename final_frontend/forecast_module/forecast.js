@@ -1,5 +1,5 @@
 // Make an API request and get the forecast data
-const BASE_URL = 'https://api.openweathermap.org/data/3.0/onecall?lat=48.8588897&lon=2.320041&exclude=hourly,minutely,alerts&appid=9b14c40da416807a32337c8ec78d4c15'
+const BASE_URL = 'https://api.openweathermap.org/data/3.0/onecall?lat=48.0706687&lon=-0.7734022&exclude=hourly,minutely,alerts&appid=9b14c40da416807a32337c8ec78d4c15'
 
   fetch(BASE_URL)
   .then(response => response.json())
@@ -13,7 +13,12 @@ const BASE_URL = 'https://api.openweathermap.org/data/3.0/onecall?lat=48.8588897
 
       const dayElement = document.createElement('p');
       dayElement.classList.add('forecast-container__day');
-      dayElement.textContent = getDayFromTimestamp(dayData.dt);
+      if (index === 0) {
+        dayElement.textContent = 'Today';
+      } else {
+        dayElement.textContent = getDayFromTimestamp(dayData.dt);
+      }
+      
       forecastContainer.appendChild(dayElement);
 
       const iconElement = document.createElement('img');
@@ -28,26 +33,12 @@ const BASE_URL = 'https://api.openweathermap.org/data/3.0/onecall?lat=48.8588897
 
       const rainElement = document.createElement('p');
       rainElement.classList.add('forecast-container__rain');
-      rainElement.textContent = `${(dayData.rain || 0).toFixed(1)} mm/day`;
+      rainElement.textContent = `${(dayData.rain || 0).toFixed(1)}`;
       forecastContainer.appendChild(rainElement);
 
       document.querySelector('.dashbord__module__content--forecast').appendChild(forecastContainer);
     });
   })
-
-  fetch(BASE_URL)
-.then(response => response.json())
-.then(data => {
-  // Extract and display the current day's weather for the "Air Sensors" section
-  const currentDay = data.daily[0];
-  const currentTemperatureElement = document.getElementById('air-sensors-container__temperature');
-
-  currentTemperatureElement.textContent = `${(currentDay.temp.day - 273.15).toFixed(1)} °`;
-})
-.catch(error => console.error(error));
-
-// Set up a periodic data fetch and display every 10 minutes
-setInterval(fetchDataAndDisplay, 600000);
 
     // Function to get the day from a timestamp
     function getDayFromTimestamp(timestamp) {
@@ -67,6 +58,7 @@ setInterval(fetchDataAndDisplay, 600000);
         'scattered clouds': 'icon-few-cloud.png',
         'overcast clouds': 'icon-few-cloud.png',
         'broken clouds': 'icon-few-cloud.png',
+        'fog': 'icon-fog.png',
         // Add more descriptions and their corresponding icons here
       };
 

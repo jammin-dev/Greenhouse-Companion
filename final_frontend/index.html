@@ -53,6 +53,9 @@
   </div>
 
   <div class="common_container">
+    <div class="logo_container">
+      <img src="./styles/assets/GreenHouse.png" alt="logo" class="logo">
+    </div>
     <aside>
       <ul>
         <li id="dashboard_page" class="icon-aside icon_dashboard"></li>
@@ -75,35 +78,41 @@
             <div class="icons_container">
               <div class="dont_move">
                 <div class="icon_garden icon_plant_manager" id="plant-icon"></div>
-                <p>Planter</p>
+                <p>Plant</p>
               </div>
             </div>
             <div class="icons_container">
               <div class="dont_move">
                 <div class="icon_garden icon_sow_manager" id="sow-icon"></div>
-                <p>Semer</p>
+                <p>Sow</p>
               </div>
             </div>
             <div class="icons_container">
               <div class="dont_move">
                 <div class="icon_garden icon_harvest_manager" id="harvest-icon"></div>
-                <p>Récolter</p>
+                <p>Harvest</p>
               </div>
             </div>
             <div class="icons_container">
               <div class="dont_move">
                 <div class="icon_garden icon_create_manager" id="create-icon"></div>
-                <p>Ajouter</p>
+                <p>Add</p>
               </div>
             </div>
             <div class="icons_container">
               <div class="dont_move">
                 <div class="icon_garden icon_delete_manager" id="delete-icon"></div>
-                <p>Supprimer</p>
+                <p>Delete</p>
               </div>
             </div>
+            <h6>List of sowed vegetables</h6>
+            <div class="sowing-table-container">
+              <table id="sowing-table">
+                <tbody>
+                </tbody>
+              </table>
+            </div>
           </div>
-
           <!---------------------- Form fields -------------------------------->
           <div id="form-plant"></div>
           <div id="form-sow"></div>
@@ -115,11 +124,11 @@
         <div class="dashbord__module dashbord__module--air-sensors">
           <h2 class="dashbord__module__title" id="plantManagerTitle">Air Sensors</h2>
           <div class="dashbord__module__content dashbord__module__content--air-sensors">
-            <div class="air-sensors-container">
+            <!-- <div class="air-sensors-container">
               <div class="air-sensors-container__icon air-sensors-container__icon--weather">
               </div>
               <p class="air-sensors-container__value" id="air-sensors-container__temperature"></p>
-            </div>
+            </div> -->
             <div class="air-sensors-container">
               <div class="air-sensors-container__icon air-sensors-container__icon--temperature"></div>
               <p class="air-sensors-container__value" id="temperatureSensorValue"></p>
@@ -179,10 +188,15 @@
         </div>
 
         <div class="dashbord__module dashbord__module--todolist">
-          <h2 class="dashbord__module__title">To-Do List</h2>
+          <h2 class="dashbord__module__title">Gardener assistant</h2>
           <div class="add-todo-button">+</div>
           <div class="dashbord__module__content dashbord__module__content--todolist">
-            <div class="todolist-container">
+            <div class="chat-container">
+              <div class="chat-output" id="chat-output"></div>
+              <input type="text" id="user-input" placeholder="Hey gardener ! How can I help you ?">
+              <button id="submit-button">🥕</button>
+            </div>
+            <!-- <div class="todolist-container">
               <input class="todolist-container__checkbox" type="checkbox" id="scales" name="scales" checked />
               <input class="todolist-container__remove" type="checkbox" id="scales" name="scales" checked />
               <label class="todolist-container__task" for="scales">Fertilize bell-peppers</label>
@@ -199,7 +213,7 @@
               <input class="todolist-container__remove" type="checkbox" id="scales" name="scales" checked />
               <label class="todolist-container__task" for="scales">Remove weeds middle area</label>
               <input class=" todolist-container__checkbox" type="checkbox" id="scales" name="scales" checked />
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -260,13 +274,15 @@
 
   <script src="./forecast_module/forecast.js"></script>
 
+  <script src="./chatGPT_module/chatGPT.js"></script>
+
+
   <script src="./scripts//dashboard_modules/plant_manager/script_formulaire.js"></script>
   <script src="./scripts//dashboard_modules/plant_manager/script_formulaire.js"></script>
 
   <script src="./scripts/dashboard_modules/air_sensors.js"></script>
 
   <script src=" ./scripts/chart_page.js"></script>
-
   <script src=" ./scripts/production_page.js"></script>
 
   <script src="./scripts/vegetable_101/vegetable101.js"></script>
