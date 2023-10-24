@@ -46,11 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const quickInfosSpacingOnRow = document.createElement('div');
       quickInfosSpacingOnRow.classList =
-        'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--spacingOnRow';
+        'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--spacing-on-row';
 
       const quickInfosSpacingBetweenRow = document.createElement('div');
       quickInfosSpacingBetweenRow.classList =
-        'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--spacingBetweenRow';
+        'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--spacing-between-row';
 
       const quickInfosWaterNeeds = document.createElement('div');
       quickInfosWaterNeeds.classList =
@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const tableLegendItemStartInside = document.createElement('div');
       tableLegendItemStartInside.classList =
         'vegetable-characteristic__legend__item__title vegetable-characteristic__legend__item__title--start-inside';
+      tableLegendItemStartInside.textContent = 'Start Inside';
 
       const tableLegendItemStartInsideData = document.createElement('div');
       tableLegendItemStartInsideData.classList =
@@ -84,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const tableLegendItemTransplant = document.createElement('div');
       tableLegendItemTransplant.classList =
         'vegetable-characteristic__legend__item__title vegetable-characteristic__legend__item__title--transplant';
+      tableLegendItemTransplant.textContent = 'Transplant';
 
       const tableLegendItemTransplantData = document.createElement('div');
       tableLegendItemTransplantData.classList =
@@ -92,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const tableLegendItemStartOutside = document.createElement('div');
       tableLegendItemStartOutside.classList =
         'vegetable-characteristic__legend__item__title vegetable-characteristic__legend__item__title--start-outside';
+      tableLegendItemStartOutside.textContent = 'Start Outside';
 
       const tableLegendItemStartOutsideData = document.createElement('div');
       tableLegendItemStartOutsideData.classList =

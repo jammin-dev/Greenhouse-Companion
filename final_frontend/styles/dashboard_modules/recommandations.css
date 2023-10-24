@@ -1,7 +1,8 @@
 /* ----------------------- Recommandations Module ----------------------- */
 .dashbord__module--recommandations {
-  grid-column: span 1;
-  grid-row: span 1;
+  grid-area: recommandations;
+  /* grid-column: span 1;
+  grid-row: span 1; */
   border-radius: 5px 100px 5px 5px;
 }
 @media only screen and (max-width: 1400px) {

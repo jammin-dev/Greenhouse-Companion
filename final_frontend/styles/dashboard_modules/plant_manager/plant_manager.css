@@ -1,6 +1,7 @@
 .dashbord__module--plant-manager {
-  grid-column: span 1;
-  grid-row: span 3;
+  grid-area: plant-manager;
+  /* grid-column: span 1;
+  grid-row: span 3; */
   border-radius: 100px 5px 5px 100px;
 }
 @media only screen and (max-width: 1400px) {
@@ -46,7 +47,6 @@ select {
 
 label {
   height: 25px;
-  
 }
 textarea {
   height: 100px;
@@ -65,7 +65,8 @@ textarea {
   height: 45px;
 }
 
-.form_quantity, .form_garden_area {
+.form_quantity,
+.form_garden_area {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -89,8 +90,9 @@ textarea {
   border-radius: 5px;
 }
 
-
-.form_sowing_date input, .form_planting_date input, .form_harvest_date input {
+.form_sowing_date input,
+.form_planting_date input,
+.form_harvest_date input {
   width: 40%;
   height: 25px;
   font-size: medium;
@@ -155,7 +157,8 @@ button.return-button {
   /* Add styling for the button */
 }
 
-#delete-vegetable-button, #delete-garden-area-button {
+#delete-vegetable-button,
+#delete-garden-area-button {
   margin-top: 15px;
   padding: 10px 20px;
   background-color: #ec8551;
@@ -169,11 +172,13 @@ button.return-button {
   border-radius: 40px;
 }
 
-#delete-vegetable-button:hover, #delete-garden-area-button:hover {
+#delete-vegetable-button:hover,
+#delete-garden-area-button:hover {
   background-color: #ee6b2d;
 }
 
-#vegetable_to_delete, #garden_area_to_delete {
+#vegetable_to_delete,
+#garden_area_to_delete {
   width: 100%;
   height: 40px;
   padding: 8px;
@@ -327,7 +332,13 @@ button.return-button {
   transform: scale(1.3); /* Increase the size by 20% on hover */
 }
 
-.popup, .popup1, .popup2, .popup3, .popup4, .popup5, .popup6 {
+.popup,
+.popup1,
+.popup2,
+.popup3,
+.popup4,
+.popup5,
+.popup6 {
   display: none;
   position: fixed;
   top: 0;
@@ -340,7 +351,13 @@ button.return-button {
   align-items: center;
 }
 
-.popup-content, .popup-content1, .popup-content2, .popup-content3, .popup-content4, .popup-content5, .popup-content6 {
+.popup-content,
+.popup-content1,
+.popup-content2,
+.popup-content3,
+.popup-content4,
+.popup-content5,
+.popup-content6 {
   background: white;
   padding: 20px;
   text-align: center;
@@ -351,7 +368,13 @@ button.return-button {
   align-items: center;
 }
 
-#popup-ok-button, #popup-ok-button1, #popup-ok-button2, #popup-ok-button3, #popup-ok-button4, #popup-ok-button5, #popup-ok-button6 {
+#popup-ok-button,
+#popup-ok-button1,
+#popup-ok-button2,
+#popup-ok-button3,
+#popup-ok-button4,
+#popup-ok-button5,
+#popup-ok-button6 {
   background: #15d25a;
   color: white;
   border: none;
