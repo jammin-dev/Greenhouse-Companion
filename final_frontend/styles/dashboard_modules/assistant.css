@@ -1,0 +1,156 @@
+/* ----------------------- ToDo Module ----------------------- */
+.dashbord__module--assistant {
+  grid-area: todolist;
+  grid-column: span 1;
+  grid-row: span 1;
+  border-radius: 0 0 0 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: flex-start;
+  background-size: auto 10%;
+}
+@media only screen and (max-width: 1400px) {
+  .dashbord__module--todolist {
+    border-radius: 0px 0px 0px 100px;
+    grid-row: span 1;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .dashbord__module--todolist {
+    border-radius: 30px 30px 30px 30px;
+  }
+}
+.add-todo-button {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.dashbord__module__content--todolist {
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-start;
+  margin-top: 60px;
+  align-items: start;
+}
+.todolist-container {
+  gap: 15px;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+}
+.todolist-container__task {
+  font-size: 19px;
+}
+
+.chat-container {
+  font-size: small;
+  display: flex;
+  width: 330px;
+  flex-direction: column;
+  align-items: flex-start; /* Align conversation to the left */
+  justify-content: flex-end;
+  max-height: 270px; /* Set a max height for scrolling */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding-bottom: 10px;
+}
+
+#user-input {
+  display : flex;
+  position: absolute;
+  width: 75%;
+  height: 40px;
+  bottom: 10%;
+  border: none;
+  outline: none;
+  resize: none;
+  padding-top: 10px;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 300;
+  font-family: Roboto;
+  background-color: #f5f5f5;
+  border-radius: 40px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+#submit-button {
+  position: absolute;
+  bottom: 10%; /* Adjust to your preferred distance from the bottom */
+  right: 13%; /* Adjust to your preferred distance from the right */
+  width: 40px;
+  height: 40px;
+  font-size: 15px;
+  font-weight: 300;
+  font-family: Roboto;
+  background-color: #67d46d;
+  border: solid 1px #818581;
+  outline: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-message {
+  align-self: flex-end;
+  width: auto; /* Limit the maximum width for messages */
+  margin: 5px;
+  margin-left: 100px;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 300;
+  font-family: Roboto;
+  background-color: #77c4f8;
+  border-radius: 20px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+  overflow: visible;
+}
+
+.assistant-message {
+  max-width: 75%; /* Limit the maximum width for messages */
+  margin: 5px;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 300;
+  font-family: Roboto;
+  background-color: #babcbe;
+  border-radius: 20px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+}
+
+.chat-output {
+  width: 100%;
+  overflow: scroll;
+}
+
+.chat-output::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+@keyframes dots {
+  0% { content: " ."; }
+  20% { content: " .."; }
+  40% { content: " ..."; }
+  60% { content: " ."; }
+  80% { content: " .."; }
+  100% { content: " ..."; }
+}
+
+.typing-dots {
+  font-size: 20px;
+  font-weight: 300;
+  font-family: Roboto;
+}
+.typing-dots::before {
+  content: " ...";
+  animation: dots 3s infinite;
+}

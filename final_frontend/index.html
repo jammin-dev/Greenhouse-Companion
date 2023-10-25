@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="styles/dashboard_modules/recommandations.css" />
   <link rel="stylesheet" href="styles/dashboard_modules/to-do-list.css" />
   <link rel="stylesheet" href="styles/dashboard_modules/automation.css" />
+  <link rel="stylesheet" href="styles/dashboard_modules/assistant.css" />
 
   <script src="
   https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js
@@ -53,9 +54,9 @@
   </div>
 
   <div class="common_container">
-    <div class="logo_container">
+    <!-- <div class="logo_container">
       <img src="./styles/assets/GreenHouse.png" alt="logo" class="logo">
-    </div>
+    </div> -->
     <aside>
       <ul>
         <li id="dashboard_page" class="icon-aside icon_dashboard"></li>
@@ -120,7 +121,6 @@
           <div id="form-add-garden-area"></div>
           <div id="form-delete"></div>
         </div>
-
         <div class="dashbord__module dashbord__module--air-sensors">
           <h2 class="dashbord__module__title" id="plantManagerTitle">Air Sensors</h2>
           <div class="dashbord__module__content dashbord__module__content--air-sensors">
@@ -143,6 +143,7 @@
             </div>
           </div>
         </div>
+
 
         <div class="dashbord__module dashbord__module--recommandations">
           <h2 class="dashbord__module__title">Recommandation</h2>
@@ -168,6 +169,60 @@
           </div>
         </div>
 
+        <!-- <div class="dashbord__module"></div> -->
+
+
+        <div class="dashbord__module dashbord__module--assistant">
+          <h2 class="dashbord__module__title" id="assistant_title">Gardener assistant</h2>
+          <div class="dashbord__module__content dashbord__module__content--todolist">
+            <div class="chat-container">
+              <div class="chat-output" id="chat-output"></div>
+              <input type="text" id="user-input" placeholder="Hey gardener ! How can I help you ?">
+              <button id="submit-button">🥕</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashbord__module dashbord__module--todolist">
+          <h2 class="dashbord__module__title">ToDo List</h2>
+          <div class="add-todo-button">+</div>
+          <div class="dashbord__module__content dashbord__module__content--todolist">
+            <div class="task">
+              <label>
+                <!-- <span>!!</span> -->
+                <input type="checkbox">
+                Fertilize tomatoes
+              </label>
+              <button class="delete-button"></button>
+            </div>
+            <div class="task">
+              <label>
+                <!-- <span class="task__checkbox">!!!</span> -->
+                <input type="checkbox">
+                Cleaning the greenhouse
+              </label>
+              <button class=" delete-button"></button>
+            </div>
+            <div class="task">
+              <label>
+                <!-- <span>!</span> -->
+                <input type="checkbox">
+                Sowing spinach
+              </label>
+              <button class="delete-button"></button>
+            </div>
+            <!-- <div class="todolist-container">
+              <input class="todolist-container__checkbox" type="checkbox" id="toDoDone" name="ToDoDone" unchecked />
+              <label class="todolist-container__task" for="scales">Fertilize bell-peppers</label>
+
+              <input class="todolist-container__checkbox" type="checkbox" id="scales" name="scales" checked />
+              <input class="todolist-container__remove" type="checkbox" id="scales" name="scales" checked />
+            </div> -->
+          </div>
+        </div>
+
+
+
         <div class="dashbord__module dashbord__module--automation">
           <h2 class="dashbord__module__title">Automation</h2>
           <div class="signal_statut"></div>
@@ -187,35 +242,7 @@
           </div>
         </div>
 
-        <div class="dashbord__module dashbord__module--todolist">
-          <h2 class="dashbord__module__title">Gardener assistant</h2>
-          <div class="add-todo-button">+</div>
-          <div class="dashbord__module__content dashbord__module__content--todolist">
-            <div class="chat-container">
-              <div class="chat-output" id="chat-output"></div>
-              <input type="text" id="user-input" placeholder="Hey gardener ! How can I help you ?">
-              <button id="submit-button">🥕</button>
-            </div>
-            <!-- <div class="todolist-container">
-              <input class="todolist-container__checkbox" type="checkbox" id="scales" name="scales" checked />
-              <input class="todolist-container__remove" type="checkbox" id="scales" name="scales" checked />
-              <label class="todolist-container__task" for="scales">Fertilize bell-peppers</label>
-              <input class="todolist-container__checkbox" type="checkbox" id="scales" name="scales" checked />
-            </div>
-            <div class="todolist-container">
-              <input class="todolist-container__checkbox" type="checkbox" id="scales" name="scales" checked />
-              <input class="todolist-container__remove" type="checkbox" id="scales" name="scales" checked />
-              <label class="todolist-container__task" for="scales">Harvest carrots</label>
-              <input class=" todolist-container__checkbox" type="checkbox" id="scales" name="scales" checked />
-            </div>
-            <div class="todolist-container">
-              <input class="todolist-container__checkbox" type="checkbox" id="scales" name="scales" checked />
-              <input class="todolist-container__remove" type="checkbox" id="scales" name="scales" checked />
-              <label class="todolist-container__task" for="scales">Remove weeds middle area</label>
-              <input class=" todolist-container__checkbox" type="checkbox" id="scales" name="scales" checked />
-            </div> -->
-          </div>
-        </div>
+
 
         <div class="dashbord__module dashbord__module--forecast">
           <h2 class="dashbord__module__title">Forecast</h2>
@@ -223,6 +250,9 @@
             <!--------- forecast.js to integrate forecast_container --------->
           </div>
         </div>
+
+
+
       </div>
       <div id="container_charts">
         <div id="box_charts">
