@@ -1,15 +1,14 @@
 .dashboard {
   display: grid;
-  grid-template-areas:
-    'plant-manager air-sensors recommandations'
-    'plant-manager automation todolist'
-    'plant-manager forecast todolist';
+  /* grid-template-areas:
+    'plant-manager . recommandations'
+    'air-sensors . todolist'
+    'automation forecast todolist'; */
   width: 100%;
   gap: 15px;
   grid-template-columns: repeat(3, 370px);
   grid-auto-rows: 210px;
   justify-content: center;
-  transition: 1000ms;
 }
 @media only screen and (max-width: 950px) {
   .dashboard {

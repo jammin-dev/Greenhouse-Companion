@@ -1,8 +1,8 @@
 /* ----------------------- AirSensor Module ----------------------- */
 .dashbord__module--air-sensors {
   grid-area: air-sensors;
-  /* grid-column: span 1;
-  grid-row: span 1; */
+  grid-column: span 1;
+  grid-row: span 1;
 }
 @media only screen and (max-width: 1400px) {
   .dashbord__module--air-sensors {
@@ -16,9 +16,10 @@
 }
 
 .dashbord__module__content--air-sensors {
-  gap: 30px;
+  gap: 55px;
 }
 .air-sensors-container {
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;

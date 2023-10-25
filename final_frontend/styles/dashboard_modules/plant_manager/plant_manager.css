@@ -1,8 +1,8 @@
 .dashbord__module--plant-manager {
   grid-area: plant-manager;
-  /* grid-column: span 1;
-  grid-row: span 3; */
-  border-radius: 100px 5px 5px 100px;
+  grid-column: span 1;
+  grid-row: span 2;
+  border-radius: 100px 5px 5px 5px;
 }
 @media only screen and (max-width: 1400px) {
   .dashbord__module--plant-manager {

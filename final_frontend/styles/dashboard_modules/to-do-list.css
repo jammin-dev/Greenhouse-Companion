@@ -1,9 +1,9 @@
 /* ----------------------- ToDo Module ----------------------- */
 .dashbord__module--todolist {
   grid-area: todolist;
-  /* grid-column: span 1;
-  grid-row: span 2; */
-  border-radius: 0 0 100px 0;
+  grid-column: span 1;
+  grid-row: span 2;
+  border-radius: 5px 5px 100px 5px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -48,109 +48,34 @@
   font-size: 19px;
 }
 
-.chat-container {
-  font-size: small;
-  display: flex;
-  width: 330px;
-  flex-direction: column;
-  align-items: flex-start; /* Align conversation to the left */
-  justify-content: flex-end;
-  max-height: 270px; /* Set a max height for scrolling */
-  overflow-y: auto; /* Enable vertical scrolling */
-  padding-bottom: 10px;
-}
 
-#user-input {
-  display : flex;
-  position: absolute;
-  width: 75%;
-  height: 40px;
-  bottom: 10%;
-  border: none;
-  outline: none;
-  resize: none;
-  padding-top: 10px;
-  padding: 10px;
-  font-size: 15px;
-  font-weight: 300;
-  font-family: Roboto;
-  background-color: #f5f5f5;
-  border-radius: 40px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-}
 
-#submit-button {
-  position: absolute;
-  bottom: 42px; /* Adjust to your preferred distance from the bottom */
-  right: 25px; /* Adjust to your preferred distance from the right */
-  width: 40px;
-  height: 40px;
-  font-size: 15px;
-  font-weight: 300;
-  font-family: Roboto;
-  background-color: #67d46d;
-  border: solid 1px #818581;
-  outline: none;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.user-message {
-  align-self: flex-end;
-  width: auto; /* Limit the maximum width for messages */
-  margin: 5px;
-  margin-left: 100px;
-  padding: 10px;
-  font-size: 15px;
-  font-weight: 300;
-  font-family: Roboto;
-  background-color: #77c4f8;
-  border-radius: 20px;
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
-  overflow: visible;
-}
 
-.assistant-message {
-  max-width: 75%; /* Limit the maximum width for messages */
-  margin: 5px;
-  padding: 10px;
-  font-size: 15px;
-  font-weight: 300;
-  font-family: Roboto;
-  background-color: #babcbe;
-  border-radius: 20px;
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
-}
-
-.chat-output {
+.task {
   width: 100%;
-  overflow: scroll;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  /* height: 35px; */
 }
 
-.chat-output::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+.task__checkbox {
+  height: 100%;
 }
 
-@keyframes dots {
-  0% { content: " ."; }
-  20% { content: " .."; }
-  40% { content: " ..."; }
-  60% { content: " ."; }
-  80% { content: " .."; }
-  100% { content: " ..."; }
+.task input[type="checkbox"] {
+  margin-right: 10px;
 }
 
-.typing-dots {
-  font-size: 20px;
-  font-weight: 300;
-  font-family: Roboto;
-}
-.typing-dots::before {
-  content: " ...";
-  animation: dots 3s infinite;
+.task .delete-button {
+  background-color: rgba(0, 0, 0, 0.0);
+  cursor: pointer;
+  width: 30px;
+  background-image: url(../assets/deleteToDo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 15px;
+  margin-top: 0;
 }
