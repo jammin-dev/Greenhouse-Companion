@@ -8,7 +8,6 @@
   flex-direction: column;
   position: relative;
   justify-content: flex-start;
-  background-size: auto 10%;
 }
 @media only screen and (max-width: 1400px) {
   .dashbord__module--todolist {
@@ -23,13 +22,16 @@
 }
 .add-todo-button {
   position: absolute;
-  top: 0px;
-  right: 0px;
-  font-size: 50px;
+top: 10px;
+right: 10px;
   width: 50px;
   height: 50px;
-  border-radius: 50%;
   overflow: hidden;
+  background-image: url(../assets/addToDo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 45px;
+  cursor: pointer;
 }
 .dashbord__module__content--todolist {
   flex-direction: column;

@@ -25,6 +25,7 @@
   align-items: center;
   gap: 12px;
   font-size: 15px;
+  margin-top: 20px;
 }
 .forecast-container__icon {
   width: 40px;

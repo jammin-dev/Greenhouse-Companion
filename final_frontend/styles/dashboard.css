@@ -51,6 +51,7 @@
   position: absolute;
   top: 0;
   margin-top: 15px;
+  cursor: pointer;
 }
 .dashbord__module__content {
   display: flex;

@@ -138,9 +138,14 @@ h2 {
   width: 50px;
   height: 50px;
 }
+.header__title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
 
 .signal_statut {
-  position: absolute;
+  
   top: 20px;
   right: 20px;
   width: 10px;

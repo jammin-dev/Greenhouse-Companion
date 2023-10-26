@@ -67,7 +67,10 @@
     </aside>
     <main>
       <header>
-        <h1>Greenhouse Companion</h1>
+        <div class="header__title">
+          <h1>Greenhouse Companion</h1>
+          <div class="signal_statut"></div>
+        </div>
         <p id="date"></p>
       </header>
       <div class="dashboard" id="container_dashboard">
@@ -185,11 +188,10 @@
 
         <div class="dashbord__module dashbord__module--todolist">
           <h2 class="dashbord__module__title">ToDo List</h2>
-          <div class="add-todo-button">+</div>
-          <div class="dashbord__module__content dashbord__module__content--todolist">
-            <div class="task">
+          <div class="add-todo-button" id="addTask"></div>
+          <div class="dashbord__module__content dashbord__module__content--todolist" id="toDoContainer">
+            <!-- <div class="task">
               <label>
-                <!-- <span>!!</span> -->
                 <input type="checkbox">
                 Fertilize tomatoes
               </label>
@@ -197,7 +199,6 @@
             </div>
             <div class="task">
               <label>
-                <!-- <span class="task__checkbox">!!!</span> -->
                 <input type="checkbox">
                 Cleaning the greenhouse
               </label>
@@ -205,12 +206,11 @@
             </div>
             <div class="task">
               <label>
-                <!-- <span>!</span> -->
                 <input type="checkbox">
                 Sowing spinach
               </label>
               <button class="delete-button"></button>
-            </div>
+            </div> -->
             <!-- <div class="todolist-container">
               <input class="todolist-container__checkbox" type="checkbox" id="toDoDone" name="ToDoDone" unchecked />
               <label class="todolist-container__task" for="scales">Fertilize bell-peppers</label>
@@ -225,20 +225,46 @@
 
         <div class="dashbord__module dashbord__module--automation">
           <h2 class="dashbord__module__title">Automation</h2>
-          <div class="signal_statut"></div>
           <div class="dashbord__module__content dashbord__module__content--automation">
             <div class="automation-container">
-              <p class="automation-container__plug-name">plug1</p>
+              <p class="automation-container__plug-name">1</p>
+              <div class="automation-container__icon automation-container__icon--watering"></div>
+              <input list="timer" class="automation-container__form">
+              <datalist id="timer">
+                <option value="15">
+                <option value="30">
+                <option value="60">
+                <option value="90">
+              </datalist>
             </div>
             <div class="automation-container">
-              <p class="automation-container__plug-name">plug2</p>
+              <p class="automation-container__plug-name">2</p>
+              <div class="automation-container__icon automation-container__icon--watering"></div>
+              <input list="timer" class="automation-container__form">
+              <datalist id="timer">
+                <option value="15">
+                <option value="30">
+                <option value="60">
+                <option value="90">
+              </datalist>
             </div>
             <div class="automation-container">
-              <p class="automation-container__plug-name">plug3</p>
+              <p class="automation-container__plug-name">3</p>
+              <div class="automation-container__icon automation-container__icon--watering"></div>
+              <input list="timer" class="automation-container__form">
+              <datalist id="timer">
+                <option value="15">
+                <option value="30">
+                <option value="60">
+                <option value="90">
+              </datalist>
             </div>
-            <div class="automation-container">
-              <p class="automation-container__plug-name">plug4</p>
-            </div>
+            <!-- <div class="automation-container">
+              <p class="automation-container__plug-name">4</p>
+              <div class="automation-container__icon automation-container__icon--fan"></div>
+              <div class="automation-container__plug-settings"></div>
+            </div> -->
+            <div class="automation-container__sendButton"></div>
           </div>
         </div>
 
@@ -265,7 +291,6 @@
             <input type="submit" value="Submit" class="btn btn-primary">
           </form>
           <canvas id="chart"></canvas>
-
         </div>
       </div>
 
@@ -305,6 +330,8 @@
   <script src="./forecast_module/forecast.js"></script>
 
   <script src="./chatGPT_module/chatGPT.js"></script>
+
+  <script src="./scripts/dashboard_modules/toDoList.js"></script>
 
 
   <script src="./scripts//dashboard_modules/plant_manager/script_formulaire.js"></script>
