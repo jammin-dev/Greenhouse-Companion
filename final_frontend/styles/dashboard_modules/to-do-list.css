@@ -30,7 +30,7 @@ right: 10px;
   background-image: url(../assets/addToDo.png);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 45px;
+  background-size: 35px;
   cursor: pointer;
 }
 .dashbord__module__content--todolist {
@@ -49,10 +49,6 @@ right: 10px;
 .todolist-container__task {
   font-size: 19px;
 }
-
-
-
-
 
 .task {
   width: 100%;

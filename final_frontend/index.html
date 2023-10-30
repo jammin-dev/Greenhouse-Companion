@@ -109,8 +109,8 @@
                 <p>Delete</p>
               </div>
             </div>
-            <h6>List of sowed vegetables</h6>
-            <div class="sowing-table-container">
+            <h6 style="display: none;">List of sowed vegetables</h6>
+            <div class="sowing-table-container" style="display: none;">
               <table id="sowing-table">
                 <tbody>
                 </tbody>
@@ -150,7 +150,7 @@
 
         <div class="dashbord__module dashbord__module--recommandations">
           <h2 class="dashbord__module__title">Recommandation</h2>
-          <div class="dashbord__module__content dashbord__module__content--recommandations">
+          <div id="recommandationModule" class="dashbord__module__content dashbord__module__content--recommandations">
             <div class="recommandations-container recommandations-container1">
               <p class="recommandations-container__vegetable-name">Carrot</p>
             </div>
@@ -176,10 +176,12 @@
 
 
         <div class="dashbord__module dashbord__module--assistant">
-          <h2 class="dashbord__module__title" id="assistant_title">Gardener assistant</h2>
-          <div class="dashbord__module__content dashbord__module__content--todolist">
+          <h2 class="dashbord__module__title dashbord__module__title--assistant" id="assistant_title">Gardener assistant
+          </h2>
+          <div class="dashbord__module__content dashbord__module__content--assistant">
             <div class="chat-container">
               <div class="chat-output" id="chat-output"></div>
+
               <input type="text" id="user-input" placeholder="Hey gardener ! How can I help you ?">
               <button id="submit-button">🥕</button>
             </div>
@@ -190,34 +192,6 @@
           <h2 class="dashbord__module__title">ToDo List</h2>
           <div class="add-todo-button" id="addTask"></div>
           <div class="dashbord__module__content dashbord__module__content--todolist" id="toDoContainer">
-            <!-- <div class="task">
-              <label>
-                <input type="checkbox">
-                Fertilize tomatoes
-              </label>
-              <button class="delete-button"></button>
-            </div>
-            <div class="task">
-              <label>
-                <input type="checkbox">
-                Cleaning the greenhouse
-              </label>
-              <button class=" delete-button"></button>
-            </div>
-            <div class="task">
-              <label>
-                <input type="checkbox">
-                Sowing spinach
-              </label>
-              <button class="delete-button"></button>
-            </div> -->
-            <!-- <div class="todolist-container">
-              <input class="todolist-container__checkbox" type="checkbox" id="toDoDone" name="ToDoDone" unchecked />
-              <label class="todolist-container__task" for="scales">Fertilize bell-peppers</label>
-
-              <input class="todolist-container__checkbox" type="checkbox" id="scales" name="scales" checked />
-              <input class="todolist-container__remove" type="checkbox" id="scales" name="scales" checked />
-            </div> -->
           </div>
         </div>
 
@@ -338,6 +312,7 @@
   <script src="./scripts//dashboard_modules/plant_manager/script_formulaire.js"></script>
 
   <script src="./scripts/dashboard_modules/air_sensors.js"></script>
+  <script src="./scripts/dashboard_modules/recommandations.js"></script>
 
   <script src=" ./scripts/chart_page.js"></script>
   <script src=" ./scripts/production_page.js"></script>

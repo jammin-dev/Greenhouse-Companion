@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const quickInfosSpacingBetweenRow = document.createElement('div');
       quickInfosSpacingBetweenRow.classList =
-        'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--spacing-between-row';
+        'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--soil-temperature';
 
       const quickInfosWaterNeeds = document.createElement('div');
       quickInfosWaterNeeds.classList =
