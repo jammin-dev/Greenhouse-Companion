@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const chatOutput = document.getElementById('chat-output');
   const userInput = document.getElementById('user-input');
   const submitButton = document.getElementById('submit-button');
@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Function to add an assistant message to the chat
   function addAssistantMessage(message) {
-    chatOutput.innerHTML += '<div class="assistant-message">' + message + '</div>';
+    chatOutput.innerHTML +=
+      '<div class="assistant-message">' + message + '</div>';
     chatOutput.scrollTop = chatOutput.scrollHeight;
   }
 
@@ -20,43 +21,43 @@ document.addEventListener('DOMContentLoaded', function() {
     addUserMessage(userQuestion);
 
     // Display animated "..." to indicate that the assistant is generating a response
-  const typingDots = document.createElement('div');
-  typingDots.className = 'assistant-message typing-dots';
-  chatOutput.appendChild(typingDots);
+    const typingDots = document.createElement('div');
+    typingDots.className = 'assistant-message typing-dots';
+    chatOutput.appendChild(typingDots);
 
     // Set a context system message that gently guides the conversation
-    const systemMessage = "Welcome to the garden of knowledge! 🌱 I'm a gardening enthusiast, and I'm here to help with all things gardening. Feel free to ask me your gardening questions, or let's explore the wonderful world of plants and vegetables. I'm a technical expert of how to plant, to water or harvest different varieties of vegetables in France. But be warned, if your question strays too far from the garden, I might lead you back with a touch of irony! 😉";
-;
-
+    const systemMessage =
+      "Welcome to the garden of knowledge! 🌱 I'm a gardening enthusiast, and I'm here to help with all things gardening. Feel free to ask me your gardening questions, or let's explore the wonderful world of plants and vegetables. I'm a technical expert of how to plant, to water or harvest different varieties of vegetables in France. But be warned, if your question strays too far from the garden, I might lead you back with a touch of irony! 😉";
     // Make the API request and handle the response
     fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer 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', // Replace with your actual OpenAI API key
-        },
-        body: JSON.stringify({
-            model: "gpt-3.5-turbo",
-            messages: [
-                {"role": "system", "content": systemMessage},
-                {"role": "user", "content": userQuestion},
-            ],
-            max_tokens: 500,
-        })
-    }).then(response => response.json())
-      .then(data => {
-
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization:
+          'Bearer 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', // Replace with your actual OpenAI API key
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: [
+          { role: 'system', content: systemMessage },
+          { role: 'user', content: userQuestion },
+        ],
+        max_tokens: 500,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
         chatOutput.removeChild(typingDots);
 
         const generatedText = data.choices[0].message.content;
         addAssistantMessage(generatedText);
-      }).catch(error => {
-        console.error("Error:", error);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
       });
     // Clear the user input field
     userInput.value = '';
-}
-
+  }
 
   // Event listener for the submit button
   submitButton.addEventListener('click', sendQuestionToAPI);

@@ -130,7 +130,7 @@ right the detail of the vegetable choosen -----------------------
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   text-align: center;
   background-repeat: no-repeat;
-  background-size: 45px;
+  background-size: 35px;
   background-position: center;
 }
 .vegetable-characteristic__quick-infos__item--watering {
@@ -139,11 +139,11 @@ right the detail of the vegetable choosen -----------------------
 .vegetable-characteristic__quick-infos__item--frost {
   background-image: url(./assets/frost.png);
 }
-.vegetable-characteristic__quick-infos__item--spacing-between-row {
-  background-image: url(./assets/watering.png);
+.vegetable-characteristic__quick-infos__item--soil-temperature {
+  background-image: url(./assets/soilTemperature.png);
 }
 .vegetable-characteristic__quick-infos__item--spacing-on-row {
-  background-image: url(./assets/watering.png);
+  background-image: url(./assets/distancePlant.png);
 }
 .vegetable-characteristic__table {
   margin-top: 30px;

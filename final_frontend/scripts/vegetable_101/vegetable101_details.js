@@ -5,7 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
   all_vegetables.addEventListener('click', (event) => {
     if (event.target.classList.contains('allVegetables__item')) {
       const vegetableItem = event.target;
-      const vegetableName = vegetableItem.getAttribute('name');
+      const vegetableName = vegetableItem
+        .getAttribute('name')
+        .replace(/\s/g, '');
+      console.log(vegetableName);
       const vegetableStart_indoor = vegetableItem.getAttribute('start_indoor');
       const vegetableStart_outdoor =
         vegetableItem.getAttribute('start_outdoor');
@@ -50,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const quickInfosSpacingBetweenRow = document.createElement('div');
       quickInfosSpacingBetweenRow.classList =
-        'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--spacing-between-row';
+        'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--soil-temperature';
 
       const quickInfosWaterNeeds = document.createElement('div');
       quickInfosWaterNeeds.classList =

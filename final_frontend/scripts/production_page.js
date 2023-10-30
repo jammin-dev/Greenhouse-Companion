@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const harvestDate = new Date(vegetable.harvest_date);
                 const harvestMonth = harvestDate.getMonth();
                 const harvestDay = harvestDate.getDate();
-                harvestCell = parseInt(harvestMonth * 4 + harvestDay / 4) + 1;
+                harvestCell = parseInt(harvestMonth * 4 + harvestDay / 4);
               }
 
               if (vegetable.sowing_date) {
@@ -86,21 +86,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 startMonth = plantingDate.getMonth();
                 startDay = plantingDate.getDate();
               }
-              startCell = parseInt(startMonth * 4 + startDay / 4) + 1;
+              startCell = parseInt(startMonth * 4 + startDay / 4 + 2);
 
               if (vegetable.remove_date) {
                 const removeDate = new Date(vegetable.remove_date);
                 endMonth = removeDate.getMonth();
                 endDay = removeDate.getDate();
+                endCell = parseInt(endMonth * 4 + endDay / 4 + 1);
               } else {
                 endMonth = currentDate.getMonth();
                 endDay = currentDate.getDate();
+                endCell = parseInt(endMonth * 4 + endDay / 4 - 1);
               }
-              endCell = parseInt(endMonth * 4 + endDay / 4) + 1;
 
-              console.log(`start: ${startCell}`);
-              console.log(`end: ${endCell}`);
-              console.log(`harvest: ${harvestCell}`);
               for (let i = 0; i <= 51; i++) {
                 const tableCell = document.createElement('td');
                 if ((i > 0 && i < 3) || i === 51) {

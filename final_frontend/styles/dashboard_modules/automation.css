@@ -1,8 +1,10 @@
 /* ----------------------- Automation Module ----------------------- */
 .dashbord__module--automation {
   grid-area: automation;
-  /* grid-column: span 1;
-  grid-row: span 1; */
+  grid-column: span 1;
+  grid-row: span 1;
+  border-radius: 5px 5px 5px 100px;
+ 
 }
 @media only screen and (max-width: 1400px) {
   .dashbord__module--automation {
@@ -15,75 +17,58 @@
   }
 }
 .dashbord__module__content--automation {
+  margin-top: 10px;
   width: 100%;
   justify-content: space-around;
 }
 .automation-container {
-  font-size: 15px;
-}
-.automation-container__plug-name {
-  border: 1px black solid;
-  padding: 10px;
-}
-
-/* ---------------------------------------------------------------
----------------------------- Toggle Button -----------------------
---------------------------------------------------------------- */
-.toggle {
-  cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 100px;
-  gap: 10px;
-}
-
-.toggle-switch {
-  display: inline-block;
-  background: #ccc;
-  border-radius: 16px;
-  width: 58px;
-  height: 32px;
+  justify-content: center;
+  gap: 5px;
   position: relative;
-  vertical-align: middle;
-  transition: background 0.25s;
 }
-.toggle-switch:before,
-.toggle-switch:after {
-  content: '';
+.automation-container__plug-name {
+  font-size: 13px;
+  font-weight: 600;
 }
-.toggle-switch:before {
-  display: block;
-  background: linear-gradient(to bottom, #fff 0%, #eee 100%);
-  border-radius: 50%;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  transition: left 0.25s;
+.automation-container__icon {
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-size: 45px;
+  background-position: center;
 }
-.toggle:hover .toggle-switch:before {
-  background: linear-gradient(to bottom, #fff 0%, #fff 100%);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+.automation-container__icon--fan {
+  background-image: url(../assets/fan.png);
 }
-.toggle-checkbox:checked + .toggle-switch {
-  background: #74cd98;
-}
-.toggle-checkbox:checked + .toggle-switch:before {
-  left: 30px;
+.automation-container__icon--watering {
+  background-image: url(../assets/automationWatering.png);
 }
 
-.toggle-checkbox {
-  position: absolute;
-  visibility: hidden;
+.automation-container__form{
+  width: 50px;
+  height: 20px;
 }
 
-.toggle-label {
-  margin-left: 5px;
-  position: relative;
-  top: 2px;
+.automation-container__sendButton{
+position: absolute;
+top: 10px;
+right: 10px;
+width: 50px;
+height: 50px;
+background-image: url(../assets/automationButton.png);
+background-repeat: no-repeat;
+background-position: center;
+background-size: 35px;
+cursor: pointer;
+}
+.automation-container__plug-settings{
+  background-image: url(../assets/automationSettings.png);
+background-repeat: no-repeat;
+background-position: center;
+background-size: 20px;
+  width: 20px;
+  height: 20px;
 }
