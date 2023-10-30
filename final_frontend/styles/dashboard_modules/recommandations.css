@@ -5,6 +5,7 @@
   grid-row: span 1;
   border-radius: 5px 100px 5px 5px;
 }
+
 @media only screen and (max-width: 1400px) {
   .dashbord__module--recommandations {
     border-radius: 5px 5px 5px 5px;
@@ -17,39 +18,29 @@
 }
 .dashbord__module__content--recommandations {
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-top: 27px;
   justify-content: start;
+  align-items: start;
+  overflow: scroll;
+  width: 100%;
+  min-height: 80%;
+}
+.dashbord__module__content--recommandations::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .recommandations-container {
-  width: 65px;
-  height: 70px;
+  width: 68px;
+  height: 62px;
   background-repeat: no-repeat;
-  background-size: 50px;
+  background-size: 40px;
   background-position: top;
-  font-size: 15px;
+  font-size: 12px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-}
-
-.recommandations-container1 {
-  background-image: url(../assets/vegetable_icons/Carrot.png);
-}
-.recommandations-container2 {
-  background-image: url(../assets/vegetable_icons/Tomato.png);
-}
-.recommandations-container3 {
-  background-image: url(../assets/vegetable_icons/Cabbage.png);
-}
-.recommandations-container4 {
-  background-image: url(../assets/vegetable_icons/Peas.png);
-}
-.recommandations-container5 {
-  background-image: url(../assets/vegetable_icons/Beet.png);
-}
-.recommandations-container6 {
-  background-image: url(../assets/vegetable_icons/Spinach.png);
+  background-position: center;
 }
 
 .recommandations-container__vegetable-name {

@@ -151,7 +151,7 @@
         <div class="dashbord__module dashbord__module--recommandations">
           <h2 class="dashbord__module__title">Recommandation</h2>
           <div id="recommandationModule" class="dashbord__module__content dashbord__module__content--recommandations">
-            <div class="recommandations-container recommandations-container1">
+            <!-- <div class="recommandations-container recommandations-container1">
               <p class="recommandations-container__vegetable-name">Carrot</p>
             </div>
             <div class="recommandations-container recommandations-container2">
@@ -168,7 +168,7 @@
             </div>
             <div class="recommandations-container recommandations-container6">
               <p class="recommandations-container__vegetable-name">Spinach</p>
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -258,11 +258,15 @@
         <div id="box_charts">
           <h2>Charts</h2>
           <form action="" id="chartSubmit">
-            <label for="startDate">Start Date:</label>
-            <input type="date" id="startDate" name="startDate">
-            <label for="endDate">End Date:</label>
-            <input type="date" id="endDate" name="endDate">
-            <input type="submit" value="Submit" class="btn btn-primary">
+            <div class="charts__start-date">
+              <label for="startDate">From</label>
+              <input type="date" id="startDate" name="startDate">
+            </div>
+            <div class="charts__end-date">
+              <label for="endDate">To</label>
+              <input type="date" id="endDate" name="endDate">
+            </div>
+            <input type="submit" value="Display" class="charts__submit-button">
           </form>
           <canvas id="chart"></canvas>
         </div>

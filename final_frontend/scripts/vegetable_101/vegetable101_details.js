@@ -5,7 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
   all_vegetables.addEventListener('click', (event) => {
     if (event.target.classList.contains('allVegetables__item')) {
       const vegetableItem = event.target;
-      const vegetableName = vegetableItem.getAttribute('name');
+      const vegetableName = vegetableItem
+        .getAttribute('name')
+        .replace(/\s/g, '');
+      console.log(vegetableName);
       const vegetableStart_indoor = vegetableItem.getAttribute('start_indoor');
       const vegetableStart_outdoor =
         vegetableItem.getAttribute('start_outdoor');

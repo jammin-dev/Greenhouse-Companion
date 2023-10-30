@@ -59,6 +59,14 @@ async function displayToDo() {
       // Create an input element for the checkbox
       const checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
+      checkbox.checked = element.complete; // Set checkbox state based on completion status
+
+      // Add a change event listener to update completion status
+      checkbox.addEventListener('change', function () {
+        const taskId = element.id;
+        const newCompletionStatus = this.checked;
+        updateCompletionStatus(taskId, newCompletionStatus);
+      });
 
       // Create a text node with the task description
       const text = document.createTextNode(element.task);
@@ -115,4 +123,24 @@ async function updateTasks() {
     toDoContainer.removeChild(toDoContainer.firstChild);
   }
   displayToDo();
+}
+
+async function updateCompletionStatus(taskId, newCompletionStatus) {
+  try {
+    const updateResponse = await fetch(`${urlTodo}/${taskId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ complete: newCompletionStatus }),
+    });
+
+    if (!updateResponse.ok) {
+      throw new Error(`HTTP error! Status: ${updateResponse.status}`);
+    }
+
+    // You can update the UI or perform other actions upon a successful update if needed.
+  } catch (error) {
+    console.error('Error updating completion status:', error);
+  }
 }

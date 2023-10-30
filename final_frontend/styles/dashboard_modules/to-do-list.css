@@ -22,8 +22,8 @@
 }
 .add-todo-button {
   position: absolute;
-top: 10px;
-right: 10px;
+  top: 10px;
+  right: 10px;
   width: 50px;
   height: 50px;
   overflow: hidden;
@@ -56,19 +56,19 @@ right: 10px;
   justify-content: space-between;
   align-items: center;
   font-size: 18px;
-  /* height: 35px; */
+  height: 25px;
 }
 
 .task__checkbox {
   height: 100%;
 }
 
-.task input[type="checkbox"] {
+.task input[type='checkbox'] {
   margin-right: 10px;
 }
 
 .task .delete-button {
-  background-color: rgba(0, 0, 0, 0.0);
+  background-color: rgba(0, 0, 0, 0);
   cursor: pointer;
   width: 30px;
   background-image: url(../assets/deleteToDo.png);
@@ -76,4 +76,30 @@ right: 10px;
   background-position: center;
   background-size: 15px;
   margin-top: 0;
+}
+
+input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #555;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* Style the labels containing the checkboxes (optional) */
+label {
+  display: flex;
+  align-items: center; /* Align the label and checkbox vertically */
+}
+/* Style the custom checkbox as you like */
+input[type='checkbox']:checked::before {
+  content: '✓'; /* You can use any content for the checked state */
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #4caf50;
+  background-color: #4caf50;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 20px;
+  color: white;
 }

@@ -141,15 +141,22 @@ h2 {
 .header__title {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
 }
 
 .signal_statut {
-  
-  top: 20px;
-  right: 20px;
   width: 10px;
   height: 10px;
   background-color: #67d46d;
   border-radius: 50%;
+  animation: lighting 3s ease infinite alternate; /* Alternate back and forth */
+}
+
+@keyframes lighting {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
 }
