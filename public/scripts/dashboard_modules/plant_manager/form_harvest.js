@@ -42,66 +42,75 @@ renderHarvestForm();
 // Get the "Harvest Vegetable" button by its ID
 const addButtonHarvest = document.querySelector('#add-vegetable-button-harvest');
 
-// Add a click event listener to the button
 addButtonHarvest.addEventListener('click', function (event) {
   event.preventDefault(); // Prevent the default form submission
 
-  // Retrieve the quantity value within the event handler
   const quantity = document.querySelector('#quantity_harvest').value;
   const selectedNameOption = document.querySelector('#name_harvest option:checked');
   const harvestDate = document.querySelector('#harvest_date').value;
   const selectedName = selectedNameOption ? selectedNameOption.textContent.split(' (')[0] : '';
-
-  // Retrieve the area_id from the selected option's data attribute
   const selectedAreaId = selectedNameOption ? selectedNameOption.dataset.areaId : '';
+  const baseUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
+  const vegetableId = selectedNameOption.value;
+  const putUrl = `${baseUrl}/${vegetableId}`;
 
-
-  // Rest of your code to construct formData for harvest
-  const formData = {
-    'name': selectedName,
-    'harvest_quantity': quantity,
-    'quantity': quantity,
-    'area_id': selectedAreaId,
-    'sowed': false,
-    'planted': false,
-    'remove_date': harvestDate,
-    'harvest_date': harvestDate,
-  };
-
-  console.log('Form data:', formData);
-  // Send a POST request to your server
-  sendPostRequestHarvest(formData);
+  fetch(putUrl)
+    .then((response) => response.json())
+    .then((vegetable) => {
+      if (!vegetable.harvest_date) {
+        // It's the first time, so create an object with harvest_date and harvest_quantity
+        const formData = {
+          harvest_date: harvestDate,
+          harvest_quantity: quantity,
+        };
+        sendPutRequest(putUrl, formData);
+      } else {
+        // It's not the first time, so update the quantity
+        const quantityToAdd = parseInt(quantity) || 0;
+        vegetable.harvest_quantity = quantityToAdd;
+        sendPutRequest(putUrl, vegetable);
+      }
+    })
+    .catch((error) => {
+      console.error('Error fetching vegetable data:', error);
+      // Handle errors here (e.g., show an error message)
+    });
 });
 
-// Function to send a POST request for harvest
-function sendPostRequestHarvest(formData) {
-  // Define your server URL for harvest
-  const serverUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager'; // Replace with the correct URL for harvesting
-
-  // Define the request options
-  const requestOptions = {
-    method: 'POST',
+function sendPutRequest(url, data) {
+  const putOptions = {
+    method: 'PUT',
     headers: {
-      'Content-Type': 'application/json', // Set the content type as JSON
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(formData), // Convert the form data to JSON
+    body: JSON.stringify(data),
   };
 
-  // Send the POST request
-  fetch(serverUrl, requestOptions)
+  fetch(url, putOptions)
     .then((response) => response.json())
     .then((data) => {
       console.log('data:', data);
-      // Handle the response from the server here (e.g., show a success message)
+      // Handle the response from the server (e.g., show a success message)
       showSuccessMessage2(data);
       // Optionally, you can clear the form or perform other actions
       clearFormHarvest();
     })
     .catch((error) => {
-      console.error('Error sending POST request:', error);
+      console.error('Error sending PUT request:', error);
       // Handle errors here (e.g., show an error message)
     });
 }
+
+// Function to get the current date in YYYY-MM-DD format
+function getCurrentDate() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+document.getElementById('harvest_date').value = getCurrentDate();
 
 // Function to clear the harvest form after submission
 function clearFormHarvest() {
@@ -133,11 +142,19 @@ function fetchVegetableNamesForHarvest() {
             const option = document.createElement('option');
             option.value = vegetable.id; // Set the value to the vegetable ID
 
+            // Check if the vegetable has been harvested
+            if (vegetable.harvest_date !== null) {
+              // If it has been harvested at least once, add a bullet (•) marker
+              option.textContent = `🌿${vegetable.name}🌿`;
+            } else {
+              option.textContent = vegetable.name; // Set the text content to the vegetable name
+            }
+
             // Find the garden area name based on the area_id
             const gardenArea = areaData.find((area) => area.id === vegetable.area_id);
 
             if (gardenArea) {
-              option.textContent = `${vegetable.name} (${gardenArea.name})`; // Set the text content to the vegetable name
+              option.textContent += ` (${gardenArea.name})`; // Set the text content to the vegetable name
               // Store the area_id as a data attribute
               option.dataset.areaId = vegetable.area_id;
             } else {

@@ -9,6 +9,10 @@ function renderSowForm() {
   // Add form fields and elements
   form.innerHTML = `
     <div class="form_line1">
+      <div class="form_checkbox">
+        <input type="checkbox" id="specific-garden-area" name="specific-garden-area">
+        <label for="specific-garden-area">Check to direct sowing</label>
+      </div>
       <label for="name_sow">Name :</label>
       <select id="name_sow" name="name_sow">
       </select>
@@ -17,8 +21,8 @@ function renderSowForm() {
         <input type="number" id="quantity_sow" name="quantity_sow" value="1">
       </div>
       <div class="form_garden_area">
-        <label for="garden_area_sow">Garden Area :</label>
-        <select id="garden_area_sow" name="garden_area_sow">
+        <label for="garden_area_sow" style="display: none;">Garden Area :</label>
+        <select id="garden_area_sow" name="garden_area_sow" style="display: none;">
         </select>
       </div>
       <div class="form_sowing_date">
@@ -43,6 +47,31 @@ function renderSowForm() {
 // Call the renderForm function to render the form
 renderSowForm();
 
+const sowGardenAreaId = '64722a61-55a2-47ef-af3c-f05634b2b862';
+// Add a change event listener to the checkbox
+const specificGardenAreaCheckbox = document.querySelector('#specific-garden-area');
+const gardenAreaSelect = document.querySelector('#garden_area_sow');
+  // Add an empty default option
+  const defaultOption = document.createElement('option');
+  defaultOption.value = sowGardenAreaId; // Use the ID for "Sow_gardenArea"
+  defaultOption.textContent = 'Sow_gardenArea';
+
+specificGardenAreaCheckbox.addEventListener('change', function () {
+  const gardenAreaLabel = document.querySelector('label[for="garden_area_sow"]');
+  gardenAreaSelect.appendChild(defaultOption);
+  
+  // Show/hide the "Garden Area" label and select based on the checkbox state
+  if (specificGardenAreaCheckbox.checked) {
+    gardenAreaLabel.style.display = 'block';
+    gardenAreaSelect.style.display = 'block';
+    fetchAllGardenAreas();
+  } else {
+    gardenAreaLabel.style.display = 'none';
+    gardenAreaSelect.style.display = 'none';
+    resetGardenAreaSelect();
+  }
+});
+
   // Get the "Add Vegetable" button by its ID
 const addButtonSow = document.querySelector('#add-vegetable-button-sow');
 
@@ -55,30 +84,38 @@ const quantity = document.querySelector('#quantity_sow').value;
 const selectedNameOption = document.querySelector('#name_sow option:checked');
 const selectedName = selectedNameOption ? selectedNameOption.textContent : '';
 const sowingDate = document.querySelector('#sowing_date').value;
+const isSpecificGardenArea = specificGardenAreaCheckbox.checked;
 
 // Rest of your code to construct formData
 const formData = {
   'name': selectedName,
   'quantity': quantity,
-  'area_id': document.querySelector('#garden_area_sow').value,
+  // 'area_id': document.querySelector('#garden_area_sow').value,
   'sowed': true,
   'planted': false,
   'sowing_date': sowingDate,
 };
+
+// Include the selected garden area if the checkbox is checked; otherwise, use the ID of "Sow_gardenArea"
+formData['area_id'] = isSpecificGardenArea
+? document.querySelector('#garden_area_sow').value
+: sowGardenAreaId; // Set to the ID of "Sow_gardenArea"
 
   console.log('Form data:', formData);
   // Send a POST request to your server
   sendPostRequestSow(formData);
 });
 
-  // // Function to get the current date in YYYY-MM-DD format
-  // function getCurrentDate() {
-  //   const today = new Date();
-  //   const year = today.getFullYear();
-  //   const month = String(today.getMonth() + 1).padStart(2, '0');
-  //   const day = String(today.getDate()).padStart(2, '0');
-  //   return `${year}-${month}-${day}`;
-  // }
+// Function to get the current date in YYYY-MM-DD format
+  function getCurrentDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+  document.getElementById('sowing_date').value = getCurrentDate();
 
 // Function to send a POST request
 function sendPostRequestSow(formData) {
@@ -118,32 +155,44 @@ function clearFormSow() {
   document.querySelector('#garden_area_sow').value = '';
 }
 
-// Function to fetch garden area data from the API
-function fetchGardenAreas() {
-
+// Function to fetch and populate all garden areas
+function fetchAllGardenAreas() {
+  // Fetch garden areas from your API
   const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/areas';
 
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
-      // Get the select element for garden areas
-      const gardenAreaSelect = document.querySelector('#garden_area_sow');
+      // Clear existing options
+      resetGardenAreaSelect();
 
       // Loop through the garden area data and create options
       data.forEach((gardenArea) => {
-        const option = document.createElement('option');
-        option.value = gardenArea.id; // Set the value to the garden area ID
-        option.textContent = gardenArea.name; // Set the text content to the garden area name
-        gardenAreaSelect.appendChild(option);
+        if (gardenArea.id !== sowGardenAreaId) {
+          const option = document.createElement('option');
+          option.value = gardenArea.id;
+          option.textContent = gardenArea.name;
+          gardenAreaSelect.appendChild(option);
+        }
       });
+      if (specificGardenAreaCheckbox.checked) {
+        const sowGardenAreaOption = gardenAreaSelect.querySelector(`[value="${sowGardenAreaId}"]`);
+        if (sowGardenAreaOption) {
+          gardenAreaSelect.removeChild(sowGardenAreaOption);
+        }
+      }
     })
     .catch((error) => {
       console.error('Error fetching garden area data:', error);
     });
 }
 
-// Call the fetchGardenAreas function to populate the selection
-fetchGardenAreas();
+// Function to reset the garden area select to the default option
+function resetGardenAreaSelect() {
+  gardenAreaSelect.innerHTML = ''; // Remove all existing options
+  gardenAreaSelect.appendChild(defaultOption); // Re-add the default option
+}
+
 
 // Function to fetch vegetable names from the API
 function fetchVegetableNames() {
@@ -178,7 +227,7 @@ function showSuccessMessage1(data) {
 
   if (!isNaN(data.quantity)) {
     // Success: Vegetable was created
-    message.textContent = `Congratulations, ${data.name} sowed!`;
+    message.textContent = `Congratulations, ${data.name} sowed !`;
   } else {
     // Error: Quantity needs to be a number
     message.textContent = 'Error ! Quantity needs to be a number.';

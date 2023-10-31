@@ -47,64 +47,125 @@ function renderPlantForm() {
 // Call the renderForm function to render the form
 renderPlantForm();
 
-  // Get the "Add Vegetable" button by its ID
+
 const addButtonPlant = document.querySelector('#add-vegetable-button-plant');
 
-// Add a click event listener to the button
-addButtonPlant.addEventListener('click', function (event) {
+addButtonPlant.addEventListener('click', async function (event) {
   event.preventDefault(); // Prevent the default form submission
 
-// Retrieve the quantity value within the event handler
-const quantity = document.querySelector('#quantity_plant').value;
-const selectedNameOption = document.querySelector('#name_plant option:checked');
-const sowingDate = document.querySelector('#planting_date').value;
-const selectedName = selectedNameOption ? selectedNameOption.textContent : '';
-const isSowed = selectedNameOption ? selectedNameOption.dataset.sowed === 'true' : false;
+  const quantity = document.querySelector('#quantity_plant').value;
+  const selectedNameOption = document.querySelector('#name_plant option:checked');
+  const plantingDate = document.querySelector('#planting_date').value;
+  const selectedName = selectedNameOption ? selectedNameOption.textContent.split(' - ')[0] : '';
+  const isSowed = selectedNameOption ? selectedNameOption.dataset.sowed === 'true' : false;
 
-  // Define your server URL
   const baseUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
-  const serverUrl = isSowed ? `${baseUrl}/${selectedNameOption.value}` : baseUrl;
 
-// Rest of your code to construct formData
-const formData = {
-  'name': selectedName,
-  'quantity': quantity,
-  'area_id': document.querySelector('#garden_area_plant').value,
-  'sowed': isSowed,
-  'planted': true,
-  'planting_date': sowingDate,
-};
+  try {
+    const areaId = document.querySelector('#garden_area_plant').value;
 
-  console.log('Form data:', formData);
-  // Send a POST request to your server
+    if (isSowed) {
+      // Retrieve the existing sowed vegetable data
+      const sowedUrl = `${baseUrl}/${selectedNameOption.value}`;
+      const sowedResponse = await fetch(sowedUrl);
+      const sowedData = await sowedResponse.json();
 
-  // Determine the request method (POST for new vegetable, PUT for already sowed)
-  const requestMethod = isSowed ? 'PUT' : 'POST';
+      // Calculate the new quantity of the sowed vegetable
+      const updatedSowedQuantity = sowedData.quantity - quantity;
 
-  // Define the request options
-  const requestOptions = {
-    method: requestMethod,
-    headers: {
-      'Content-Type': 'application/json', // Set the content type as JSON
-    },
-    body: JSON.stringify(formData), // Convert the form data to JSON
-  };
+      if (updatedSowedQuantity >= 0) {
+        // There's enough quantity to plant, so create a new planted vegetable
+        const newPlantedVegetable = {
+          'name': selectedName,
+          'quantity': quantity,
+          'area_id': areaId,
+          'sowed': false,
+          'planted': true,
+          'planting_date': plantingDate,
+          'harvest_quantity': 0,
+        };
 
-  // Send the request to the server
-  fetch(serverUrl, requestOptions)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('data:', data);
+        // Create the new planted vegetable and update the sowed vegetable's quantity
+        const plantedVegetableUrl = baseUrl;
+        const plantedVegetableResponse = await fetch(plantedVegetableUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newPlantedVegetable),
+        });
+        const plantedData = await plantedVegetableResponse.json();
+        console.log('New planted vegetable data:', plantedData);
+
+        // Update the sowed vegetable's quantity
+        const updatedSowedData = {
+          quantity: updatedSowedQuantity,
+        };
+
+        if (updatedSowedQuantity <= 0) {
+          updatedSowedData.remove_date = plantingDate;
+        }
+
+        const updatedSowedUrl = sowedUrl;
+        const updatedSowedResponse = await fetch(updatedSowedUrl, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedSowedData),
+        });
+        const updatedSowedDataResponse = await updatedSowedResponse.json();
+        console.log('Updated sowed vegetable data:', updatedSowedDataResponse);
+
+        // Handle the response from the server here (e.g., show a success message)
+        showSuccessMessage(updatedSowedDataResponse, true, false);
+      } else {
+        // Handle insufficient quantity error (optional)
+        console.error('Insufficient quantity to plant.');
+        // Show an error message or provide user feedback as needed
+      }
+    } else {
+      // Handle planting a new vegetable (not sowed)
+      const formData = {
+        'name': selectedName,
+        'quantity': quantity,
+        'area_id': areaId,
+        'sowed': false,
+        'planted': true,
+        'planting_date': plantingDate,
+        'harvest_quantity': 0,
+      };
+
+      const newVegetableUrl = baseUrl;
+      const newVegetableResponse = await fetch(newVegetableUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const newVegetableData = await newVegetableResponse.json();
+      console.log('New vegetable data:', newVegetableData);
+
       // Handle the response from the server here (e.g., show a success message)
-      showSuccessMessage(data);
-      // Optionally, you can clear the form or perform other actions
-      clearFormPlant();
-    })
-    .catch((error) => {
-      console.error('Error sending request:', error);
-      // Handle errors here (e.g., show an error message)
-    });
+      showSuccessMessage(newVegetableData, false, true);
+    }
+  } catch (error) {
+    console.error('Error sending request:', error);
+    // Handle errors here (e.g., show an error message)
+  }
 });
+
+// Function to get the current date in YYYY-MM-DD format
+function getCurrentDate() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+document.getElementById('planting_date').value = getCurrentDate();
 
 // Function to clear the form after submission
 function clearFormPlant() {
@@ -118,6 +179,7 @@ const areaNameMap = {};
 function fetchGardenAreas() {
 
   const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/areas';
+  const sowGardenAreaId = '64722a61-55a2-47ef-af3c-f05634b2b862';
 
   fetch(apiUrl)
     .then((response) => response.json())
@@ -127,11 +189,13 @@ function fetchGardenAreas() {
 
       // Loop through the garden area data and create options
       data.forEach((gardenArea) => {
-        areaNameMap[gardenArea.id] = gardenArea.name;
-        const option = document.createElement('option');
-        option.value = gardenArea.id; // Set the value to the garden area ID
-        option.textContent = gardenArea.name; // Set the text content to the garden area name
-        gardenAreaSelect.appendChild(option);
+        if (gardenArea.id !== sowGardenAreaId) { // Exclude Sow_gardenArea
+          areaNameMap[gardenArea.id] = gardenArea.name;
+          const option = document.createElement('option');
+          option.value = gardenArea.id;
+          option.textContent = gardenArea.name;
+          gardenAreaSelect.appendChild(option);
+        }
       });
     })
     .catch((error) => {
@@ -197,14 +261,19 @@ showSowedVegetablesCheckbox.addEventListener('change', function () {
     fetch(baseUrl)
       .then((response) => response.json())
       .then((data) => {
-        const sowedVegetables = data.filter((vegetable) => vegetable.sowed === true && vegetable.planted === false);
+        const sowedVegetables = data.filter((vegetable) => vegetable.area_id === sowGardenAreaId && vegetable.remove_date === null);
 
         sowedVegetables.forEach((vegetable) => {
           const option = document.createElement('option');
           option.value = vegetable.id;
-          const gardenAreaName = areaNameMap[vegetable.area_id];
-          // option.textContent = vegetable.name;
-          option.textContent = `${vegetable.name} (${gardenAreaName})`;
+
+          // Parse the sowing date and calculate the number of days
+        const sowingDate = new Date(vegetable.sowing_date);
+        const currentDate = new Date();
+        const timeDifference = currentDate - sowingDate;
+        const daysSowed = Math.ceil(timeDifference / (1000 * 3600 * 24));
+
+          option.textContent = `${vegetable.name} - ${daysSowed} days ago (${vegetable.quantity})`;
           option.dataset.sowed = vegetable.sowed;
           nameSelect.appendChild(option);
         });
@@ -230,23 +299,24 @@ showSowedVegetablesCheckbox.addEventListener('change', function () {
   }
 });
 
-function showSuccessMessage(data) {
+function showSuccessMessage(data, isSowed, isNewVegetable) {
   const popup = document.getElementById('custom-popup');
   const message = document.getElementById('popup-message');
   const okButton = document.getElementById('popup-ok-button');
 
-  if (!isNaN(data.quantity)) {
-    // Success: Vegetable was created
-    message.textContent = `Congratulations, ${data.name} planted!`;
+  if (data && !data.error) {
+    if (isSowed) {
+      message.textContent = `Congratulations, ${data.name} planted from a sowed vegetable !`;
+    } else if (isNewVegetable) {
+      message.textContent = `Congratulations, ${data.name} planted as a new vegetable !`;
+    }
   } else {
-    // Error: Quantity needs to be a number
-    message.textContent = 'Error ! Quantity needs to be a number.';
-    okButton.style.backgroundColor = 'red';
-  }
-
-  if (data.quantity < 1) {
-    message.textContent = 'Error ! Quantity needs to be a positive number.';
-    okButton.style.backgroundColor = 'red';
+    if (isSowed) {
+      message.textContent = 'Error planting the vegetable from a sowed vegetable.';
+    } else if (isNewVegetable) {
+      message.textContent = 'Error planting the new vegetable.';
+      okButton.style.backgroundColor = 'red';
+    }
   }
 
   popup.style.display = 'flex';
@@ -256,4 +326,3 @@ function showSuccessMessage(data) {
     // Optionally, you can navigate or perform other actions here.
   });
 }
-

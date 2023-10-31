@@ -42,9 +42,44 @@ fetch(BASE_URL)
       rainElement.appendChild(spanElement);
       forecastContainer.appendChild(rainElement);
 
-      document
-        .querySelector('.dashbord__module__content--forecast')
-        .appendChild(forecastContainer);
+      document.querySelector('.dashbord__module__content--forecast').appendChild(forecastContainer);
+
+    // Create a tooltip element
+    const tooltip = document.createElement('div');
+    tooltip.classList.add('forecast-tooltip');
+    document.body.appendChild(tooltip);
+    
+    // Attach event listeners to the icons to show and hide the tooltip
+    const iconElements = document.querySelectorAll('.forecast-container__icon');
+    
+    iconElements.forEach((iconElement, index) => {
+      iconElement.addEventListener('mouseenter', (event) => {
+        // Get the corresponding day's weather data
+        const dayData = dailyForecasts[index];
+        const description = dayData.weather[0].description;
+        // const temperature = (dayData.temp.day - 273.15).toFixed(1);
+        const rain = (dayData.rain || 0).toFixed(1);
+    
+        // Set the content of the tooltip
+        tooltip.innerHTML = `
+          <p>${description}</p>
+          <p>${(dayData.rain || 0).toFixed(1)} mm/day</p>
+        `;
+    
+        // Position the tooltip below the icon
+        const iconRect = iconElement.getBoundingClientRect();
+        tooltip.style.left = `${iconRect.left + window.scrollX}px`;
+        tooltip.style.top = `${iconRect.bottom + window.scrollY}px`;
+    
+        // Show the tooltip
+        tooltip.style.display = 'block';
+      });
+    
+      iconElement.addEventListener('mouseleave', () => {
+        // Hide the tooltip when the mouse leaves the icon
+        tooltip.style.display = 'none';
+      });
+    });
     });
   });
 
@@ -70,11 +105,11 @@ function getIconURL(description) {
     // Add more descriptions and their corresponding icons here
   };
 
-  // Check if the description exists in the mapping
-  if (descriptionToIcon.hasOwnProperty(description)) {
-    return `./styles/assets/${descriptionToIcon[description]}`;
-  } else {
-    // Handle the case where the description is not in the mapping or provide a default icon
-    return './styles/assets/icon_carrot.png'; // Replace with your default icon
-  }
-}
+      // Check if the description exists in the mapping
+      if (descriptionToIcon.hasOwnProperty(description)) {
+        return `./styles/assets/${descriptionToIcon[description]}`;
+      } else {
+        // Handle the case where the description is not in the mapping or provide a default icon
+        return './styles/assets/icon_carrot.png'; // Replace with your default icon
+      }
+    }

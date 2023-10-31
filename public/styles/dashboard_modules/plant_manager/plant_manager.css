@@ -59,12 +59,16 @@ textarea {
   flex-direction: column;
   gap: 10px;
   width: 300px; /* Set the width to your desired fixed width */
-  height: 400px; /* Set the height to your desired fixed height */
+  height: 500px; /* Set the height to your desired fixed height */
 }
 
-.sow-checkbox {
+.sow-checkbox, .form_checkbox, .garden_area-checkbox, .delete-options {
   height: 45px;
+  display: flex;
+  align-items: center;
 }
+
+
 
 .form_quantity, .form_garden_area {
   display: flex;
@@ -259,7 +263,11 @@ button.return-button {
   max-height: 150px;
   overflow-y: scroll;
 }
-
+ 
+.sowing-table-container::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+}
 #sowing-table {
   display: block;
   border-collapse: collapse;
