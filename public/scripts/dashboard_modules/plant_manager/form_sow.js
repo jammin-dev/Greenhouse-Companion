@@ -30,7 +30,7 @@ function renderSowForm() {
         <input type="date" id="sowing_date" name="sowing_date">
       </div>
       <button id="add-vegetable-button-sow" type="submit">Add Vegetable</button>
-      <button class="return-button">retour</button>
+      <button class="return-button">Back</button>
     </div>
     <div id="custom-popup1" class="popup1">
       <div class="popup-content1">

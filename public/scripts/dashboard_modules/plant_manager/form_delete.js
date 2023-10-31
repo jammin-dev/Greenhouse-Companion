@@ -31,7 +31,7 @@ function renderDeleteForm() {
         </select><br>
         <button id="delete-garden-area-button" type="submit">Delete Garden Area</button>
       </div>
-      <button class="return-button">Retour</button>
+      <button class="return-button">Back</button>
       <button class="hidden" id="delete-button" type="submit">Delete</button>
     </div>
 
@@ -145,12 +145,27 @@ function fetchVegetableNames() {
       // Get the select element for vegetable names
       const nameSelect = document.querySelector('#vegetable_to_delete');
 
-      // Loop through the vegetable names data and create options
-      data.forEach((vegetable) => {
-        const option = document.createElement('option');
-        option.value = vegetable.id; // Set the value to the vegetable ID
-        option.textContent = vegetable.name; // Set the text content to the vegetable name
-        nameSelect.appendChild(option);
+      const gardenAreaData = {};
+
+      // Fetch garden areas data
+      return fetch('https://walrus-app-jbfmz.ondigitalocean.app/areas')
+        .then((response) => response.json())
+        .then((areasData) => {
+          // Create a lookup object for garden area names
+          areasData.forEach((gardenArea) => {
+            gardenAreaData[gardenArea.id] = gardenArea.name;
+          });
+
+          // Loop through the vegetable data and create options
+          data.forEach((vegetable) => {
+            const areaName = gardenAreaData[vegetable.area_id] || 'Unknown Area';
+
+            // Create an option with the vegetable name and area name
+            const option = document.createElement('option');
+            option.value = vegetable.id; // Set the value to the vegetable ID
+            option.textContent = `${vegetable.name} (${areaName})`; // Set the text content to the vegetable name and area name
+            nameSelect.appendChild(option);
+          });
       });
     })
     .catch((error) => {

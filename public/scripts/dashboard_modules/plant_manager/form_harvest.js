@@ -18,11 +18,11 @@ function renderHarvestForm() {
       </div>
       
       <div class="form_harvest_date">
-        <label for="harvest_date">Remove Date :</label>
+        <label for="harvest_date">Harvest Date :</label>
         <input type="date" id="harvest_date" name="harvest_date">
       </div>
       <button id="add-vegetable-button-harvest" type="submit">Harvest Vegetable</button>
-      <button class="return-button">retour</button>
+      <button class="return-button">Back</button>
     </div>
     <div id="custom-popup2" class="popup2">
       <div class="popup-content2">

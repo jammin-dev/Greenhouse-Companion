@@ -33,7 +33,7 @@ function renderGardenAreaForm() {
       </div>
 
       <button id="add-garden-area-button" type="submit">Add garden area</button>
-      <button class="return-button">retour</button>
+      <button class="return-button">Back</button>
     </div>
 
     <div id="custom-popup3" class="popup3">

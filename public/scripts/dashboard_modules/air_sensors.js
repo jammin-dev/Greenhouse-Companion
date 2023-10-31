@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then((data) => {
       temperature.textContent = `${data.air_temperature}°`;
       humidity.textContent = data.air_humidity;
-      luminosity.textContent = data.luminosity;
+      // luminosity.textContent = data.luminosity;
     })
     .catch((error) => {
       console.error('Error fetching data:', error);

@@ -30,7 +30,7 @@ function renderPlantForm() {
         <input type="date" id="planting_date" name="planting_date">
       </div>
       <button id="add-vegetable-button-plant" type="submit">Add Vegetable</button>
-      <button class="return-button">retour</button>
+      <button class="return-button">Back</button>
     </div>
     <div id="custom-popup" class="popup">
       <div class="popup-content">

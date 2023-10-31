@@ -118,6 +118,20 @@ textarea {
   height: 310px;
 }
 
+#remove-vegetable-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: 310px;
+}
+
+#remove-date {
+  width: 40%;
+  height: 25px;
+  font-size: medium;
+  border-radius: 5px;
+}
 #update-garden-area-form label {
   height: 25px;
 }
@@ -226,6 +240,12 @@ button.return-button {
 .icon_harvest_manager {
   cursor: pointer;
   background-image: url(../../assets/plant_manager/récolter.png);
+  /* Add styles for your icons here */
+}
+
+.icon_remove_manager {
+  cursor: pointer;
+  background-image: url(../../assets/plant_manager/remove.png);
   /* Add styles for your icons here */
 }
 
@@ -357,7 +377,7 @@ h6 {
   border-radius: 10px;
   margin-top: 10px;
   background-repeat: no-repeat;
-  background-size: 40px;
+  background-size: 35px;
   background-position: center;
   transition: transform 0.2s;
 }
@@ -382,7 +402,7 @@ h6 {
   transform: scale(1.3); /* Increase the size by 20% on hover */
 }
 
-.popup, .popup1, .popup2, .popup3, .popup4, .popup5, .popup6 {
+.popup, .popup1, .popup2, .popup3, .popup4, .popup5, .popup6, .popup7 {
   display: none;
   position: fixed;
   top: 0;
@@ -395,7 +415,7 @@ h6 {
   align-items: center;
 }
 
-.popup-content, .popup-content1, .popup-content2, .popup-content3, .popup-content4, .popup-content5, .popup-content6 {
+.popup-content, .popup-content1, .popup-content2, .popup-content3, .popup-content4, .popup-content5, .popup-content6, .popup-content7 {
   background: white;
   padding: 20px;
   text-align: center;
@@ -406,7 +426,7 @@ h6 {
   align-items: center;
 }
 
-#popup-ok-button, #popup-ok-button1, #popup-ok-button2, #popup-ok-button3, #popup-ok-button4, #popup-ok-button5, #popup-ok-button6 {
+#popup-ok-button, #popup-ok-button1, #popup-ok-button2, #popup-ok-button3, #popup-ok-button4, #popup-ok-button5, #popup-ok-button6, #popup-ok-button7 {
   background: #15d25a;
   color: white;
   border: none;

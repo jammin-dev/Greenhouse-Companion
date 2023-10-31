@@ -1,6 +1,6 @@
 // Make an API request and get the forecast data
 const BASE_URL =
-  'https://api.openweathermap.org/data/3.0/onecall?lat=48.0706687&lon=-0.7734022&exclude=hourly,minutely,alerts&appid=9b14c40da416807a32337c8ec78d4c15';
+  // 'https://api.openweathermap.org/data/3.0/onecall?lat=48.0706687&lon=-0.7734022&exclude=hourly,minutely,alerts&appid=9b14c40da416807a32337c8ec78d4c15';
 
 fetch(BASE_URL)
   .then((response) => response.json())
@@ -57,13 +57,10 @@ fetch(BASE_URL)
         // Get the corresponding day's weather data
         const dayData = dailyForecasts[index];
         const description = dayData.weather[0].description;
-        // const temperature = (dayData.temp.day - 273.15).toFixed(1);
-        const rain = (dayData.rain || 0).toFixed(1);
     
         // Set the content of the tooltip
         tooltip.innerHTML = `
           <p>${description}</p>
-          <p>${(dayData.rain || 0).toFixed(1)} mm/day</p>
         `;
     
         // Position the tooltip below the icon

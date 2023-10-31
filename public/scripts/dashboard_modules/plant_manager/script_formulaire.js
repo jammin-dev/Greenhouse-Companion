@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const sowingTableContainer = document.querySelector(
     '.sowing-table-container'
   );
-  const h6Element = document.querySelector('h6');
+  // const h6Element = document.querySelector('h6');
 
   // Function to toggle form visibility
   function toggleFormVisibility(formIndex) {

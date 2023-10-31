@@ -24,8 +24,6 @@ async function getVegetablesInfos() {
       const outdoorEndDate = new Date(vegetable.end);
       return startDate < currentDate && outdoorEndDate > currentDate;
     });
-    console.log(filteredData);
-
     // Sort the filtered data by the start date of indoor planting
     filteredData.sort(
       (a, b) => new Date(a.start_indoor) - new Date(b.start_indoor)
