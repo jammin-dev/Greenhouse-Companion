@@ -4,7 +4,6 @@
   grid-column: span 1;
   grid-row: span 1;
   border-radius: 5px 5px 5px 100px;
- 
 }
 @media only screen and (max-width: 1400px) {
   .dashbord__module--automation {
@@ -47,28 +46,28 @@
   background-image: url(../assets/automationWatering.png);
 }
 
-.automation-container__form{
-  width: 50px;
+.automation-container__form {
+  width: 60px;
   height: 20px;
 }
 
-.automation-container__sendButton{
-position: absolute;
-top: 10px;
-right: 10px;
-width: 50px;
-height: 50px;
-background-image: url(../assets/automationButton.png);
-background-repeat: no-repeat;
-background-position: center;
-background-size: 35px;
-cursor: pointer;
+.automation-container__sendButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  background-image: url(../assets/automationButton.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 35px;
+  cursor: pointer;
 }
-.automation-container__plug-settings{
+.automation-container__plug-settings {
   background-image: url(../assets/automationSettings.png);
-background-repeat: no-repeat;
-background-position: center;
-background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
   width: 20px;
   height: 20px;
 }
