@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
       headers: {
         'Content-Type': 'application/json',
         Authorization:
-          'Bearer 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', // Replace with your actual OpenAI API key
+          'Bearer !!MY_KEY!!', // Replace with your actual OpenAI API key
       },
       body: JSON.stringify({
         model: 'gpt-3.5-turbo',
