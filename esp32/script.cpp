@@ -2,10 +2,11 @@
 #include <WiFi.h>
 #include <ArduinoJson.h>
 #include <HTTPClient.h>
+#include <DHT.h>
 
 const char *ssid = "***REMOVED***";
 const char *password = "***REMOVED***";
-const char *serverUrl = "http://192.168.1.104:5001/sensors";
+const char *serverUrl = "https://walrus-app-jbfmz.ondigitalocean.app/sensors";
 const char *esp32Name = "ESP32";
 
 // GPIO PINS
@@ -13,6 +14,12 @@ const char *esp32Name = "ESP32";
 #define SMART_PLUG_2 27
 #define SMART_PLUG_3 14
 #define SMART_PLUG_4 12
+
+// DHT Sensor
+#define DHTPIN 33
+#define DHTTYPE DHT11
+
+DHT dht(DHTPIN, DHTTYPE);
 
 unsigned long setMillis[4] = {0};
 unsigned long currentMillis[4] = {0};
@@ -41,6 +48,8 @@ void setup()
     pinMode(SMART_PLUG_2, OUTPUT);
     pinMode(SMART_PLUG_3, OUTPUT);
     pinMode(SMART_PLUG_4, OUTPUT);
+
+    dht.begin();
 }
 
 void loop()
@@ -55,12 +64,14 @@ void loop()
         }
     }
 
-    // Read values from sensors
+    // Read values from DHT sensor
+    float temperature = dht.readTemperature();
+    float humidity = dht.readHumidity();
 
     // Create a JSON document
     StaticJsonDocument<200> jsonDocument;
-    jsonDocument["air_temperature"] = "24";
-    jsonDocument["air_humidity"] = "55";
+    jsonDocument["air_temperature"] = String(temperature, 1);
+    jsonDocument["air_humidity"] = String(humidity, 0);
     jsonDocument["luminosity"] = "3500";
 
     // Serialize the JSON document to a string
@@ -117,5 +128,5 @@ void loop()
         Serial.println("Error on HTTP request");
     }
     http.end();
-    delay(5000);
+    delay(600000);
 }

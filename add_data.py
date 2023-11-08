@@ -1,11 +1,13 @@
 import json
 import requests
+import sys
 
 # Define the API endpoint URL
-api_url = "http://127.0.0.1:5000/vegetable_infos"
+api_url = sys.argv[1]
+file = sys.argv[2]
 
 # Read the JSON file into a variable
-with open('dump_datas/vegetable_infos_data.json', 'r') as json_file:
+with open(file, 'r') as json_file:
     data = json.load(json_file)
 
 # Loop through each item in the JSON data and make a POST request
