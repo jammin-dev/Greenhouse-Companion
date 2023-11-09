@@ -35,7 +35,7 @@ if database == 'mysql':
 elif database == 'sqlite':
     db_uri = 'sqlite:///greenhouse_dev.db'
 else:
-    print('Please select a databse')
+    print('Please select a database')
     sys.exit(1)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
