@@ -10,5 +10,5 @@ class VegetableInfosModel(BaseModel, db.Model):
     water_needs = db.Column(db.Integer)
     cold_resistance = db.Column(db.Integer)
     spacing_on_raw = db.Column(db.Float)
-    spacing_between_raw = db.Column(db.Float)
+    soil_temperature = db.Column(db.Float)
     description = db.Column(db.String(250))

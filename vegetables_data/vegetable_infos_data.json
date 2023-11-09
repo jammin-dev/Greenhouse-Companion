@@ -8,7 +8,7 @@
         "water_needs": 3,
         "cold_resistance": 4,
         "spacing_on_raw": 2.5,
-        "spacing_between_raw": 10.0,
+        "soil_temperature": 10.0,
         "description": "Carrots are root vegetables known for their sweet and crunchy taste."
     },
     {
@@ -20,7 +20,7 @@
         "water_needs": 4,
         "cold_resistance": 2,
         "spacing_on_raw": 2.0,
-        "spacing_between_raw": 24.0,
+        "soil_temperature": 24.0,
         "description": "Tomatoes are popular fruits (often used as vegetables) used in salads, sauces, and more."
     },
     {
@@ -32,7 +32,7 @@
         "water_needs": 3,
         "cold_resistance": 5,
         "spacing_on_raw": 6.0,
-        "spacing_between_raw": 6.0,
+        "soil_temperature": 6.0,
         "description": "Lettuce is a leafy green vegetable used in salads and sandwiches."
     },
     {
@@ -44,7 +44,7 @@
         "water_needs": 4,
         "cold_resistance": 3,
         "spacing_on_raw": 3.0,
-        "spacing_between_raw": 24.0,
+        "soil_temperature": 24.0,
         "description": "Cucumbers are refreshing and often used in salads or pickled."
     },
     {
@@ -56,7 +56,7 @@
         "water_needs": 3,
         "cold_resistance": 5,
         "spacing_on_raw": 4.0,
-        "spacing_between_raw": 4.0,
+        "soil_temperature": 4.0,
         "description": "Spinach is a nutrient-rich leafy green vegetable."
     },
     {
@@ -68,7 +68,7 @@
         "water_needs": 4,
         "cold_resistance": 4,
         "spacing_on_raw": 2.0,
-        "spacing_between_raw": 18.0,
+        "soil_temperature": 18.0,
         "description": "Broccoli is a nutritious cruciferous vegetable."
     },
     {
@@ -80,7 +80,7 @@
         "water_needs": 4,
         "cold_resistance": 3,
         "spacing_on_raw": 2.0,
-        "spacing_between_raw": 24.0,
+        "soil_temperature": 24.0,
         "description": "Zucchini is a versatile summer squash used in various dishes."
     },
     {
@@ -92,7 +92,7 @@
         "water_needs": 3,
         "cold_resistance": 3,
         "spacing_on_raw": 2.0,
-        "spacing_between_raw": 18.0,
+        "soil_temperature": 18.0,
         "description": "Bell peppers come in various colors and are used in salads, stir-fries, and more."
     },
     {
@@ -104,7 +104,7 @@
         "water_needs": 3,
         "cold_resistance": 5,
         "spacing_on_raw": 1.0,
-        "spacing_between_raw": 4.0,
+        "soil_temperature": 4.0,
         "description": "Radishes are fast-growing root vegetables with a peppery flavor."
     },
     {
@@ -116,7 +116,7 @@
         "water_needs": 4,
         "cold_resistance": 4,
         "spacing_on_raw": 2.5,
-        "spacing_between_raw": 18.0,
+        "soil_temperature": 18.0,
         "description": "Cabbage is a leafy vegetable used in coleslaw, salads, and cooked dishes."
     },
     {
@@ -128,7 +128,7 @@
         "water_needs": 3,
         "cold_resistance": 5,
         "spacing_on_raw": 2.0,
-        "spacing_between_raw": 4.0,
+        "soil_temperature": 4.0,
         "description": "Peas are sweet, tender, and often used in stir-fries or as a side dish."
     },
     {
@@ -140,7 +140,7 @@
         "water_needs": 3,
         "cold_resistance": 4,
         "spacing_on_raw": 12.0,
-        "spacing_between_raw": 24.0,
+        "soil_temperature": 24.0,
         "description": "Potatoes are starchy tubers used in various culinary preparations."
     },
     {
@@ -152,7 +152,7 @@
         "water_needs": 3,
         "cold_resistance": 4,
         "spacing_on_raw": 2.0,
-        "spacing_between_raw": 6.0,
+        "soil_temperature": 6.0,
         "description": "Green beans are tender and often used in salads or as a side dish."
     },
     {
@@ -164,7 +164,7 @@
         "water_needs": 3,
         "cold_resistance": 5,
         "spacing_on_raw": 4.0,
-        "spacing_between_raw": 12.0,
+        "soil_temperature": 12.0,
         "description": "Onions are pungent and used as a flavoring in various dishes."
     },
     {
@@ -176,7 +176,7 @@
         "water_needs": 3,
         "cold_resistance": 5,
         "spacing_on_raw": 2.0,
-        "spacing_between_raw": 6.0,
+        "soil_temperature": 6.0,
         "description": "Beets are sweet and often used in salads or as a side dish."
     },
     {
@@ -188,7 +188,7 @@
         "water_needs": 4,
         "cold_resistance": 2,
         "spacing_on_raw": 2.0,
-        "spacing_between_raw": 24.0,
+        "soil_temperature": 24.0,
         "description": "Eggplants are used in various cuisines for their mild, meaty texture."
     },
     {
@@ -200,7 +200,7 @@
         "water_needs": 3,
         "cold_resistance": 5,
         "spacing_on_raw": 8.0,
-        "spacing_between_raw": 8.0,
+        "soil_temperature": 8.0,
         "description": "Kale is a nutrient-rich leafy green vegetable."
     }
 ]

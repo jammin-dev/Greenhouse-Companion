@@ -15,7 +15,7 @@ resource_fields = {
     'water_needs': fields.Integer,
     'cold_resistance': fields.Integer,
     'spacing_on_raw': fields.Float,
-    'spacing_between_raw': fields.Float,
+    'soil_temperature': fields.Float,
     'description': fields.String,
     'created_at': fields.String,
     'updated_at': fields.String
@@ -50,7 +50,7 @@ class VegetableInfos(Resource):
             ('water_needs', int, None, False),
             ('cold_resistance', int, None, False),
             ('spacing_on_raw', float, None, False),
-            ('spacing_between_raw', float, None, False),
+            ('soil_temperature', float, None, False),
             ('description', str, None, False)
         ]
 
@@ -97,7 +97,7 @@ class VegetableInfosList(Resource):
             ('water_needs', int, None, False),
             ('cold_resistance', int, None, False),
             ('spacing_on_raw', float, None, False),
-            ('spacing_between_raw', float, None, False),
+            ('soil_temperature', float, None, False),
             ('description', str, None, False)
         ]
 

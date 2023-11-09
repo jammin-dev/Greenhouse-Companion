@@ -62,6 +62,7 @@ class SensorList(Resource):
         return sensors
 
     def post(self):
+        # Sensors values posted by the ESP32
         parser_create = reqparse.RequestParser()
         argument_list = [
             ('air_temperature', float, None, False),
@@ -78,8 +79,13 @@ class SensorList(Resource):
                 required=arg_required
             )
 
+        # Parse the incoming request arguments
         args = parser_create.parse_args()
+
+        # Create a new sensor object with parsed arguments
         new_sensor = SensorsModel(**args)
+
+        # Add the new sensor data to the database
         db.session.add(new_sensor)
         db.session.commit()
 
@@ -87,13 +93,21 @@ class SensorList(Resource):
         # to send response to the esp32
         response = {}
         
+        # Retrieve all automation selections from the database
         all_selection = AutomationModel.query.all()
+
+        # Sort automation selections based on creation time in descending order
         sorted_sensors = sorted(all_selection, key=lambda all_selection: all_selection.created_at, reverse=True)
+        
+        # Check if there are any automation selections
         if sorted_sensors:
+            # Get the latest automation selection
             last_selection = sorted_sensors[0]
 
+        # Check if new sensor values exceed certain thresholds
         if new_sensor.air_temperature > last_selection.air_temperature_selection or \
         new_sensor.air_humidity > last_selection.air_humidity_selection:
+            # Update smart plug state and timer
             extractor_plugged_timer = f"smart_plug_{last_selection.extractor_plug}_timer"
             extractor_plugged_state = f"smart_plug_{last_selection.extractor_plug}_state"
             setattr(last_selection, extractor_plugged_state, True)
@@ -110,12 +124,14 @@ class SensorList(Resource):
         # Loop through the attributes and check if they are True
         for attribute, response_key in attribute_to_key.items():
             if getattr(last_selection, attribute):
+                # Update the response dictionary with smart plug state and timer
                 response[response_key] = getattr(last_selection, response_key)
                 setattr(last_selection, attribute, False)
         
+        # Commit the changes to the database
         db.session.add(last_selection)
         db.session.commit()
-        print(response)
+
         return jsonify(response)
 
 class SensorsLast(Resource):
