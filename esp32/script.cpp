@@ -128,5 +128,5 @@ void loop()
         Serial.println("Error on HTTP request");
     }
     http.end();
-    delay(600000);
+    delay(10000);
 }
