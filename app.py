@@ -16,6 +16,7 @@ from views.to_do_view import Todo, TodoList
 from views.user_view import User, UserList, PromoteUser
 from views.vegetable_infos_view import VegetableInfos, VegetableInfosList
 from views.vegetable_manager_view import VegetableManager, VegetableManagerList
+from views.openAI_view import OpenAIService
 
 app = Flask(__name__)
 api = Api(app)
@@ -66,6 +67,8 @@ api.add_resource(VegetableInfosList, '/vegetable_infos')
 
 api.add_resource(VegetableManager, '/vegetable_manager/<string:vegetable_id>')
 api.add_resource(VegetableManagerList, '/vegetable_manager')
+
+api.add_resource(OpenAIService, '/assistant')
 
 with app.app_context():
     db.create_all()
