@@ -33,7 +33,7 @@ class OpenAIService(Resource):
         user_prompt = args['user-prompt']
         pre_prompt = "You are a gardening expert chatbot in France (celcius degrees and metric system). If the user asks about any other topic, politely inform them that the chatbot is designed specifically for gardening-related queries."
         completion = client.chat.completions.create(
-            model="gpt-4-1106-preview",
+            model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": pre_prompt},
                 {"role": "user", "content": user_prompt}
