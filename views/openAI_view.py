@@ -1,3 +1,13 @@
+"""
+Module: resources.openai_service_resource
+
+This module defines a RESTful resource for interacting with the OpenAI API in a gardening system using Flask-RESTful.
+
+Classes:
+    - OpenAIService: Represents the OpenAI service endpoint and provides a POST method.
+
+"""
+
 from flask_restful import Resource, reqparse
 import requests
 import os
@@ -5,16 +15,26 @@ from openai import OpenAI
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
-
 class OpenAIService(Resource):
+    """
+    Class: OpenAIService
+
+    Represents the OpenAI service endpoint and provides a POST method for interacting with the OpenAI API.
+
+    Methods:
+        - post: Handle a POST request to the OpenAIService resource, get completions from the OpenAI API, and return the completions.
+
+    """
     def post(self):
         """
-        Handles a POST request to the OpenAIService resource.
+        Handle a POST request to the OpenAIService resource, get completions from the OpenAI API, and return the completions.
 
-        Parses the user prompt from the request, calls the get_openai_completions() method to get completions from the OpenAI API, and returns the completions.
+        Parameters:
+            - None
 
         Returns:
-        - dict: The completions from the OpenAI API.
+            - str: The completions from the OpenAI API.
+
         """
         parser_create = reqparse.RequestParser()
         argument_list = [

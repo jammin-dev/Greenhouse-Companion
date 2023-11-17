@@ -1,9 +1,20 @@
+"""
+Module: resources.automation_resource
+
+This module defines RESTful resources for managing automation settings in a gardening system using Flask-RESTful.
+
+Classes:
+    - AutomationList: Represents a list of automation settings and provides GET and POST methods.
+
+"""
+
 from flask import jsonify
 from flask_restful import Resource, fields, marshal_with, reqparse
 from models import db
 from utils import abort_if_doesnt_exist
 from models.sensors_model import AutomationModel
 
+# Fields for marshaling automation settings
 resource_fields = {
     'id': fields.String,
     'air_humidity_selection': fields.Integer,
@@ -20,13 +31,37 @@ resource_fields = {
 }
 
 class AutomationList(Resource):
+    """
+    Class: AutomationList
+
+    Represents a list of automation settings and provides GET and POST methods.
+
+    Methods:
+        - get: Retrieve a list of all automation settings.
+        - post: Create a new automation setting.
+
+    """
     @marshal_with(resource_fields)
     def get(self):
+        """
+        Retrieve a list of all automation settings.
+
+        Returns:
+            - selections (List[AutomationModel]): A list of automation settings.
+
+        """
         selections = AutomationModel.query.all()
         return selections
 
     @marshal_with(resource_fields)
     def post(self):
+        """
+        Create a new automation setting.
+
+        Returns:
+            - new_selection (AutomationModel): The newly created automation setting.
+
+        """
         parser_create = reqparse.RequestParser()
 
         # Define a list of argument names and their types

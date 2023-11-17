@@ -1,10 +1,22 @@
-from flask import jsonify, g
+"""
+Module: resources.vegetable_manager_resource
+
+This module defines RESTful resources for managing vegetable information in a gardening system using Flask-RESTful.
+
+Classes:
+    - VegetableManager: Represents a single vegetable and provides GET, DELETE, and PUT methods.
+    - VegetableManagerList: Represents a list of vegetables and provides GET and POST methods.
+
+"""
+
+from flask import jsonify
 from flask_restful import Resource, fields, marshal_with, reqparse
 from models.vegetable_manager_model import VegetableManagerModel
 from models import db
 from utils import abort_if_doesnt_exist
 from datetime import datetime
 
+# Fields for marshaling vegetable information
 resource_fields = {
     'id': fields.String,
     'name': fields.String,
@@ -26,12 +38,43 @@ parser_update = reqparse.RequestParser()
 parser_update.add_argument('name', type=str)
 
 class VegetableManager(Resource):
+    """
+    Class: VegetableManager
+
+    Represents a single vegetable and provides GET, DELETE, and PUT methods.
+
+    Methods:
+        - get: Retrieve vegetable information by vegetable ID.
+        - delete: Delete vegetable information by vegetable ID.
+        - put: Update vegetable information by vegetable ID.
+
+    """
     @marshal_with(resource_fields)
     def get(self, vegetable_id):
+        """
+        Retrieve vegetable information by vegetable ID.
+
+        Parameters:
+            - vegetable_id (str): The ID of the vegetable.
+
+        Returns:
+            - vegetable (VegetableManagerModel): The vegetable information.
+
+        """
         abort_if_doesnt_exist(VegetableManagerModel, vegetable_id)
         vegetable = VegetableManagerModel.query.filter_by(id=vegetable_id).first()
         return vegetable
     def delete(self, vegetable_id):
+        """
+        Delete vegetable information by vegetable ID.
+
+        Parameters:
+            - vegetable_id (str): The ID of the vegetable.
+
+        Returns:
+            - Empty string.
+
+        """
         abort_if_doesnt_exist(VegetableManagerModel, vegetable_id)
         vegetable = VegetableManagerModel.query.filter_by(id=vegetable_id).first()
         db.session.delete(vegetable)
@@ -40,6 +83,16 @@ class VegetableManager(Resource):
 
     @marshal_with(resource_fields)
     def put(self, vegetable_id):
+        """
+        Update vegetable information by vegetable ID.
+
+        Parameters:
+            - vegetable_id (str): The ID of the vegetable.
+
+        Returns:
+            - vegetable (VegetableManagerModel): The updated vegetable information.
+
+        """
         abort_if_doesnt_exist(VegetableManagerModel, vegetable_id)
         vegetable = VegetableManagerModel.query.filter_by(id=vegetable_id).first()
 
@@ -87,14 +140,37 @@ class VegetableManager(Resource):
 
 
 class VegetableManagerList(Resource):
+    """
+    Class: VegetableManagerList
+
+    Represents a list of vegetables and provides GET and POST methods.
+
+    Methods:
+        - get: Retrieve a list of all vegetables.
+        - post: Create a new vegetable.
+
+    """
     @marshal_with(resource_fields)
     def get(self):
+        """
+        Retrieve a list of all vegetables.
+
+        Returns:
+            - vegetables (List[VegetableManagerModel]): A list of vegetable information.
+
+        """
         vegetables = VegetableManagerModel.query.all()
         return vegetables
 
     @marshal_with(resource_fields)
     def post(self):
+        """
+        Create a new vegetable.
 
+        Returns:
+            - new_vegetable (VegetableManagerModel): The newly created vegetable information.
+
+        """
         parser_create = reqparse.RequestParser()
 
         # Define a list of argument names and their types
@@ -136,4 +212,3 @@ class VegetableManagerList(Resource):
         db.session.commit()
         
         return new_vegetable, 201
-
