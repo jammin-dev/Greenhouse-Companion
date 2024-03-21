@@ -1,0 +1,77 @@
+/* ----------------------- Automation Module ----------------------- */
+.dashbord__module--automation {
+  grid-area: automation;
+  grid-column: span 1;
+  grid-row: span 1;
+  border-radius: 5px 5px 5px 100px;
+}
+@media only screen and (max-width: 1400px) {
+  .dashbord__module--automation {
+    border-radius: 5px 5px 5px 5px;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .dashbord__module--automation {
+    border-radius: 30px 30px 30px 30px;
+  }
+}
+.dashbord__module__content--automation {
+  margin-top: 10px;
+  width: 100%;
+  justify-content: space-around;
+}
+.automation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  position: relative;
+}
+.automation-container__plug-name {
+  font-size: 13px;
+  font-weight: 600;
+}
+.automation-container__icon {
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-size: 45px;
+  background-position: center;
+}
+.automation-container__icon--fan {
+  background-image: url(../assets/fan.png);
+}
+.automation-container__icon--watering {
+  background-image: url(../assets/automationWatering.png);
+}
+
+.automation-container__form {
+  width: 60px;
+  height: 20px;
+}
+
+.automation-container__sendButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  background-image: url(../assets/automationButton.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 35px;
+  cursor: pointer;
+}
+.automation-container__sendButton:hover {
+  transform: scale(1.2);
+}
+
+.automation-container__plug-settings {
+  background-image: url(../assets/automationSettings.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
+  width: 20px;
+  height: 20px;
+}

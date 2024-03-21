@@ -1,4 +1,4 @@
-# Greenhouse Companion - RESTfull API
+# Greenhouse Companion
 
 Greenhouse Companion is a comprehensive web application developed as a culminating project at Holberton School. This versatile web app serves as a virtual garden assistant, enhancing the gardening experience through a range of functionalities. This repository contains the backend component of the application, implemented as a RESTful API using Python Flask.
 

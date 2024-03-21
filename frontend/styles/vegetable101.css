@@ -1,0 +1,320 @@
+/* ---------------------------------------------------------------
+---- Container that hold on the left, all vegetables and on the 
+right the detail of the vegetable choosen -----------------------
+--------------------------------------------------------------- */
+#container_vegetable101 {
+  display: none;
+  width: 100%;
+  gap: 15px;
+  justify-content: center;
+  grid-template-columns: repeat(2, 562px);
+  grid-auto-rows: 660px;
+  position: relative;
+}
+
+/* ---------------------------------------------------------------
+---- Container that hold all vegetables from vegetable_infos -----
+--------------------------------------------------------------- */
+.all-vegetables-container {
+  grid-column: span 1;
+  grid-row: span 1;
+  border-radius: 100px 0 0px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(250, 250, 250, 0.8);
+  padding: 0px;
+  font-weight: 700;
+}
+
+.all-vegetables-container__title {
+  padding: 15px;
+}
+
+.all-vegetables-container__content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  width: 85%;
+  overflow: scroll;
+}
+
+.all-vegetables-container__content::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.allVegetables__item {
+  padding: 5px;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 13px;
+  background-size: 80px 80px;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-color: rgba(250, 250, 250, 0.9);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor: pointer;
+}
+
+.allVegetables__item:hover {
+  background-color: rgba(231, 225, 225, 0.9);
+}
+
+/* ---------------------------------------------------------------
+----- Container that hold the detail of selected vegetable -------
+--------------------------------------------------------------- */
+.vegetable-characteristic {
+  position: relative;
+  grid-column: span 1;
+  grid-row: span 1;
+  overflow-y: scroll;
+  border-radius: 0 100px 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+  background-color: rgba(250, 250, 250, 0.8);
+  padding: 30px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.vegetable-characteristic h2 {
+  margin-top: -15px;
+}
+
+.vegetable-characteristic__header {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+}
+
+.vegetable-characteristic__header img {
+  width: 250px;
+  height: 250px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+  border-radius: 10px;
+  background-color: rgba(250, 250, 250, 0.9);
+  margin: 5px;
+}
+
+.vegetable-characteristic__header__text-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  font-size: 15px;
+  text-align: justify;
+  gap: 10px;
+}
+
+.vegetable-characteristic__quick-infos {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  overflow: visible;
+}
+
+.vegetable-characteristic__sow-infos {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 30px;
+  overflow: visible;
+}
+
+.vegetable-characteristic__quick-infos__item {
+  padding: 5px;
+  width: 95px;
+  height: 110px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 13px;
+  background-size: 80px 80px;
+  background-repeat: no-repeat;
+  background-color: rgba(250, 250, 250, 0.9);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: 35px;
+  background-position: center;
+}
+
+.vegetable-characteristic__quick-infos__item__title {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: visible;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.vegetable-characteristic__quick-infos__item__content {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.vegetable-characteristic__quick-infos__item--watering {
+  background-image: url(./assets/watering.png);
+}
+
+.vegetable-characteristic__quick-infos__item--frost {
+  background-image: url(./assets/frost.png);
+}
+
+.vegetable-characteristic__quick-infos__item--soil-temperature {
+  background-image: url(./assets/vague-de-chaleur.png);
+}
+
+.vegetable-characteristic__quick-infos__item--spacing-on-row {
+  background-image: url(./assets/distancePlant.png);
+}
+
+.vegetable-characteristic__quick-infos__item--start-inside {
+  background-image: url(./assets/house.png);
+}
+
+.vegetable-characteristic__quick-infos__item--start-outside {
+  background-image: url(./assets/jardin.png);
+}
+
+.vegetable-characteristic__quick-infos__item--end {
+  background-image: url(./assets/panneau-stop-2.png);
+}
+
+.vegetable-characteristic__table {
+  margin-top: 30px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: rgba(250, 250, 250, 0.9);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.vegetable-characteristic__table table {
+  width: 100%;
+  font-size: 10px;
+  text-align: center;
+  padding: 5px;
+}
+
+.vegetable-characteristic__table table {
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0px 0px;
+}
+
+.vegetable-characteristic__table th {
+  padding-bottom: 5px;
+}
+
+.vegetable-characteristic__table td {
+}
+
+.vegetable-characteristic__table td:nth-child(4n) {
+  border-right: 1px solid grey;
+}
+
+.color-purple {
+  background-color: purple;
+  color: purple;
+}
+
+.color-orange {
+  background-color: orange;
+  color: orange;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+}
+
+.color-pink {
+  background-color: pink;
+  color: pink;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+}
+
+.color-first {
+  border-radius: 5px 0px 0px 5px;
+}
+
+.color-end {
+  border-radius: 0px 5px 5px 0px;
+}
+
+.today {
+  border-right: 1px red solid;
+  color: white;
+}
+
+.vegetable-characteristic__legend {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.vegetable-characteristic__legend__item {
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  background-size: 80px 80px;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-color: rgba(250, 250, 250, 0.9);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin: 20px;
+}
+
+.vegetable-characteristic__legend__item__title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  width: 100%;
+}
+
+.vegetable-characteristic__legend__item__data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.vegetable-characteristic__legend__item__title--start-inside {
+  background-color: pink;
+}
+
+.vegetable-characteristic__legend__item__title--transplant {
+  background-color: orange;
+}
+
+.vegetable-characteristic__legend__item__title--start-outside {
+  background-color: purple;
+}
+
+.vegetable-characteristic__legend__item__data {
+  height: 50%;
+  width: 100%;
+}

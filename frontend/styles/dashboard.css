@@ -1,0 +1,67 @@
+.dashboard {
+  display: grid;
+  /* grid-template-areas:
+    'plant-manager . recommandations'
+    'air-sensors . todolist'
+    'automation forecast todolist'; */
+  width: 100%;
+  gap: 15px;
+  grid-template-columns: repeat(3, 370px);
+  grid-auto-rows: 210px;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 950px) {
+  .dashboard {
+    grid-template-columns: repeat(1, auto);
+    grid-auto-rows: 25vh;
+  }
+}
+
+@media only screen and (min-width: 950px) and (max-width: 1400px) {
+  .dashboard {
+    grid-template-columns: repeat(2, 480px);
+    gap: 15px;
+    padding: 0;
+    width: 100%;
+  }
+}
+
+.dashbord__module {
+  position: relative;
+  padding: 15px;
+  background-color: rgba(250, 250, 250, 0.9);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 950px) {
+  .dashbord__module {
+    border-radius: 30px;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media only screen and (min-width: 950px) and (max-width: 1400px) {
+  .dashbord__module {
+    width: 100%;
+  }
+}
+
+.dashbord__module__title {
+  position: absolute;
+  top: 0;
+  margin-top: 15px;
+}
+
+.dashbord__module__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}

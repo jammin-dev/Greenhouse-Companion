@@ -1,0 +1,104 @@
+/* ----------------------- AirSensor Module ----------------------- */
+.dashbord__module--air-sensors {
+  grid-area: air-sensors;
+  grid-column: span 1;
+  grid-row: span 1;
+}
+@media only screen and (max-width: 1400px) {
+  .dashbord__module--air-sensors {
+    border-radius: 0px 100px 0px 0px;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .dashbord__module--air-sensors {
+    opacity: 1;
+  }
+}
+
+.dashbord__module__content--air-sensors {
+  gap: 55px;
+}
+.air-sensors-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.air-sensors-container__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  margin-top: 10px;
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-position: center;
+}
+.air-sensors-container__icon--temperature {
+  content: '';
+  background-image: url(../assets/air_sensors/icon_temperature.png);
+}
+.air-sensors-container__icon--temperature::before {
+  content: 'greenhouse temperature';
+  display: inline-block;
+  position: absolute;
+  background-color: white;
+  padding: 4px;
+  top : 45px;
+  border: 1px solid black;
+  border-radius: 10px;
+  cursor: text;
+  opacity: 0;
+  font-size: 12px;
+  transition: opacity 0.2s;
+}
+.air-sensors-container__icon--temperature:hover::before {
+  opacity: 0.9;
+  transition-delay: 0.2s;
+}
+
+.air-sensors-container__icon--humidity {
+  content: '';
+  background-image: url(../assets/air_sensors/icon_humidity.png);
+}
+.air-sensors-container__icon--humidity::before {
+  content: 'humidity';
+  display: inline-block;
+  position: absolute;
+  background-color: white;
+  padding: 4px;
+  top : 45px;
+  border: 1px solid black;
+  border-radius: 10px;
+  cursor: text;
+  opacity: 0;
+  font-size: 12px;
+  transition: opacity 0.2s;
+}
+.air-sensors-container__icon--humidity:hover::before {
+  opacity: 0.9;
+  transition-delay: 0.2s;
+}
+
+.air-sensors-container__icon--luminosity {
+  content: '';
+  background-image: url(../assets/air_sensors/luminosity.png);
+}
+.air-sensors-container__icon--luminosity::before {
+  content: 'luminosity';
+  display: inline-block;
+  position: absolute;
+  background-color: white;
+  padding: 4px;
+  top : 45px;
+  border: 1px solid black;
+  border-radius: 10px;
+  cursor: text;
+  opacity: 0;
+  font-size: 12px;
+  transition: opacity 0.2s;
+}
+.air-sensors-container__icon--luminosity:hover::before {
+  opacity: 0.9;
+  transition-delay: 0.2s;
+}

@@ -1,0 +1,115 @@
+bash command:
+'''
+tree -I "venv|__pycache__" . > tree_output.txt 
+'''
+.portfolio_greenhouse_companion_backend
+├── AUTHORS
+├── README.md
+├── api
+│   ├── __init__.py
+│   ├── app.py
+│   └── views
+│       ├── __init__.py
+│       ├── garden_area.py
+│       ├── sensors.py
+│       └── vegetable_manager.py
+├── config_Hostinger.py
+├── install
+│   ├── README.md
+│   ├── __init__.py
+│   ├── create_objects
+│   │   ├── create_garden.py
+│   │   ├── create_object.py
+│   │   ├── create_vegetable.py
+│   │   ├── create_vegetables_from_json.py
+│   │   └── data.json
+│   └── db_set
+│       ├── setup_all_table.sql
+│       ├── setup_mysql_dev.py
+│       ├── setup_mysql_dev.sql
+│       ├── setup_mysql_test.py
+│       ├── setup_mysql_test.sql
+│       └── vegetable_infos_data.json
+├── models
+│   ├── __init__.py
+│   ├── base_model.py
+│   ├── engine
+│   │   ├── __init__.py
+│   │   └── db_storage.py
+│   ├── garden_area.py
+│   ├── sensors.py
+│   ├── soil_moisture_set.py
+│   ├── vegetable_infos.py
+│   └── vegetable_manager.py
+├── public
+│   ├── assets
+│   │   ├── background-AI.png
+│   │   ├── background-anim.jpg
+│   │   ├── background-anim2.jpg
+│   │   ├── background-anim3.jpg
+│   │   ├── background-anim4.jpg
+│   │   ├── background.jpg
+│   │   ├── icon-rain.png
+│   │   ├── icon-sun.png
+│   │   ├── icon-sun_rain.png
+│   │   ├── icon_ dashboard.png
+│   │   ├── icon_carrot.png
+│   │   ├── icon_chart.png
+│   │   ├── icon_diary.png
+│   │   ├── icon_encyclopedia.png
+│   │   ├── icon_gauge.png
+│   │   ├── icon_humidity.png
+│   │   ├── icon_peas.png
+│   │   ├── icon_pumpkin.png
+│   │   ├── icon_sunlight.png
+│   │   ├── icon_temperature.png
+│   │   └── icon_tomato.png
+│   ├── index.html
+│   ├── script.js
+│   ├── script2.js
+│   └── style.css
+├── requirements.txt
+├── sensors
+│   ├── README.md
+│   ├── data.json
+│   ├── esp32.cpp
+│   ├── flask_server_test.py
+│   └── sensor_calibration.py
+├── tests
+│   ├── __init__.py
+│   ├── test_api
+│   │   ├── __init__.py
+│   │   └── test_app.py
+│   └── test_models
+│       ├── __init__.py
+│       ├── test_base_model.py
+│       ├── test_engine
+│       │   └── __init__.py
+│       └── test_garden_area.py
+├── tests_to_do
+│   ├── test_api
+│   │   ├── __init__.py
+│   │   ├── test_app.py
+│   │   └── v1
+│   │       ├── __init__.py
+│   │       └── test_views
+│   │           ├── __init__.py
+│   │           ├── test_garden_area.py
+│   │           └── test_vegetable_manager.py
+│   ├── test_garden_area.py
+│   ├── test_install
+│   │   ├── __init__.py
+│   │   └── test_setup_mysql_dev.py
+│   ├── test_models
+│   │   ├── test_amenity.py
+│   │   ├── test_engine
+│   │   │   └── test_db_storage.py
+│   │   ├── test_place.py
+│   │   ├── test_review.py
+│   │   ├── test_state.py
+│   │   └── test_user.py
+│   └── test_sensors
+├── tree.txt
+└── tree_output.txt
+
+23 directories, 86 files

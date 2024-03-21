@@ -1,0 +1,170 @@
+aside {
+  width: 80px;
+  height: 375px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(250, 250, 250, 0.5);
+  border-radius: 20px;
+}
+@media only screen and (max-width: 950px) {
+  aside {
+    display: none;
+    width: 90%;
+    height: auto;
+    padding: 10px;
+  }
+}
+@media only screen and (min-width: 950px) and (max-width: 1400px) {
+  aside {
+    width: 400px;
+    height: auto;
+    padding: 10px;
+  }
+}
+
+aside ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-weight: bold;
+}
+@media only screen and (max-width: 950px) {
+  aside ul {
+    flex-direction: row;
+  }
+}
+@media only screen and (min-width: 950px) and (max-width: 1400px) {
+  aside ul {
+    flex-direction: row;
+  }
+}
+
+aside li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 10px;
+  background-color: rgba(250, 250, 250, 0.7);
+  background-repeat: no-repeat;
+  background-size: 45px 45px;
+  background-position: center;
+}
+aside .icon_dashboard {
+  background-image: url(./assets/icon_dashboard.png);
+}
+aside .icon_chart {
+  background-image: url(./assets/icon_chart.png);
+}
+aside .icon_production {
+  background-image: url(./assets/icon_production.png);
+}
+aside .icon_vegetable101 {
+  background-image: url(./assets/icon_vegetable101.png);
+}
+
+.icon_dashboard,
+.icon_chart,
+.icon_production,
+.icon_vegetable101 {
+  width: 65px;
+  height: 65px;
+}
+@media only screen and (min-width: 1400px) {
+  .icon_dashboard:hover,
+  .icon_chart:hover,
+  .icon_production:hover,
+  .icon_vegetable101:hover {
+    border-bottom: 5px solid black;
+    border-right: 4px solid black;
+    cursor: pointer;
+  }
+  
+  .icon_dashboard::after {
+    content: 'Dashboard';
+    display: inline-block;
+    position: absolute;
+    left: 40px;
+    background-color: white;
+    padding: 4px;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 1; /* Ensure the text appears above the element */
+    cursor: text;
+    opacity: 0; /* Start with 0 opacity to make it invisible */
+    transition: left 0.5s ease, opacity 0.5s ease;
+  }
+  
+  .icon_dashboard:hover::after {
+    left: 80px;
+    opacity: 1;
+  }
+  
+  .icon_chart::after {
+    content: 'Charts';
+    display: inline-block;
+    position: absolute;
+    left: 40px;
+    background-color: white;
+    padding: 4px;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 1; /* Ensure the text appears above the element */
+    cursor: text;
+    opacity: 0; /* Start with 0 opacity to make it invisible */
+    transition: left 0.5s ease, opacity 0.5s ease;
+  }
+  
+  .icon_chart:hover::after {
+    left: 80px;
+    opacity: 1;
+  }
+  
+  .icon_production::after {
+    content: 'Production';
+    display: inline-block;
+    position: absolute;
+    left: 40px;
+    background-color: white;
+    padding: 4px;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 1; /* Ensure the text appears above the element */
+    cursor: text;
+    opacity: 0; /* Start with 0 opacity to make it invisible */
+    transition: left 0.5s ease, opacity 0.5s ease;
+  }
+  
+  .icon_production:hover::after {
+    left: 80px;
+    opacity: 1;
+  }
+  
+  .icon_vegetable101::after {
+    content: 'Encyclopedia';
+    display: inline-block;
+    position: absolute;
+    left: 40px;
+    background-color: white;
+    padding: 4px;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 1; /* Ensure the text appears above the element */
+    cursor: text;
+    opacity: 0; /* Start with 0 opacity to make it invisible */
+    transition: left 0.5s ease, opacity 0.5s ease;
+  }
+  
+  .icon_vegetable101:hover::after {
+    left: 80px;
+    opacity: 1;
+  }
+  
+}
+

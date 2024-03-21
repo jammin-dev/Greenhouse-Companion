@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/a7a8119638.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- <header>Laval, Thursday, 29th of August</header> -->
+  <!--------------------------------------------------------------------------------------
+      --------------------------------------- NAVBAR -----------------------------------------
+      --------------------------------------------------------------------------------------->
+  <div class="container">
+    <aside>
+      <ul>
+        <li class="icon-aside icon_dashboard">
+          <a href="#"><img src="./assets/icon_ dashboard.png" alt="dahsboard logo" /></a>
+        </li>
+        <li class="icon-aside icon_chart">
+          <a href="#">
+            <a href="#"><img src="./assets/icon_chart.png" alt="chart logo" /></a></a>
+        </li>
+        <li class="icon-aside icon_diary">
+          <a href="#">
+            <a href="#"><img src="./assets/icon_diary.png" alt="diary logo" /></a></a>
+        </li>
+        <li class="icon-aside icon_diary">
+          <a href="#">
+            <a href="#"><img src="./assets/icon_encyclopedia.png" alt="diary logo" /></a></a>
+        </li>
+      </ul>
+    </aside>
+    <main>
+      <div class="box box1">
+        <h2>Plant Manager</h2>
+        <form id="vegetableForm">
+          <div class="form_line1">
+            <label for="gender">Name:</label>
+            <select id="name" name="name">
+              <option value="tomato">Tomato</option>
+              <option value="carrot">Carrot</option>
+              <option value="radish">Radish</option>
+            </select>
+          </div>
+          <!-- <div class="form_line1">
+            <label for="variety">Variety:</label>
+            <input id="variety" name="variety">
+            </select>
+          </div> -->
+          <div class="form_line2">
+            <div class="form_quantity">
+              <label for="quantity">Quantity:</label>
+              <input type="number" id="quantity" name="quantity">
+            </div>
+            <!-- <div class="form_garden_area">
+              <label for="garden_area">Garden Area:</label>
+              <select id="garden_area" name="garden_area">
+                <option value="left">Left</option>
+                <option value="middle">Middle</option>
+                <option value="right">Right</option>
+                <option value="back">Back</option>
+              </select>
+            </div> -->
+          </div>
+          <div class="form_line3">
+            <!-- <div class="form_sowed">
+              <label for="sowed">Sowed:</label>
+              <input type="checkbox" id="sowed" name="sowed" />
+            </div> -->
+            <!-- <div class="form_planted">
+              <label for="planted">Planted:</label>
+              <input type="checkbox" id="planted" name="planted" />
+            </div> -->
+          </div>
+          <!-- <div class="form_line1">
+            <label for="notes">Notes:</label>
+            <textarea id="notes" name="notes" rows="4"></textarea>
+          </div> -->
+          <button type="submit">Add Vegetable</button>
+        </form>
+      </div>
+      <div class="box box2">
+        <h2>Air Sensors</h2>
+        <div class="signal_statut"></div>
+
+        <div class="sensor_icon_container">
+          <div class="icon_container">
+            <div class="icon icon_temperature"></div>
+            <p>17°</p>
+          </div>
+          <div class="icon_container">
+            <div class="icon icon_humidity"></div>
+            <p>65%</p>
+          </div>
+          <div class="icon_container">
+            <div class="icon icon_sunlight"></div>
+            <p>8/10</p>
+          </div>
+          <div class="icon_container">
+            <div class="icon icon_sunlight"></div>
+            <p>8/10</p>
+          </div>
+        </div>
+      </div>
+      <div class="box box3">
+        <h2>Recommandation</h2>
+        <div class="recommandation_icons_container">
+          <div class="recommandation_icon recommandation_icon1">
+            <p>Carrot</p>
+          </div>
+          <div class="recommandation_icon recommandation_icon2">
+            <p>Tomato</p>
+          </div>
+          <div class="recommandation_icon recommandation_icon3">
+            <p>Pumpkin</p>
+          </div>
+          <div class="recommandation_icon recommandation_icon4">
+            <p>Peas</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="box box4">
+        <h2>Watering</h2>
+        <div class="watering_container">
+          <div class="watering_item">
+            <div class="watering_icon">
+              <img src="./assets/icon_gauge.png" alt="" id="soil_humidity_left_gauge">
+              <p id="sensor_value_left"></p>
+            </div>
+            <p>Left</p>
+          </div>
+          <div class="watering_item">
+            <div class="watering_icon">
+              <img src="./assets/icon_gauge.png" alt="">
+              <p>45 %</p>
+            </div>
+            <p>Middle</p>
+          </div>
+          <div class="watering_item">
+            <div class="watering_icon">
+              <img src="./assets/icon_gauge.png" alt="">
+              <p>45 %</p>
+            </div>
+            <p>Right</p>
+          </div>
+          <div class="watering_item">
+            <div class="watering_icon">
+              <img src="./assets/icon_gauge.png" alt="">
+              <p>45 %</p>
+            </div>
+            <p>Back</p>
+          </div>
+        </div>
+        <div class="signal_statut"></div>
+      </div>
+      <div class="box box5">
+        <h2>To-Do List</h2>
+        <div class="to_do_add">+</div>
+        <div class="container_to_do_list">
+          <div>
+            <input type="checkbox" id="scales" name="scales" checked />
+            <label for="scales">Fertilize bell-peppers</label>
+          </div>
+          <div>
+            <input type="checkbox" id="scales" name="scales" checked />
+            <label for="scales">Remove weeds</label>
+          </div>
+          <div>
+            <input type="checkbox" id="scales" name="scales" checked />
+            <label for="scales">Harvest tomatoes</label>
+          </div>
+          <div>
+            <input type="checkbox" id="scales" name="scales" checked />
+            <label for="scales">Sow spinach</label>
+          </div>
+        </div>
+      </div>
+      <div class="box box6">
+        <h2>Forecast</h2>
+        <div class="forecast_icon">
+          <img class="icon_forecast" src="./assets/icon-rain.png" alt="dahsboard logo" />
+          <img class="icon_forecast" src="./assets/icon-sun.png" alt="dahsboard logo" />
+          <img class="icon_forecast" src="./assets/icon-sun.png" alt="dahsboard logo" />
+          <img class="icon_forecast" src="./assets/icon-sun_rain.png" alt="dahsboard logo" />
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+/* ----------------------- ToDo Module ----------------------- */
+.dashbord__module--todolist {
+  grid-area: todolist;
+  grid-column: span 1;
+  grid-row: span 2;
+  border-radius: 5px 5px 100px 5px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: flex-start;
+}
+@media only screen and (max-width: 1400px) {
+  .dashbord__module--todolist {
+    border-radius: 0px 0px 0px 100px;
+    grid-row: span 1;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .dashbord__module--todolist {
+    border-radius: 30px 30px 30px 30px;
+  }
+}
+.add-todo-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  background-image: url(../assets/addToDo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 35px;
+  cursor: pointer;
+}
+.add-todo-button:hover {
+  transform: scale(1.3);
+}
+
+.dashbord__module__content--todolist {
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-start;
+  margin-top: 60px;
+  align-items: start;
+}
+.todolist-container {
+  gap: 15px;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+}
+.todolist-container__task {
+  font-size: 19px;
+}
+
+.task {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  height: 25px;
+}
+
+.task__checkbox {
+  height: 100%;
+}
+
+.task input[type='checkbox'] {
+  margin-right: 10px;
+}
+
+.task .delete-button {
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  width: 30px;
+  background-image: url(../assets/deleteToDo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 15px;
+  margin-top: 0;
+}
+
+input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #555;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* Style the labels containing the checkboxes (optional) */
+label {
+  display: flex;
+  align-items: center; /* Align the label and checkbox vertically */
+}
+/* Style the custom checkbox as you like */
+input[type='checkbox']:checked::before {
+  content: '✓'; /* You can use any content for the checked state */
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #4caf50;
+  background-color: #4caf50;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 20px;
+  color: white;
+}

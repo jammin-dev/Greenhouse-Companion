@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="./styles/assets/favicon.ico">
+
+  <link rel="stylesheet" href="styles/global.css" />
+  <link rel="stylesheet" href="styles/birds.css" />
+  <link rel="stylesheet" href="styles/utils.css" />
+  <link rel="stylesheet" href="styles/aside.css" />
+  <link rel="stylesheet" href="styles/dashboard.css" />
+  <link rel="stylesheet" href="styles/vegetable101.css" />
+  <link rel="stylesheet" href="styles/charts.css" />
+  <link rel="stylesheet" href="styles/production.css" />
+
+  <link rel="stylesheet" href="styles/dashboard_modules/plant_manager/plant_manager.css" />
+  <link rel="stylesheet" href="styles/dashboard_modules/air_sensors.css" />
+  <link rel="stylesheet" href="styles/dashboard_modules/forecast.css" />
+  <link rel="stylesheet" href="styles/dashboard_modules/recommandations.css" />
+  <link rel="stylesheet" href="styles/dashboard_modules/to-do-list.css" />
+  <link rel="stylesheet" href="styles/dashboard_modules/automation.css" />
+  <link rel="stylesheet" href="styles/dashboard_modules/assistant.css" />
+
+  <script src="
+  https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js
+  "></script>
+  <title>Greenhouse Companion</title>
+</head>
+
+<body>
+
+  <!-- <div id="loading-animation">
+    <div class="loading-container">
+      <p><span>"</span>The greatest fine art of the future will be the making of a comfortable living from a small piece
+        of
+        land.<span>"</span>(Abraham Lincoln)
+      </p>
+      <div id="loading"></div>
+    </div>
+  </div> -->
+
+  <div>
+    <!-- Create a dropdown menu for background selection -->
+    <select id="background-select">
+      <option value="styles/assets/background-anim4.jpg">Default Background</option>
+      <option value="/styles/assets/background-anim6.jpg">Custom Background 1</option>
+      <option value="/styles/assets/background-anim.jpg">Custom Background 2</option>
+      <option value="/styles/assets/background-anim5.jpg">Custom Background 3</option>
+      <option value="/styles/assets/background-anim7.jpg">Night mode </option>
+      <option value="/styles/assets/background-anim8.jpg">Custom Background 5</option>
+      <option value="/styles/assets/dark-mode.jpg">Dark mode </option>
+      <option value="/styles/assets/gradient.png">Gradient Background</option>
+      <option value="/styles/assets/gradient2.png">Gradient Background 2</option>
+    </select>
+  </div>
+
+  <div class="bird-container bird-container-one">
+    <div class="bird bird-one"></div>
+  </div>
+  <div class="bird-container bird-container-two">
+    <div class="bird bird-two"></div>
+  </div>
+  <div class="bird-container bird-container-three">
+    <div class="bird bird-three"></div>
+  </div>
+  <div class="bird-container bird-container-four">
+    <div class="bird bird-four"></div>
+  </div>
+
+  <div class="common_container">
+    <!-- <div class="logo_container">
+      <img src="./styles/assets/GreenHouse.png" alt="logo" class="logo">
+    </div> -->
+    <aside>
+      <ul>
+        <li id="dashboard_page" class="icon-aside icon_dashboard"></li>
+        <li id="production_page" class="icon-aside icon_production"></li>
+        <li id="charts_page" class="icon-aside icon_chart"></li>
+        <li id="vegetable101_page" class="icon-aside icon_vegetable101"></li>
+      </ul>
+    </aside>
+    <main>
+      <header>
+        <div class="header__title">
+          <h1>Greenhouse Companion</h1>
+          <div class="signal_statut" id="signalStatus"></div>
+        </div>
+        <p id="date"></p>
+      </header>
+      <div class="dashboard" id="container_dashboard">
+        <div class="dashbord__module dashbord__module--plant-manager">
+          <h2 class="dashbord__module__title" id="plant_manager_title">Plant Manager</h2>
+          <div class="dashbord__module__content dashbord__module__content--plant-manager">
+
+            <!----------------------icon container ------------------------------>
+            <div class="icons_container">
+              <div class="dont_move">
+                <div class="icon_garden icon_plant_manager" id="plant-icon"></div>
+                <p>Plant</p>
+              </div>
+            </div>
+            <div class="icons_container">
+              <div class="dont_move">
+                <div class="icon_garden icon_sow_manager" id="sow-icon"></div>
+                <p>Sow</p>
+              </div>
+            </div>
+            <div class="icons_container">
+              <div class="dont_move">
+                <div class="icon_garden icon_harvest_manager" id="harvest-icon"></div>
+                <p>Harvest</p>
+              </div>
+            </div>
+            <div class="icons_container">
+              <div class="dont_move">
+                <div class="icon_garden icon_create_manager" id="create-icon"></div>
+                <p>Garden</p>
+              </div>
+            </div>
+            <div class="icons_container">
+              <div class="dont_move">
+                <div class="icon_garden icon_remove_manager" id="remove-icon"></div>
+                <p>Remove</p>
+              </div>
+            </div>
+            <div class="icons_container">
+              <div class="dont_move">
+                <div class="icon_garden icon_delete_manager" id="delete-icon"></div>
+                <p>Delete</p>
+              </div>
+            </div>
+            <h6 style="display: none;">List of sowed vegetables</h6>
+            <div class="sowing-table-container" style="display: none;">
+              <table id="sowing-table">
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!---------------------- Form fields -------------------------------->
+          <div id="form-plant"></div>
+          <div id="form-sow"></div>
+          <div id="form-harvest"></div>
+          <div id="form-add-garden-area"></div>
+          <div id="form-remove"></div>
+          <div id="form-delete"></div>
+        </div>
+
+
+        <div class="dashbord__module dashbord__module--air-sensors">
+          <h2 class="dashbord__module__title" id="plantManagerTitle">Air Sensors</h2>
+          <div class="dashbord__module__content dashbord__module__content--air-sensors">
+            <!-- <div class="air-sensors-container">
+              <div class="air-sensors-container__icon air-sensors-container__icon--weather">
+              </div>
+              <p class="air-sensors-container__value" id="air-sensors-container__temperature"></p>
+            </div> -->
+            <div class="air-sensors-container">
+              <div class="air-sensors-container__icon air-sensors-container__icon--temperature"></div>
+              <p class="air-sensors-container__value" id="temperatureSensorValue"></p>
+            </div>
+            <div class="air-sensors-container">
+              <div class="air-sensors-container__icon air-sensors-container__icon--humidity"></div>
+              <p class="air-sensors-container__value" id="humiditySensorValue"></p>
+            </div>
+            <div class="air-sensors-container">
+              <div class="air-sensors-container__icon air-sensors-container__icon--luminosity"></div>
+              <p class="air-sensors-container__value d=" luminositySensorValue">8/10</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="dashbord__module dashbord__module--recommandations">
+          <h2 class="dashbord__module__title">Recommandation</h2>
+          <div id="recommandationModule" class="dashbord__module__content dashbord__module__content--recommandations">
+          </div>
+        </div>
+
+        <div class="dashbord__module dashbord__module--assistant">
+          <h2 class="dashbord__module__title dashbord__module__title--assistant" id="assistant_title">Gardener assistant
+          </h2>
+
+          <img src="./styles/assets/enlarge.png" id="assistant_button">
+
+          <div class="dashbord__module__content dashbord__module__content--assistant">
+            <div class="chat-container">
+              <p id="placeholder-message">Hey gardener ! How can I help you ?</p>
+              <div class="chat-output" id="chat-output"></div>
+              <input type="text" id="user-input" placeholder="Type your question here...">
+              <button id="submit-button">🥕</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashbord__module dashbord__module--todolist">
+          <h2 class="dashbord__module__title">ToDo List</h2>
+          <div class="add-todo-button" id="addTask"></div>
+          <div class="dashbord__module__content dashbord__module__content--todolist" id="toDoContainer">
+          </div>
+        </div>
+
+
+
+        <div class="dashbord__module dashbord__module--automation">
+          <h2 class="dashbord__module__title">Automation</h2>
+          <div class="dashbord__module__content dashbord__module__content--automation">
+            <div class="automation-container">
+              <p class="automation-container__plug-name">1</p>
+              <div class="automation-container__icon automation-container__icon--watering"></div>
+              <input list="timer" class="automation-container__form" id="smartPlug1" placeholder="minutes">
+              <datalist id="timer">
+                <option value="15">
+                <option value="30">
+                <option value="60">
+                <option value="90">
+              </datalist>
+            </div>
+            <div class="automation-container">
+              <p class="automation-container__plug-name">2</p>
+              <div class="automation-container__icon automation-container__icon--watering"></div>
+              <input list="timer" class="automation-container__form" id="smartPlug2" placeholder="minutes">
+              <datalist id="timer">
+                <option value="15">
+                <option value="30">
+                <option value="60">
+                <option value="90">
+              </datalist>
+            </div>
+            <div class="automation-container">
+              <p class="automation-container__plug-name">3</p>
+              <div class="automation-container__icon automation-container__icon--watering"></div>
+              <input list="timer" class="automation-container__form" id="smartPlug3" placeholder="minutes">
+              <datalist id="timer">
+                <option value="15">
+                <option value="30">
+                <option value="60">
+                <option value="90">
+              </datalist>
+            </div>
+            <!-- <div class="automation-container">
+              <p class="automation-container__plug-name">4</p>
+              <div class="automation-container__icon automation-container__icon--fan"></div>
+              <div class="automation-container__plug-settings"></div>
+            </div> -->
+            <div class="automation-container__sendButton"></div>
+          </div>
+        </div>
+
+
+
+        <div class="dashbord__module dashbord__module--forecast">
+          <h2 class="dashbord__module__title">Forecast</h2>
+          <div class="dashbord__module__content dashbord__module__content--forecast">
+            <!--------- forecast.js to integrate forecast_container --------->
+          </div>
+        </div>
+
+
+
+      </div>
+      <div id="container_charts">
+        <div id="box_charts">
+          <h2>Charts</h2>
+          <form action="" id="chartSubmit">
+            <div class="charts__start-date">
+              <label for="startDate">From</label>
+              <input type="date" id="startDate" name="startDate">
+            </div>
+            <div class="charts__end-date">
+              <label for="endDate">To</label>
+              <input type="date" id="endDate" name="endDate">
+            </div>
+            <input type="submit" value="Display" class="charts__submit-button">
+          </form>
+          <canvas id="chart"></canvas>
+        </div>
+      </div>
+
+      <div id="container_production">
+        <div class="production-container">
+          <h2 class="production-container__title">Production</h2>
+          <div class="production-container__content" id="productionContent">
+
+          </div>
+        </div>
+      </div>
+
+      <div id="container_vegetable101">
+
+        <div id="container_allVegetables" class="all-vegetables-container">
+          <h2 class="all-vegetables-container__title">Vegetables</h2>
+          <div class="all-vegetables-container__content" id="allVegetablesInfos"></div>
+        </div>
+        <div id="container_vegetableInfos" class="vegetable-characteristic">
+
+
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script src=" ./scripts/dashboard_modules/plant_manager/form_plant.js">
+  </script>
+  <script src="./scripts/dashboard_modules/plant_manager/form_sow.js"></script>
+  <script src="./scripts/dashboard_modules/plant_manager/form_harvest.js"></script>
+  <script src="./scripts/dashboard_modules/plant_manager/form_add_and_update.js"></script>
+  <script src="./scripts/dashboard_modules/plant_manager/form_remove.js"></script>
+  <script src="./scripts/dashboard_modules/plant_manager/form_delete.js"></script>
+
+  <script src="./forecast_module/forecast.js"></script>
+
+  <script src="./chatGPT_module/chatGPT.js"></script>
+
+  <script src="./scripts/dashboard_modules/toDoList.js"></script>
+
+
+  <script src="./scripts/dashboard_modules/plant_manager/script_formulaire.js"></script>
+
+  <script src="./scripts/dashboard_modules/air_sensors.js"></script>
+  <script src="./scripts/dashboard_modules/recommandations.js"></script>
+  <script src="./scripts/dashboard_modules/automation.js"></script>
+
+  <script src=" ./scripts/chart_page.js"></script>
+  <script src=" ./scripts/production_page.js"></script>
+
+  <script src="./scripts/vegetable_101/vegetable101.js"></script>
+  <script src="./scripts/vegetable_101/vegetable101_details.js"></script>
+
+  <script src="./scripts/moduleSizeChanger.js"></script>
+  <script src="./scripts/change_page.js"></script>
+  <script src="./scripts/utils.js"></script>
+
+  <script src="./scripts/moduleSizeChanger/plantManager.js"></script>
+
+  <script src="./scripts/change_background.js"></script>
+
+</body>
+
+</html>
