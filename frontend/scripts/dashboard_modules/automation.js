@@ -43,7 +43,7 @@ sendButton.addEventListener('click', function () {
   smartPlug2.value = null;
   smartPlug3.value = null;
   // Send the JSON data to a server using the fetch API
-  fetch('https://walrus-app-jbfmz.ondigitalocean.app/automation', {
+  fetch('http://localhost:5001/automation', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const temperature = document.getElementById('temperatureSensorValue');
   const humidity = document.getElementById('humiditySensorValue');
   const luminosity = document.getElementById('');
-  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/sensors/last';
+  const apiUrl = 'http://localhost:5001/sensors/last';
 
   fetch(apiUrl)
     .then((response) => response.json()) // Parse the JSON response

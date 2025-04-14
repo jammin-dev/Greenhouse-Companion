@@ -1,7 +1,7 @@
 async function getVegetablesInfos() {
   try {
     const apiUrl =
-      'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_infos';
+      'http://localhost:5001/vegetable_infos';
     const response = await fetch(apiUrl);
 
     if (!response.ok) {

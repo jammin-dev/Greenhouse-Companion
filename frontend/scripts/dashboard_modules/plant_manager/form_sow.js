@@ -120,7 +120,7 @@ formData['area_id'] = isSpecificGardenArea
 // Function to send a POST request
 function sendPostRequestSow(formData) {
   // Define your server URL
-  const serverUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
+  const serverUrl = 'http://localhost:5001/vegetable_manager';
 
   // Define the request options
   const requestOptions = {
@@ -158,7 +158,7 @@ function clearFormSow() {
 // Function to fetch and populate all garden areas
 function fetchAllGardenAreas() {
   // Fetch garden areas from your API
-  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/areas';
+  const apiUrl = 'http://localhost:5001/areas';
 
   fetch(apiUrl)
     .then((response) => response.json())
@@ -197,7 +197,7 @@ function resetGardenAreaSelect() {
 // Function to fetch vegetable names from the API
 function fetchVegetableNames() {
   // Replace with the URL of your API endpoint that provides vegetable names
-  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_infos';
+  const apiUrl = 'http://localhost:5001/vegetable_infos';
 
   fetch(apiUrl)
     .then((response) => response.json())

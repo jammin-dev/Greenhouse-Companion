@@ -108,7 +108,7 @@ deleteGardenAreaButton.addEventListener('click', function (event) {
 // Function to fetch existing garden areas
 function fetchExistingGardenAreas() {
   // Define the URL to fetch existing garden areas
-  const existingGardenAreasUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/areas';
+  const existingGardenAreasUrl = 'http://localhost:5001/areas';
 
   fetch(existingGardenAreasUrl)
     .then((response) => response.json())
@@ -137,7 +137,7 @@ fetchExistingGardenAreas();
 // Function to fetch vegetable names from the API
 function fetchVegetableNames() {
   // Replace with the URL of your API endpoint that provides vegetable names
-  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
+  const apiUrl = 'http://localhost:5001/vegetable_manager';
 
   fetch(apiUrl)
     .then((response) => response.json())
@@ -148,7 +148,7 @@ function fetchVegetableNames() {
       const gardenAreaData = {};
 
       // Fetch garden areas data
-      return fetch('https://walrus-app-jbfmz.ondigitalocean.app/areas')
+      return fetch('http://localhost:5001/areas')
         .then((response) => response.json())
         .then((areasData) => {
           // Create a lookup object for garden area names
@@ -199,7 +199,7 @@ function deleteVegetable() {
   const selectedVegetable = document.querySelector('#vegetable_to_delete').value;
 
   // Rest of your code to send a DELETE request for deleting the vegetable
-  const serverUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager/' + selectedVegetable;
+  const serverUrl = 'http://localhost:5001/vegetable_manager/' + selectedVegetable;
 
   // Define the request options
   const requestOptions = {
@@ -227,7 +227,7 @@ function deleteGardenArea() {
   const selectedGardenArea = document.querySelector('#garden_area_to_delete').value;
 
   // Rest of your code to send a DELETE request for deleting the garden area
-  const serverUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/areas' + selectedGardenArea;
+  const serverUrl = 'http://localhost:5001/areas' + selectedGardenArea;
 
   // Define the request options
   const requestOptions = {

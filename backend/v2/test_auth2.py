@@ -1,7 +1,7 @@
 import requests
 
 # Replace these values with your Flask application's information
-base_url = 'http://127.0.0.1:5000'  # Your Flask app's base URL
+base_url = 'http://127.0.0.1:5001'  # Your Flask app's base URL
 protected_endpoint = '/users'  # The protected endpoint you want to test
 token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA5YjYxYzgwLTUxMTEtNDJmYS1iMjFkLTc4YmRjMDYxNDA4MiIsImV4cCI6MTY5NjExNzY0NH0.gqNOwqzwaEh_abJMik8S3s8KFvE2Q3SJTtggppcrEFA'  # Replace with a valid JWT token
 

@@ -9,7 +9,7 @@ const char *ssid = "***REMOVED***";
 const char *password = "***REMOVED***";
 
 // Server URL for sending sensor data
-const char *serverUrl = "https://walrus-app-jbfmz.ondigitalocean.app/sensors";
+const char *serverUrl = "http://localhost:5001/sensors";
 
 // Name for the ESP32 device
 const char *esp32Name = "ESP32";

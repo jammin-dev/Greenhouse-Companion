@@ -145,7 +145,7 @@ function updateGardenArea() {
 // Function to fetch existing garden areas
 function fetchExistingGardenAreas() {
   // Define the URL to fetch existing garden areas
-  const existingGardenAreasUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/areas'; // Replace with your server URL
+  const existingGardenAreasUrl = 'http://localhost:5001/areas'; // Replace with your server URL
   const sowGardenAreaId = '64722a61-55a2-47ef-af3c-f05634b2b862';
 
   fetch(existingGardenAreasUrl)
@@ -178,7 +178,7 @@ fetchExistingGardenAreas();
 // Function to send a POST request for adding a new garden area
 function sendPostRequestAddGardenArea(formData) {
   // Define your server URL for adding a garden area
-  const serverUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/areas'; // Replace with the correct URL
+  const serverUrl = 'http://localhost:5001/areas'; // Replace with the correct URL
   // Define the request options
   const requestOptions = {
     method: 'POST',
@@ -209,7 +209,7 @@ function sendPostRequestAddGardenArea(formData) {
 function sendPutRequestUpdateGardenArea(selectedGardenArea, formData) {
 
   // Define your server URL for updating a garden area with the selected ID
-  const serverUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/areas/' + selectedGardenArea;
+  const serverUrl = 'http://localhost:5001/areas/' + selectedGardenArea;
 
 
   // Define the request options

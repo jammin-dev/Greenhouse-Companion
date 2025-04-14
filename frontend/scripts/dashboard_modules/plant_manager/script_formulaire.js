@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Function to fetch and process data
   function fetchDataAndPopulateTable() {
     // Fetch data from the URL
-    fetch('https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager')
+    fetch('http://localhost:5001/vegetable_manager')
       .then((response) => response.json())
       .then((data) => {
         // Filter vegetables with sowed==true and planted==false

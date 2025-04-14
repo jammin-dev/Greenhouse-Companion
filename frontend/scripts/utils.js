@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchSignal() {
   try {
-    const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app';
+    const apiUrl = 'http://localhost:5001';
     const response = await fetch(apiUrl);
 
     if (!response.ok) {

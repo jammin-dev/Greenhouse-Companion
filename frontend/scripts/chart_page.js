@@ -1,7 +1,7 @@
 let data;
 let myChart = null;
 document.addEventListener('DOMContentLoaded', async () => {
-  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/sensors';
+  const apiUrl = 'http://localhost:5001/sensors';
   try {
     data = await fetchData(apiUrl);
     displayChart(data);

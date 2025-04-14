@@ -50,7 +50,7 @@ addButtonHarvest.addEventListener('click', function (event) {
   const harvestDate = document.querySelector('#harvest_date').value;
   const selectedName = selectedNameOption ? selectedNameOption.textContent.split(' (')[0] : '';
   const selectedAreaId = selectedNameOption ? selectedNameOption.dataset.areaId : '';
-  const baseUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
+  const baseUrl = 'http://localhost:5001/vegetable_manager';
   const vegetableId = selectedNameOption.value;
   const putUrl = `${baseUrl}/${vegetableId}`;
 
@@ -121,10 +121,10 @@ function clearFormHarvest() {
 // Function to fetch vegetable names for harvest from the API
 function fetchVegetableNamesForHarvest() {
   // Replace with the URL of your API endpoint that provides vegetable names for harvest
-  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
+  const apiUrl = 'http://localhost:5001/vegetable_manager';
 
   // Fetch garden area data first
-  fetch('https://walrus-app-jbfmz.ondigitalocean.app/areas')
+  fetch('http://localhost:5001/areas')
     .then((areaResponse) => areaResponse.json())
     .then((areaData) => {
       // Get the select element for vegetable names for harvest

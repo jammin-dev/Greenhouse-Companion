@@ -59,7 +59,7 @@ addButtonPlant.addEventListener('click', async function (event) {
   const selectedName = selectedNameOption ? selectedNameOption.textContent.split(' - ')[0] : '';
   const isSowed = selectedNameOption ? selectedNameOption.dataset.sowed === 'true' : false;
 
-  const baseUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
+  const baseUrl = 'http://localhost:5001/vegetable_manager';
 
   try {
     const areaId = document.querySelector('#garden_area_plant').value;
@@ -178,7 +178,7 @@ const areaNameMap = {};
 // Function to fetch garden area data from the API
 function fetchGardenAreas() {
 
-  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/areas';
+  const apiUrl = 'http://localhost:5001/areas';
   const sowGardenAreaId = '64722a61-55a2-47ef-af3c-f05634b2b862';
 
   fetch(apiUrl)
@@ -209,7 +209,7 @@ fetchGardenAreas();
 // Function to fetch vegetable names from the API
 function fetchVegetableNames() {
   // Replace with the URL of your API endpoint that provides vegetable names
-  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_infos';
+  const apiUrl = 'http://localhost:5001/vegetable_infos';
 
   fetch(apiUrl)
     .then((response) => response.json())
@@ -253,7 +253,7 @@ showSowedVegetablesCheckbox.addEventListener('change', function () {
   nameSelect.innerHTML = '';
 
   // Define the base URL for fetching vegetables
-  const baseUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
+  const baseUrl = 'http://localhost:5001/vegetable_manager';
 
   // Check if the checkbox is checked
   if (showSowedVegetablesCheckbox.checked) {
@@ -283,7 +283,7 @@ showSowedVegetablesCheckbox.addEventListener('change', function () {
       });
   } else {
     // Fetch all vegetables when the checkbox is unchecked
-    fetch('https://walrus-app-jbfmz.ondigitalocean.app/vegetable_infos')
+    fetch('http://localhost:5001/vegetable_infos')
       .then((response) => response.json())
       .then((data) => {
         data.forEach((vegetable) => {

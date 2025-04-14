@@ -21,6 +21,8 @@ for item in data:
             print(f"POST request successful for item: {item}")
         else:
             print(f"Failed to send POST request for item: {item}")
+            print(f"response.status_code: {response.status_code}")
+            print(f"response.text: {response.text}")
     except Exception as e:
         print(f"Error sending POST request for item: {item}")
         print(f"Error details: {str(e)}")

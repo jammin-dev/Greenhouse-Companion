@@ -1,5 +1,5 @@
 const addTask = document.getElementById('addTask');
-const urlTodo = 'https://walrus-app-jbfmz.ondigitalocean.app/todo';
+const urlTodo = 'http://localhost:5001/todo';
 const toDoContainer = document.getElementById('toDoContainer');
 
 addTask.addEventListener('click', async function () {
