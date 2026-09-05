@@ -5,8 +5,8 @@
 #include <DHT.h>
 
 // WiFi credentials
-const char *ssid = "***REMOVED***";
-const char *password = "***REMOVED***";
+const char *ssid = "YOUR_WIFI_SSID";
+const char *password = "YOUR_WIFI_PASSWORD";
 
 // Server URL for sending sensor data
 const char *serverUrl = "http://localhost:5001/sensors";

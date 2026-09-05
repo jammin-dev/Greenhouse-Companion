@@ -3,9 +3,9 @@
 #include <ArduinoJson.h>
 #include <HTTPClient.h>
 
-const char *ssid = "***REMOVED***";
-const char *password = "***REMOVED***";
-const char *serverUrl = "http://192.168.1.104:5001/api/sensors"; // Update with your server's URL
+const char *ssid = "YOUR_WIFI_SSID";         // set your Wi-Fi SSID
+const char *password = "YOUR_WIFI_PASSWORD"; // set your Wi-Fi password
+const char *serverUrl = "http://<server-host>:5001/api/sensors"; // set your server's URL
 const char *esp32Name = "ESP32";
 
 // GPIO PINS

@@ -5,8 +5,8 @@
 #include <DHT.h>
 
 // WiFi credentials
-const char* ssid = "***REMOVED***";
-const char* password = "***REMOVED***";
+const char* ssid = "YOUR_WIFI_SSID";
+const char* password = "YOUR_WIFI_PASSWORD";
 
 // Allowed client IP address for incoming HTTP requests (change as needed)
 const char* allowedIP = "192.168.1.100";

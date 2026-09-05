@@ -22,7 +22,7 @@ app = Flask(__name__)
 api = Api(app)
 CORS(app)
 
-app.config['SECRET_KEY'] = '***REMOVED***'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-only-change-me')
 
 database = os.environ.get('DATABASE')
 
